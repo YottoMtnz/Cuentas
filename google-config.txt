@@ -1,8 +1,0 @@
-# Datos de tu base de Google. Se ponen UNA SOLA VEZ, antes de ejecutar Crear-APK.bat.
-# Quita el simbolo # solo si lo necesitas; las lineas que empiezan con # se ignoran.
-#
-# URL: la "URL de la aplicacion web" que te da Google al implementar el script (termina en /exec).
-# CODIGO: el mismo que pusiste en Code.gs (CODIGO_REGISTRO). Es el que permite CREAR cuentas.
-#         Si lo dejas vacio, la app lo pedira al crear cada cuenta.
-URL=
-CODIGO=
