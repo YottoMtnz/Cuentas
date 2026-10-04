@@ -15,6 +15,8 @@ Este repositorio hospeda únicamente el archivo público de tasas fiscales que l
 
 Contiene por año: tramos del impuesto federal sobre la renta, deducción estándar, límite de la base del Seguro Social, montos adicionales para mayores de 65 años y crédito tributario por hijos. Fuente de las cifras: IRS ([irs.gov](https://www.irs.gov)).
 
+La app, además, genera automáticamente una estimación por inflación cuando el año en curso aún no tiene cifras oficiales, y la reemplaza sola al publicarse las definitivas.
+
 El código fuente de la aplicación no se publica en este repositorio.
 
 > Las cifras son una estimación orientativa, no asesoría fiscal.
