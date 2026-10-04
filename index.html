@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#070914">
+<title>Cuentas · Contabilidad personal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#f4f6fb;--bg2:#e2e9f6;--card:#fff;--ink:#0b1020;--mut:#5b6478;--line:#dfe6f2;--tint:#eef2fa;
+--c0:#0d9488;--c1:#d23a40;--c2:#5456d6;
+--nav:#070914;--navg:linear-gradient(180deg,#0b1026,#070914);--navm:rgba(7,9,20,.93);--navt:#a8b3c7;--amber:#f5b83d;
+--pri:#0d9488;--pri2:#0f766e;--prit:#fff;--psh:rgba(13,148,136,.5);--focus:rgba(13,148,136,.16);--ring:#4f6bed;
+--hero:#0a1030;--herog:linear-gradient(135deg,#070914 0%,#0a2540 55%,#0d5f5b 100%);--herot:#f2f7ff;--herom:#a9c3d8;--h0:#5eead4;--h1:#ffa08a;--h2:#a5b9ff;
+--r:20px;--rc:14px;--sh:0 1px 2px rgba(15,36,32,.05),0 10px 28px -14px rgba(15,36,32,.18);
+color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#070914;--bg2:#0b1023;--card:#0e1428;--ink:#e9edf6;--mut:#8f99b3;--line:#1d2742;--tint:#101830;
+--c0:#2dd4bf;--c1:#ff7b80;--c2:#a3a5ff;
+--nav:#04060d;--navg:linear-gradient(180deg,#080d1d,#04060d);--navm:rgba(4,6,13,.93);--navt:#8f99b3;
+--pri:#2dd4bf;--pri2:#5eead4;--prit:#052a26;--psh:rgba(45,212,191,.35);--focus:rgba(45,212,191,.22);--ring:#93b4ff;
+--hero:#0a1030;--herog:linear-gradient(135deg,#070914 0%,#0b2a4a 60%,#0c5a54 100%);
+--sh:0 1px 2px rgba(0,0,0,.4),0 12px 30px -14px rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#070914;--bg2:#0b1023;--card:#0e1428;--ink:#e9edf6;--mut:#8f99b3;--line:#1d2742;--tint:#101830;
+--c0:#2dd4bf;--c1:#ff7b80;--c2:#a3a5ff;
+--nav:#04060d;--navg:linear-gradient(180deg,#080d1d,#04060d);--navm:rgba(4,6,13,.93);--navt:#8f99b3;
+--pri:#2dd4bf;--pri2:#5eead4;--prit:#052a26;--psh:rgba(45,212,191,.35);--focus:rgba(45,212,191,.22);--ring:#93b4ff;
+--hero:#0a1030;--herog:linear-gradient(135deg,#070914 0%,#0b2a4a 60%,#0c5a54 100%);
+--sh:0 1px 2px rgba(0,0,0,.4),0 12px 30px -14px rgba(0,0,0,.6);color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums;padding-top:env(safe-area-inset-top,0px)}
+.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+nav{background:var(--nav);color:var(--navt);padding:26px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px}
+.brand{font-weight:800;font-size:26px;letter-spacing:-.03em;color:#fff;padding:0 12px 22px}
+.brand span{color:var(--amber)}
+nav button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:10px;font-weight:500;position:relative}
+nav button svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav button:hover{background:rgba(255,255,255,.07);color:#fff}
+nav button.on{background:rgba(255,255,255,.1);color:#fff;font-weight:700}
+nav button.on::before{content:"";position:absolute;left:-14px;top:9px;bottom:9px;width:4px;border-radius:0 4px 4px 0;background:var(--amber)}
+nav button:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+main{padding:28px clamp(16px,3vw,40px) 48px;max-width:1120px;width:100%}
+header{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:22px}
+h1{font-size:clamp(28px,4.4vw,40px);margin:0;font-weight:800;letter-spacing:-.035em;line-height:1.1}
+h2{font-size:18px;margin:0 0 14px;font-weight:700;letter-spacing:-.01em}
+.mp{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px}
+.mp button{border:0;background:transparent;color:var(--ink);width:40px;height:40px;border-radius:50%;font:inherit;font-size:22px;line-height:1;cursor:pointer}
+.mp button:hover{background:var(--bg)}
+.mp input{border:0;background:transparent;width:auto;padding:6px 4px;font-weight:600;text-align:center}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:var(--rc);padding:10px 16px;min-height:44px;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--mut)}
+.btn.p{background:var(--pri);border-color:var(--pri);color:var(--prit)}
+.btn.p:hover{filter:brightness(1.12)}
+.btn.d{color:var(--c1)}
+.btn.sm{min-height:36px;padding:4px 12px;font-size:14px}
+input,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:var(--rc);padding:10px 12px;min-height:44px;min-width:0;width:100%}
+input::placeholder{color:var(--mut);opacity:.7}
+label{display:grid;gap:5px;font-size:14px;color:var(--mut);font-weight:500}
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.kpi{border-left:5px solid var(--k)}
+.kpi small{color:var(--mut);font-weight:500}
+.kpi b{display:block;font-size:clamp(21px,3vw,28px);font-weight:800;letter-spacing:-.025em;overflow-wrap:anywhere;line-height:1.2}
+.hero{background:var(--hero);color:var(--herot);border-radius:calc(var(--r) + 6px);padding:clamp(20px,3.5vw,32px);margin-bottom:14px}
+.hero small{color:var(--herom);font-size:15px;font-weight:500}
+.hero .big{display:block;font-size:clamp(38px,8vw,68px);font-weight:800;letter-spacing:-.045em;line-height:1.05;margin:2px 0 6px;overflow-wrap:anywhere}
+.hero .big.neg{color:var(--h1)}
+.rib{display:flex;height:14px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.12);margin:18px 0 12px}
+.rib i{display:block;height:100%}
+.rib i+i{margin-left:2px}
+.trio{display:flex;flex-wrap:wrap;gap:8px 28px}
+.trio span{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--herom)}
+.trio span b{color:var(--herot);font-weight:700}
+.trio i{width:10px;height:10px;border-radius:3px;flex:none}
+.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+svg.ch{width:100%;height:auto;display:block}
+.lg{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--mut);margin-top:10px}
+.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.bar{display:grid;grid-template-columns:minmax(90px,1fr) 2fr auto;gap:12px;align-items:center;margin:10px 0;font-size:15px}
+.bar>div{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar>div i{display:block;height:100%;background:var(--c1);border-radius:6px}
+.form{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));align-items:end}
+.row{display:grid;grid-template-columns:56px minmax(0,1fr) auto 44px;gap:10px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row>span{color:var(--mut);font-size:14px}
+.row small{color:var(--mut);display:block;font-size:13px}
+.row b{font-weight:700;white-space:nowrap}
+.row .x{all:unset;box-sizing:border-box;cursor:pointer;color:var(--mut);text-align:center;width:44px;height:44px;line-height:44px;border-radius:50%;font-size:16px}
+.row .x:hover{color:var(--c1);background:var(--bg)}
+.row .x:focus-visible{outline:2px solid var(--ring)}
+.t0{color:var(--c0)}.t1{color:var(--c1)}.t2{color:var(--c2)}
+.empty{color:var(--mut);padding:18px 0;text-align:center}
+.start{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+.start p{margin:0;color:var(--mut)}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl td{padding:9px 8px;text-align:right;border-top:1px solid var(--line)}
+.tbl tr:first-child td{border-top:0}
+.tbl td:first-child{text-align:left}
+.sc{overflow-x:auto}
+.tot td{font-weight:800}
+.note{font-size:14px;color:var(--mut);background:var(--bg);border-radius:var(--rc);padding:12px 14px;margin-top:12px}
+textarea{width:100%;min-height:120px;font:13px/1.4 ui-monospace,Consolas,monospace;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:var(--rc);padding:10px}
+section{display:none}section.on{display:block}
+.chk{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--ink);min-height:44px}
+.chk input{width:20px;height:20px;min-height:0;accent-color:var(--pri)}
+.sec{margin-bottom:14px}
+.lk{margin:0;padding-left:20px;line-height:2}.lk a{color:var(--c2);font-weight:600}
+.mut{color:var(--mut)}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 12px 10px 18px;border-radius:999px;display:none;align-items:center;gap:12px;z-index:20;max-width:calc(100vw - 24px);font-size:15px}
+#toast.on{display:flex}
+#toast button{border:0;background:transparent;color:inherit;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;padding:6px 8px;min-height:36px}
+#warn{display:none;background:var(--c1);color:#fff;padding:10px 16px;border-radius:var(--rc);margin-bottom:14px;font-weight:600}
+#warn.on{display:block}
+@media(max-width:899px){
+.app{grid-template-columns:1fr}
+nav{position:fixed;inset:auto 0 0 0;height:auto;flex-direction:row;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:5;justify-content:space-around;gap:2px;border-top:1px solid rgba(255,255,255,.08)}
+.brand{display:none}
+nav button{flex:1;flex-direction:column;gap:3px;text-align:center;padding:8px 2px 6px;font-size:12px;justify-content:center}
+nav button.on::before{left:25%;right:25%;top:0;bottom:auto;width:auto;height:3px;border-radius:0 0 4px 4px}
+main{padding-bottom:104px}
+#toast{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+.row{grid-template-columns:minmax(0,1fr) auto 44px}
+.row>:first-child{display:none}
+.bar{grid-template-columns:1fr 1fr auto}
+}
+#lock{position:fixed;inset:0;z-index:50;background:var(--nav);color:#fff;display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}
+#lock.on{display:flex}
+.lockbox{width:min(340px,100%);text-align:center}
+.lockbox .brand{display:block;padding:0 0 6px;font-size:32px}
+.lockbox h2{color:#fff;margin:0 0 18px}
+#dots{display:flex;gap:10px;justify-content:center;align-items:center;min-height:20px;margin-bottom:6px}
+#dots i{width:14px;height:14px;border-radius:50%;background:var(--amber)}
+#lerr{min-height:26px;color:#ffb4a2;margin:4px 0 10px;font-size:15px}
+#pad{display:grid;grid-template-columns:repeat(3,64px);gap:14px;justify-content:center;margin-bottom:18px}
+#pad button{width:64px;height:64px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font:inherit;font-size:24px;font-weight:600;cursor:pointer}
+#pad button:active{background:rgba(255,255,255,.28)}
+#pad button.go{background:var(--amber);color:#12231e;font-size:18px}
+#lock button:focus-visible{outline-color:#fff}
+#lock .btn{background:transparent;color:var(--navt);border-color:rgba(255,255,255,.25)}
+dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--card);color:var(--ink);padding:22px;width:min(420px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog h2{margin-bottom:8px}
+dialog .flds{display:grid;gap:12px;margin:14px 0}
+#derr{color:var(--c1);font-weight:600;min-height:22px;margin:0 0 8px}
+details{margin-top:14px}summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+@media print{#lock,dialog{display:none!important}}
+#auth{position:fixed;inset:0;z-index:45;background:radial-gradient(120% 90% at 50% 0,#0e4a5e 0,#070914 50%,#04060d 100%);color:#fff;display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}
+#auth.on{display:flex}
+#auth .lockbox{text-align:left}
+#auth .brand,#auth h2{text-align:center}
+#auth label{display:block;color:rgba(255,255,255,.8);font-size:14px;margin:0 0 12px}
+#auth input{display:block;width:100%;margin-top:5px;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font:inherit;font-size:16px}
+#auth input:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
+#auth .tabs2{display:flex;gap:6px;background:rgba(255,255,255,.1);padding:4px;border-radius:14px;margin-bottom:16px}
+#auth .tabs2 button{flex:1;border:0;border-radius:10px;padding:10px;background:transparent;color:#fff;font:inherit;font-weight:600;cursor:pointer}
+#auth .tabs2 button.on{background:var(--amber);color:#12231e}
+#au-e{min-height:24px;color:#ffb4a2;margin:2px 0 8px;font-size:15px}
+#auth .btn.p{width:100%;justify-content:center;background:var(--amber);color:#12231e;border:0}
+@media print{#auth{display:none!important}}
+
+@media print{nav,.mp,.noprint,#toast{display:none!important}.app{display:block}.hero{background:none;color:#000;border:1px solid #000}.hero small,.trio span{color:#000}}
+@media(prefers-reduced-motion:no-preference){.bar>div i{transition:width .4s}.rib i{transition:flex-grow .5s}}
+.bk{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,190px);gap:8px 12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.bk.off{opacity:.5}.bk small{color:var(--mut);display:block;font-size:13px}
+.bk select{min-height:40px;padding:6px 8px;font-size:14px}
+.trio.l span{color:var(--mut)}.trio.l span b{color:var(--ink)}
+details.g{border-top:1px solid var(--line);margin:0}details.g summary{display:block;padding:10px 0;min-height:44px}details.g p{margin:0 0 10px;color:var(--mut);font-size:15px}
+@media(max-width:899px){.bk{grid-template-columns:1fr}}
+.row .ed{all:unset;box-sizing:border-box;cursor:pointer;display:block;padding:6px 0;text-decoration:underline dotted;text-underline-offset:4px;text-decoration-color:var(--mut)}
+.row .ed:focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-radius:4px}
+/* ===== Apariencia moderna ===== */
+body{background:linear-gradient(180deg,var(--bg2),var(--bg) 380px) no-repeat,var(--bg)}
+nav{background:var(--navg)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand::before{content:"";width:34px;height:34px;flex:none;border-radius:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='18 18 72 72'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232dd4bf'/%3E%3Cstop offset='1' stop-color='%230b2a4a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='18' y='18' width='72' height='72' rx='16' fill='url%28%23g%29'/%3E%3Crect x='31' y='58' width='11' height='18' rx='5.5' fill='%235EEAD4'/%3E%3Crect x='48.5' y='46' width='11' height='30' rx='5.5' fill='%23A7F3D0'/%3E%3Crect x='66' y='34' width='11' height='42' rx='5.5' fill='%23FFFFFF'/%3E%3Ccircle cx='36.5' cy='43.5' r='7' fill='%23FBBF24'/%3E%3Ccircle cx='36.5' cy='43.5' r='4.06' fill='none' stroke='%23D97706' stroke-width='1.2'/%3E%3C/svg%3E") center/contain no-repeat;box-shadow:0 6px 16px -6px rgba(0,0,0,.55)}
+nav button{border-radius:14px}
+nav button.on{background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+nav button.on svg{color:var(--amber)}
+.card{border-radius:var(--r);box-shadow:var(--sh)}
+.mp{box-shadow:var(--sh)}
+.hero{background:var(--herog);position:relative;overflow:hidden;box-shadow:0 18px 40px -18px rgba(11,61,51,.6)}
+.hero::before{content:"";position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.2),rgba(255,255,255,0) 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;left:-40px;bottom:-90px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(94,234,212,.22),rgba(94,234,212,0) 70%);pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.kpi{border-left:0;position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;right:-26px;top:-26px;width:96px;height:96px;border-radius:50%;background:var(--k);opacity:.12}
+.kpi small{font-weight:600}
+.btn{transition:transform .12s,box-shadow .12s,border-color .12s}
+.btn.p{background:linear-gradient(135deg,var(--pri),var(--pri2));border-color:transparent;box-shadow:0 8px 18px -8px var(--psh)}
+.btn.p:hover{filter:none;transform:translateY(-1px);box-shadow:0 12px 22px -8px var(--psh)}
+.btn:active{transform:none}
+input,select{border-width:1.5px;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--pri);box-shadow:0 0 0 4px var(--focus)}
+.note{background:var(--tint)}
+.row:hover{background:linear-gradient(90deg,transparent,var(--tint),transparent)}
+#lock{background:radial-gradient(120% 90% at 50% 0,#0e4a5e 0,#070914 50%,#04060d 100%)}
+dialog{border-radius:24px;box-shadow:0 30px 70px -20px rgba(0,0,0,.55)}
+.lockbox .brand{display:flex;justify-content:center}
+@media(max-width:899px){
+nav .brand{display:none}
+nav{inset:auto 12px calc(10px + env(safe-area-inset-bottom,0px)) 12px;border-radius:26px;border-top:0;padding:6px;background:var(--navm);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 14px 34px -10px rgba(4,24,19,.55),inset 0 0 0 1px rgba(255,255,255,.07)}
+nav button{border-radius:20px}
+nav button.on{background:rgba(255,255,255,.16)}
+nav button.on::before{display:none}
+main{padding-bottom:128px}
+#toast{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+}
+@media(prefers-reduced-motion:no-preference){section.on{animation:cin .28s ease}@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<div class="app">
+<nav id="nav" aria-label="Secciones">
+<div class="brand">Cuentas<span>.</span></div>
+<button data-v="resumen" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4zM14 20h6V11h-6zM14 8h6V4h-6zM4 20h6v-3H4z"/></svg>Resumen</button>
+<button data-v="mov"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>Movimientos</button>
+<button data-v="ahorro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>Ahorro</button>
+<button data-v="imp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM14 3v5h5M10 13h6M10 17h6"/></svg>Impuestos</button>
+<button data-v="aju"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Ajustes</button>
+</nav>
+<main>
+<div id="warn" role="alert">No se pueden guardar los datos en este dispositivo. Lo que escribas se perderá al cerrar. Guarda una copia de seguridad en Ajustes.</div>
+<header><h1 id="ttl">Resumen</h1>
+<div class="mp" id="mp"><button data-a="pm" aria-label="Mes anterior">‹</button><input type="month" id="mon" aria-label="Mes"><button data-a="nm" aria-label="Mes siguiente">›</button></div></header>
+
+<section id="v-resumen" class="on">
+<div id="hero"></div>
+<div id="first"></div>
+<div class="grid two">
+<div class="card"><h2>Últimos 6 meses</h2><div id="ch"></div><div class="lg"><span><i style="background:var(--c0)"></i>Ingresos</span><span><i style="background:var(--c1)"></i>Gastos</span><span><i style="background:var(--c2)"></i>Ahorro</span></div></div>
+<div class="card"><h2>Gastos por categoría</h2><div id="cat"></div></div>
+</div>
+</section>
+
+<section id="v-mov">
+<div class="card start" style="margin-bottom:14px"><p>¿Tienes el archivo de tu banco? Importa tu salario y tus gastos de una vez.</p><button class="btn p" data-v="bank">Importar del banco</button></div>
+<form class="card grid form" id="f">
+<label>Fecha<input type="date" id="fd" required></label>
+<label>Tipo<select id="ft"><option value="i">Ingreso</option><option value="g">Gasto</option><option value="s">Ahorro</option></select></label>
+<label>Categoría<input id="fc" list="cl" required autocomplete="off"></label><datalist id="cl"></datalist>
+<label>Descripción (opcional)<input id="fx" maxlength="80"></label>
+<label>Monto<input id="fa" type="number" step="0.01" min="0.01" required inputmode="decimal"></label>
+<label id="lk" class="chk"><input type="checkbox" id="fk">Gasto deducible</label>
+<label id="lb" style="display:none">Bruto del talón de pago (el Monto es lo depositado)<input id="fb" type="number" step="0.01" min="0" inputmode="decimal"></label>
+<label id="lr" style="display:none">Impuesto federal retenido<input id="fr" type="number" step="0.01" min="0" inputmode="decimal"></label>
+<label id="lg" style="display:none">Meta<select id="fg"></select></label>
+<button class="btn p" type="submit">Guardar movimiento</button>
+</form>
+<div class="card" style="margin-top:14px"><h2 id="mh">Movimientos del mes</h2><div id="ls"></div></div>
+</section>
+
+<section id="v-bank">
+<div class="card sec"><h2>Importar archivo del banco</h2>
+<p class="mut" style="margin-top:0">Elige el archivo que descargaste de tu banco. Los depósitos de nómina se detectan y quedan como Salario.</p>
+<label class="chk"><input type="checkbox" id="bcc">Es una tarjeta de crédito (los cargos vienen en positivo)</label>
+<p class="acts"><button class="btn p" data-a="bpick">Elegir archivo</button><button class="btn" data-v="mov">Volver</button></p>
+<div id="bres"></div></div>
+<div class="card sec"><h2>Cómo sacar el archivo de tu banco (EE. UU.)</h2><p class="mut" style="margin-top:0">Hazlo desde la web del banco. Los menús cambian con el tiempo: si no ves el nombre exacto, busca «Download» o «Export» junto a la lista de movimientos.</p><div id="bg"></div></div>
+</section>
+
+<section id="v-ahorro">
+<div class="grid kpis" id="sk"></div>
+<form class="card grid form" id="gf" style="margin-bottom:14px">
+<label>Nombre de la meta<input id="gn" required maxlength="40"></label>
+<label>Monto objetivo<input id="ga" type="number" step="0.01" min="1" required inputmode="decimal"></label>
+<button class="btn p" type="submit">Crear meta</button>
+</form>
+<div class="card"><h2>Metas de ahorro</h2><div id="gl"></div></div>
+</section>
+
+<section id="v-imp">
+<div class="card sec"><h2>Declaración federal de EE. UU. (Formulario 1040)</h2><p class="mut" style="margin:0">Responde las preguntas. Tomo los datos de tus movimientos y puedes corregirlos. El resultado se actualiza mientras escribes.</p></div>
+<div id="tf"></div>
+<div id="tr"></div>
+</section>
+
+<section id="v-aju">
+<div class="card" style="margin-bottom:14px"><h2>General</h2>
+<div class="grid form"><label>Moneda (código)<input id="cur" maxlength="5"></label>
+<label>Tema<select id="thm"><option value="auto">Automático (como el teléfono)</option><option value="light">Claro</option><option value="dark">Oscuro</option></select></label></div></div>
+<div class="card" style="margin-top:14px"><h2>Tasas fiscales</h2>
+<p class="mut" style="margin-top:0" id="pt"></p>
+<p class="acts" style="align-items:center"><button class="btn p" data-a="up">Buscar actualización ahora</button><span id="ps" class="mut"></span></p>
+<details><summary class="mut">Opciones avanzadas</summary>
+<label>Dirección propia del archivo de tasas (opcional)<input id="pu" type="url" placeholder="https://..."></label>
+<p class="mut">Si la dejas vacía se usa la fuente oficial de la app, que se revisa sola al abrir. El IRS no ofrece un servicio automático para esto: las cifras de cada año se publican en octubre.</p>
+</details></div>
+<div class="card" id="syc" style="margin-top:14px"><h2>Mi cuenta</h2>
+<p class="mut" style="margin-top:0" id="syi"></p>
+<p class="acts" style="align-items:center"><button class="btn p" data-a="sy-now" id="sy-now">Actualizar ahora</button><button class="btn" data-a="sy-pw" id="sy-pw">Cambiar contraseña</button><button class="btn d" data-a="sy-off" id="sy-off">Cerrar sesión</button></p>
+<p id="sys" class="mut" role="status" style="margin:0"></p>
+</div>
+<div class="card" style="margin-top:14px"><h2>Seguridad</h2>
+<p class="mut" style="margin-top:0" id="pst"></p>
+<div class="grid form"><label id="alw">Bloquear la app<select id="alk"><option value="0">Al salir de la app</option><option value="60">Tras 1 minuto fuera</option><option value="300">Tras 5 minutos fuera</option><option value="900">Tras 15 minutos fuera</option></select></label></div>
+<p class="acts"><button class="btn p" data-a="pin-set" id="b-set">Activar PIN</button><button class="btn" data-a="pin-chg" id="b-chg">Cambiar PIN</button><button class="btn d" data-a="pin-off" id="b-off">Quitar PIN</button></p>
+<div class="note">El PIN impide que otra persona abra la app.</div></div>
+<div class="card" style="margin-top:14px"><h2 id="bkh">Copia de seguridad</h2>
+<p class="mut bko" style="margin-top:0">Guarda un archivo protegido con tu PIN donde quieras (Drive, correo, WhatsApp). Para abrirlo en este u otro teléfono: instala la app, entra en Ajustes, toca «Restaurar desde archivo» y escribe el mismo PIN con el que lo creaste. Sin ese PIN no se puede recuperar.</p>
+<p class="acts"><button class="btn p bko" data-a="exf">Guardar copia</button><button class="btn bko" data-a="imf">Restaurar desde archivo</button><button class="btn d" data-a="wp" id="wp">Borrar todos los datos</button></p>
+<details class="bko"><summary>Restaurar pegando el texto</summary>
+<p class="mut" style="margin:0 0 8px">Si tienes el texto de una copia, pégalo aquí.</p>
+<textarea id="bk" aria-label="Texto de la copia"></textarea>
+<p class="acts"><button class="btn" data-a="im">Restaurar desde el texto</button></p></details>
+<div id="msg" class="note" style="display:none" role="status"></div></div>
+</section>
+</main>
+</div>
+<div id="auth" role="dialog" aria-modal="true" aria-labelledby="at"><div class="lockbox">
+<div class="brand">Cuentas<span style="color:var(--amber)">.</span></div>
+<h2 id="at">Entra a tu cuenta</h2>
+<div class="tabs2"><button type="button" id="au-ti" class="on">Entrar</button><button type="button" id="au-tu">Crear cuenta</button></div>
+<form id="af" autocomplete="on" novalidate>
+<label>Usuario<input id="au-u" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="30"></label>
+<label>Contraseña<input id="au-p" type="password" autocomplete="current-password" maxlength="64"></label>
+<label id="au-p2l" style="display:none">Repite la contraseña<input id="au-p2" type="password" autocomplete="new-password" maxlength="64"></label>
+<label id="au-cl" style="display:none">Código de registro<input id="au-c" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="64"></label>
+<p id="au-e" role="alert"></p>
+<button class="btn p" id="au-go" type="submit">Entrar</button>
+</form></div></div>
+<div id="lock" role="dialog" aria-modal="true" aria-labelledby="lt"><div class="lockbox">
+<div class="brand">Cuentas<span style="color:var(--amber)">.</span></div>
+<h2 id="lt">Escribe tu PIN</h2>
+<div id="dots" aria-hidden="true"></div>
+<p id="lerr" role="alert"></p>
+<div id="pad"><button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button data-k="del" aria-label="Borrar un dígito">⌫</button><button data-k="0">0</button><button data-k="ok" class="go">Entrar</button></div>
+<button class="btn" id="forgot" type="button">Olvidé mi PIN</button>
+</div></div>
+<dialog id="dlg"><form id="dlgf" method="dialog" autocomplete="off"><h2 id="dt"></h2><p class="mut" id="dtx" style="margin:0"></p><div class="flds"></div><p id="derr" role="alert"></p>
+<div class="acts" style="justify-content:flex-end"><button class="btn" type="button" id="dcancel">Cancelar</button><button class="btn p" type="submit" id="dok">Aceptar</button></div></form></dialog>
+<input type="file" id="fil" hidden>
+<input type="file" id="bfil" accept=".csv,.ofx,.qfx,.qbo,.txt" hidden>
+<div id="toast" role="status"><span id="tm"></span><button id="tu" type="button">Deshacer</button></div>
+<script>
+const K='cuentas-v1',PK='cuentas-params',$=s=>document.querySelector(s);
+/* Fuente oficial de tasas fiscales: se consulta sola al abrir la app.
+   El usuario puede poner su propia dirección en Ajustes (avanzado). */
+const TAX_URL='https://yottomtnz.github.io/Cuentas/tax-params.json';
+const taxSrc=()=>{const u=(S.cfg.purl||'').trim();return u||TAX_URL};
+const FS={s:'Soltero',mj:'Casado, declaración conjunta',ms:'Casado, declaración separada',h:'Cabeza de familia'};
+const TD={year:2026,fs:'s',kids:0,od:0,n65:0,item:0,adj:0,w2:'',se:'',exp:'',oth:'',wh:'',est:0,st:0};
+const TXT=['w2','se','exp','oth','wh'];
+const num=v=>{v=parseFloat(v);return isFinite(v)?v:0};
+const cents=v=>Math.round(num(v)*100)/100;
+const def=()=>({cfg:{cur:'USD',purl:'',pchk:'',pupd:'',theme:'auto'},tx:[],goals:[],tax:Object.assign({},TD)});
+/* Valida y limpia cualquier dato guardado o restaurado */
+function norm(o){
+o=o&&typeof o==='object'?o:{};
+const d=def(),cfg=o.cfg&&typeof o.cfg==='object'?o.cfg:{};
+d.cfg.cur=String(cfg.cur||'USD').toUpperCase().replace(/[^A-Z]/g,'').slice(0,5)||'USD';
+d.cfg.purl=typeof cfg.purl==='string'?cfg.purl.slice(0,500):'';
+d.cfg.pchk=typeof cfg.pchk==='string'?cfg.pchk.slice(0,10):'';
+d.cfg.pupd=typeof cfg.pupd==='string'?cfg.pupd.slice(0,20):'';
+d.cfg.theme=['auto','light','dark'].includes(cfg.theme)?cfg.theme:'auto';
+d.goals=(Array.isArray(o.goals)?o.goals:[]).filter(g=>g&&g.n&&num(g.a)>0).map(g=>({id:+g.id||nid(),n:String(g.n).slice(0,40),a:cents(g.a)}));
+const gid=new Set(d.goals.map(g=>g.id));
+d.tx=(Array.isArray(o.tx)?o.tx:[]).filter(x=>x&&/^\d{4}-\d{2}-\d{2}$/.test(x.d)&&['i','g','s'].includes(x.t)&&x.c&&num(x.a)>0).map(x=>{
+const r={id:+x.id||nid(),d:x.d,t:x.t,c:String(x.c).slice(0,60),x:String(x.x||'').slice(0,80),a:cents(x.a)};
+if(x.k&&x.t==='g')r.k=1;if(x.g&&x.t==='s'&&gid.has(+x.g))r.g=+x.g;if(x.b)r.b=String(x.b).slice(0,80);
+if(r.t==='i'&&r.c==='Salario'){const b=cents(x.gb),w=cents(x.wh);if(b>=r.a)r.gb=b;if(w>0&&w<=(r.gb||r.a))r.wh=w}
+return r});
+const t=o.tax&&typeof o.tax==='object'?o.tax:{};
+for(const k in TD){const v=t[k];
+if(k==='fs')d.tax.fs=FS[v]?v:'s';
+else if(TXT.includes(k))d.tax[k]=(v===''||v==null||!isFinite(v)||(k==='wh'&&num(v)===0))?'':Math.max(0,num(v));
+else d.tax[k]=Math.max(0,num(v)||(k==='year'?TD.year:0))}
+return d}
+let lastId=0;function nid(){lastId=Math.max(Date.now(),lastId+1);return lastId}
+let S;try{S=norm(JSON.parse(localStorage.getItem(K)))}catch(e){S=def()}
+const warn=()=>$('#warn').classList.add('on');
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){warn()}syMark()};
+/* ---------- Cuentas y base de datos en Google Sheets ---------- */
+/* Estos dos datos se ponen una sola vez: Crear-APK.bat los toma de google-config.txt.
+   Si abres este archivo directamente en el navegador, escríbelos aquí. */
+const GS_URL='',GS_CODE='';
+const SK='cuentas-sync',SYRE=/^https:\/\/script\.google\.com\/(?:a\/macros\/[^\/]+\/|macros\/)s\/[A-Za-z0-9_-]+\/exec$/,UNRE=/^[a-z0-9._-]{3,30}$/;
+const syCfg=SYRE.test(GS_URL);
+if(syCfg){document.querySelectorAll('.bko').forEach(e=>e.style.display='none');$('#bkh').textContent='Mis datos';$('#warn').textContent='No se pueden guardar los datos en este dispositivo. Lo que escribas se perderá al cerrar.'}
+let SY={user:'',token:'',rev:0,dirty:0},syT=0,syBusy=false,syLast=0,syTxt='',authMode='in';
+try{const o=JSON.parse(localStorage.getItem(SK));if(o&&typeof o.user==='string'&&UNRE.test(o.user))SY={user:o.user,token:typeof o.token==='string'&&o.token.length>=32?o.token:'',rev:Math.max(0,+o.rev||0),dirty:o.dirty?1:0}}catch(e){}
+const saveSY=()=>{try{SY.user?localStorage.setItem(SK,JSON.stringify(SY)):localStorage.removeItem(SK)}catch(e){}};
+const syOn=()=>syCfg&&!!SY.token;
+const needAuth=()=>syCfg&&!SY.token;
+const syStat=t=>{syTxt=t;const e=$('#sys');if(e)e.textContent=t};
+const syHas=()=>S.tx.length>0||S.goals.length>0;
+const syHora=()=>new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'});
+const syErr=j=>({config:'No se puede crear la cuenta en este momento. Inténtalo más tarde.',credenciales:'Usuario o contraseña incorrectos.',bloqueado:'Demasiados intentos. Espera unos 15 minutos.',existe:'Ese usuario ya existe. Elige otro.',codigo:'El código de registro no es correcto.',usuario:'Usuario no válido: usa de 3 a 30 letras minúsculas, números, punto, guion o guion bajo.',sesion:'Tu sesión venció. Entra de nuevo.'}[j&&j.error]||'Algo salió mal. Inténtalo de nuevo.');
+async function syCall(body){
+const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),30000);
+try{const r=await fetch(GS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body),signal:ctl.signal});
+if(!r.ok)throw new Error('http');return await r.json()}finally{clearTimeout(to)}}
+/* Llamada con sesión; si venció, pide entrar de nuevo */
+async function syApi(body){
+const j=await syCall(Object.assign({s:SY.token},body));
+if(j&&j.error==='sesion'){SY.token='';saveSY();clearTimeout(syT);syStat('');showAuth('Tu sesión venció. Entra de nuevo.')}
+return j}
+/* La contraseña no viaja tal cual: se deriva en el teléfono y el servidor solo guarda una huella de eso */
+async function pwKey(user,pw){
+const te2=new TextEncoder(),k=await crypto.subtle.importKey('raw',te2.encode(pw),'PBKDF2',false,['deriveBits']);
+const bits=new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',salt:te2.encode('cuentas|'+user),iterations:150000,hash:'SHA-256'},k,256));
+return Array.from(bits,x=>x.toString(16).padStart(2,'0')).join('')}
+function syMark(){if(!syOn())return;SY.dirty=1;saveSY();clearTimeout(syT);syT=setTimeout(()=>syPush(),1500);syStat('Cambios pendientes de guardar…')}
+function syLocal(d,rev){S=norm(d);try{localStorage.setItem(K,JSON.stringify(S))}catch(e){warn()}SY.rev=rev;SY.dirty=0;saveSY();render()}
+/* Sube todo lo de este teléfono. base = versión de tus datos en la hoja que vimos por última vez */
+async function syPush(base){
+if(!syOn()||syBusy||!SY.dirty)return;
+syBusy=true;syStat('Guardando…');let more=false,conf=false;
+try{
+const snap=JSON.stringify(S);
+const j=await syApi({action:'save',baseRev:base==null?SY.rev:base,data:JSON.parse(snap)});
+if(j&&j.ok){SY.rev=+j.rev||0;if(JSON.stringify(S)===snap)SY.dirty=0;else more=true;saveSY();syLast=Date.now();syStat(SY.dirty?'Cambios pendientes de guardar…':'Guardado a las '+syHora()+'.')}
+else if(j&&j.conflict)conf=true;
+else if(!(j&&j.error==='sesion'))syStat(syErr(j))
+}catch(e){syStat('Sin conexión. Los cambios se guardarán cuando vuelva internet.')}
+finally{syBusy=false}
+if(conf)return syPull();
+if(more)return syPush()}
+/* Lee tus datos de la hoja: si no hay cambios aquí los copia; si los hay en los dos lados, pregunta */
+async function syPull(manual){
+if(!syOn()||syBusy||locked)return;
+if($('#dlg').open){syStat('Pendiente: termina lo que tienes abierto.');return}
+syBusy=true;syStat('Actualizando…');let push=null,conflict=null;
+try{
+const j=await syApi({action:'load'});
+if(!j||!j.ok){if(!(j&&j.error==='sesion'))syStat(syErr(j))}
+else{
+const rev=+j.rev||0;
+if(!j.data||rev===0){if(syHas()||SY.dirty){SY.dirty=1;saveSY();push=rev}else{syLast=Date.now();syStat('Sesión iniciada. Tu cuenta aún no tiene datos.')}}
+else if(rev===SY.rev){if(SY.dirty)push=rev;else{syLast=Date.now();syStat('Todo al día ('+syHora()+').')}}
+else if(!SY.dirty){syLocal(j.data,rev);syLast=Date.now();syStat('Datos actualizados a las '+syHora()+'.');if(manual)toast('Datos actualizados')}
+else conflict={rev,data:j.data}}
+}catch(e){syStat('Sin conexión.')}
+finally{syBusy=false}
+if(push!=null)return syPush(push);
+if(conflict){
+const n=Array.isArray(conflict.data.tx)?conflict.data.tx.length:0;
+const v=await ask({title:'Los datos son distintos',text:'Los datos de este teléfono y los de tu cuenta son distintos. Elige cuáles conservar; los otros se reemplazan.',
+fields:[{k:'w',type:'select',label:'Conservar',value:'sheet',opts:[['sheet','Los de tu cuenta ('+n+' movimientos)'],['local','Los de este teléfono ('+S.tx.length+' movimientos)']]}],ok:'Conservar'});
+if(!v){syStat('Pendiente: toca «Actualizar ahora» para elegir qué datos conservar.');return}
+if(v.w==='sheet'){syLocal(conflict.data,conflict.rev);syLast=Date.now();syStat('Datos de tu cuenta cargados a las '+syHora()+'.')}
+else{SY.rev=conflict.rev;saveSY();return syPush(conflict.rev)}}}
+function syKick(){if(!syOn()||locked||syBusy)return;if(SY.dirty)syPush();else if(Date.now()-syLast>30000)syPull()}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)syKick()});
+window.addEventListener('online',syKick);
+
+/* Pantalla de entrar / crear cuenta */
+function authErr(m){$('#au-e').textContent=m||''}
+function authMode_(m){
+authMode=m;
+$('#at').textContent=m==='up'?'Crea tu cuenta':'Entra a tu cuenta';
+$('#au-ti').classList.toggle('on',m==='in');$('#au-tu').classList.toggle('on',m==='up');
+$('#au-p2l').style.display=m==='up'?'':'none';
+$('#au-cl').style.display=m==='up'&&!GS_CODE?'':'none';
+$('#au-go').textContent=m==='up'?'Crear cuenta':'Entrar';
+$('#au-p').autocomplete=m==='up'?'new-password':'current-password';authErr('')}
+function showAuth(msg){
+if(!syCfg)return;
+authMode_(authMode);authErr(msg||'');$('#au-p').value='';$('#au-p2').value='';
+$('#auth').classList.add('on');$('.app').inert=true;
+if(!locked)$('#au-u').focus()}
+function hideAuth(){$('#auth').classList.remove('on');if(!locked)$('.app').inert=false}
+async function authDone(u,token){
+if(SY.user&&SY.user!==u&&syHas()){
+if(SY.dirty){const c=await ask({title:'Datos de otro usuario',text:'Este teléfono tiene cambios sin guardar de «'+SY.user+'». Si entras como «'+u+'», se borrarán de este teléfono.',ok:'Borrar y entrar',danger:true});if(!c)return false}
+S=def();try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}SY.dirty=0}
+if(SY.user!==u){SY={user:u,token:token,rev:0,dirty:syHas()?1:0}}else SY.token=token;
+saveSY();hideAuth();render();syStat('');syPull(true);return true}
+async function authSubmit(e){
+e.preventDefault();
+if(!(window.crypto&&crypto.subtle)){authErr('No se pudo iniciar en este dispositivo. Abre la app instalada en tu teléfono.');return}
+const u=$('#au-u').value.trim().toLowerCase(),p=$('#au-p').value,up=authMode==='up';
+if(!UNRE.test(u)){authErr(syErr({error:'usuario'}));return}
+if(p.length<8){authErr('La contraseña debe tener al menos 8 caracteres.');return}
+if(up&&p!==$('#au-p2').value){authErr('Las dos contraseñas no coinciden.');return}
+const code=up?(GS_CODE||$('#au-c').value.trim()):'';
+if(up&&!code){authErr('Escribe el código de registro.');return}
+const b=$('#au-go');b.disabled=true;authErr('Un momento…');
+try{
+const k=await pwKey(u,p);
+const j=await syCall({action:up?'register':'login',u,k,code});
+if(!j||!j.ok){authErr(syErr(j));return}
+$('#au-p').value='';$('#au-p2').value='';
+if(await authDone(u,j.s))authErr('');else authErr('')
+}catch(x){authErr('No hay conexión. Revisa tu internet e inténtalo de nuevo.')}
+finally{b.disabled=false}}
+$('#af').addEventListener('submit',authSubmit);
+$('#au-ti').addEventListener('click',()=>authMode_('in'));
+$('#au-tu').addEventListener('click',()=>authMode_('up'));
+
+/* Ajustes: cuenta */
+function syUI(){
+const c=$('#syc');if(!c)return;c.style.display=syCfg?'':'none';if(!syCfg)return;
+$('#syi').textContent=syOn()?'Sesión iniciada como «'+SY.user+'». Tus datos están guardados en tu cuenta y los ves igual en cualquier teléfono donde entres.':'No has iniciado sesión.';
+$('#sys').textContent=syTxt}
+async function syLogout(){
+clearTimeout(syT);
+if(SY.dirty)await syPush();
+if(!syOn())return;
+const v=await ask({title:'Cerrar sesión',text:'Se borrarán los datos de este teléfono; siguen guardados en tu cuenta.'+(SY.dirty?' OJO: hay cambios que no se pudieron guardar y se perderán.':''),ok:'Cerrar sesión',danger:!!SY.dirty});
+if(!v)return;
+try{await syCall({action:'logout',s:SY.token})}catch(e){}
+S=def();try{localStorage.removeItem(K)}catch(e){}
+SY={user:'',token:'',rev:0,dirty:0};saveSY();syStat('');render();showAuth()}
+async function syPassword(){
+if(!syOn())return;
+if(!(window.crypto&&crypto.subtle)){msg('No se puede cambiar la contraseña en este dispositivo.');return}
+const v=await ask({title:'Cambiar contraseña',text:'Se cerrará la sesión en tus otros teléfonos.',
+fields:[{k:'o',type:'pw',label:'Contraseña actual'},{k:'n',type:'pw',label:'Contraseña nueva (mínimo 8)'},{k:'c',type:'pw',label:'Repite la contraseña nueva'}],ok:'Cambiar',
+check:async v=>{
+if(v.n.length<8)return 'La contraseña nueva debe tener al menos 8 caracteres.';
+if(v.n!==v.c)return 'Las dos contraseñas nuevas no coinciden.';
+const j=await syApi({action:'passwd',o:await pwKey(SY.user,v.o),n:await pwKey(SY.user,v.n)});
+if(j&&j.ok){SY.token=j.s;saveSY();return ''}
+return syErr(j)}});
+if(v)toast('Contraseña cambiada')}
+
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nf=new Intl.NumberFormat('es-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmt=n=>nf.format(n)+' '+esc(S.cfg.cur);
+const lday=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const today=lday(new Date());
+let M=today.slice(0,7),V='resumen';
+const TT={resumen:'Resumen',bank:'Importar del banco',mov:'Movimientos',ahorro:'Ahorro',imp:'Impuestos',aju:'Ajustes'};
+const TN={i:'Ingreso',g:'Gasto',s:'Ahorro'},TC={i:0,g:1,s:2};
+const CATS={i:['Salario','Negocio o servicios','Ventas','Otros ingresos'],g:['Vivienda','Alimentación','Transporte','Servicios','Salud','Educación','Negocio','Ocio','Otros gastos'],s:['Fondo de emergencia','Meta','Inversión']};
+const tot=(a,t)=>a.filter(x=>x.t===t).reduce((s,x)=>s+x.a,0);
+const inM=m=>S.tx.filter(x=>x.d.startsWith(m));
+function mAdd(m,k){const[y,o]=m.split('-').map(Number),d=new Date(y,o-1+k,1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
+const mLbl=m=>{const[y,o]=m.split('-').map(Number);return new Date(y,o-1,1).toLocaleDateString('es',{month:'short'})};
+const kpi=(l,v,c)=>`<div class="card kpi" style="--k:var(--c${c})"><small>${l}</small><b>${v}</b></div>`;
+function theme(){const r=document.documentElement;S.cfg.theme==='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',S.cfg.theme)}
+
+/* Aviso con opción de deshacer */
+let tmr;
+function toast(t,undo){
+$('#tm').textContent=t;const b=$('#tu');b.style.display=undo?'':'none';b.onclick=()=>{undo&&undo();$('#toast').classList.remove('on')};
+$('#toast').classList.add('on');clearTimeout(tmr);tmr=setTimeout(()=>$('#toast').classList.remove('on'),6000)}
+function withUndo(txt,fn){const snap=JSON.stringify(S);fn();save();render();toast(txt,()=>{S=norm(JSON.parse(snap));save();render()})}
+
+function resumen(){
+const a=inM(M),i=tot(a,'i'),g=tot(a,'g'),s=tot(a,'s'),av=i-g-s;
+const base=Math.max(i,g+s,1),pc=v=>Math.max(0,v)/base*100;
+const msg=i>0?(av>=0?`Te queda el ${(av/i*100).toFixed(0)} % de tus ingresos.`:'Gastaste y ahorraste más de lo que ingresó este mes.'):(g+s>0?'No hay ingresos registrados este mes.':'');
+$('#hero').innerHTML=`<div class="hero"><small>Disponible este mes</small><b class="big${av<0?' neg':''}">${fmt(av)}</b><small>${msg}</small>
+<div class="rib" role="img" aria-label="Del total, gastos ${pc(g).toFixed(0)} %, ahorro ${pc(s).toFixed(0)} %, disponible ${pc(av).toFixed(0)} %"><i style="width:${pc(g)}%;background:var(--h1)"></i><i style="width:${pc(s)}%;background:var(--h2)"></i><i style="width:${pc(av)}%;background:var(--h0)"></i></div>
+<div class="trio"><span><i style="box-shadow:inset 0 0 0 2px var(--herom)"></i>Ingresos <b>${fmt(i)}</b></span><span><i style="background:var(--h1)"></i>Gastos <b>${fmt(g)}</b></span><span><i style="background:var(--h2)"></i>Ahorro <b>${fmt(s)}</b></span><span><i style="background:var(--h0)"></i>Disponible <b>${fmt(av)}</b></span></div></div>`;
+$('#first').innerHTML=S.tx.length?'':`<div class="card start" style="margin-bottom:14px"><p>Aún no hay movimientos. Registra tu primer ingreso o gasto y aquí verás el resumen.</p><button class="btn p" data-v="mov">Registrar movimiento</button></div>`;
+const ms=[];for(let k=5;k>=0;k--)ms.push(mAdd(M,-k));
+const data=ms.map(m=>{const b=inM(m);return[tot(b,'i'),tot(b,'g'),tot(b,'s')]});
+const mx=Math.max(1,...data.flat()),W=600,H=210,B=30,gw=W/6;
+let h=`<svg class="ch" viewBox="0 0 ${W} ${H}" role="img" aria-label="Ingresos, gastos y ahorro de los últimos 6 meses"><line x1="0" x2="${W}" y1="${H-B}" y2="${H-B}" stroke="var(--line)"/>`;
+data.forEach((d,n)=>{d.forEach((v,j)=>{const ht=(H-B-12)*v/mx;h+=`<rect x="${n*gw+14+j*23}" y="${H-B-ht}" width="19" height="${ht}" rx="3" fill="var(--c${j})"><title>${fmt(v)}</title></rect>`});h+=`<text x="${n*gw+gw/2}" y="${H-9}" text-anchor="middle" fill="var(--mut)" font-size="13">${mLbl(ms[n])}</text>`});
+$('#ch').innerHTML=h+'</svg>';
+const c={};a.filter(x=>x.t==='g').forEach(x=>c[x.c]=(c[x.c]||0)+x.a);
+const e=Object.entries(c).sort((p,q)=>q[1]-p[1]);
+$('#cat').innerHTML=e.length?e.map(([k,v])=>`<div class="bar"><span>${esc(k)}</span><div><i style="width:${v/g*100}%"></i></div><b>${fmt(v)}</b></div>`).join(''):'<div class="empty">Sin gastos este mes.</div>';
+}
+
+function movs(){
+const a=inM(M).sort((p,q)=>q.d.localeCompare(p.d)||q.id-p.id);
+$('#mh').textContent='Movimientos de '+new Date(M+'-01T12:00').toLocaleDateString('es',{month:'long',year:'numeric'});
+$('#ls').innerHTML=a.length?a.map(x=>`<div class="row"><span>${x.d.slice(8)}/${x.d.slice(5,7)}</span><div><button class="ed" data-ed="${x.id}" aria-label="Editar movimiento">${esc(x.x||x.c)}</button><small>${TN[x.t]} · ${esc(x.c)}${x.k?' · deducible':''}${x.gb?' · bruto '+fmt(x.gb):''}${x.wh?' · retenido '+fmt(x.wh):''}</small></div><b class="t${TC[x.t]}">${x.t==='i'?'+':'−'}${fmt(x.a)}</b><button class="x" data-del="${x.id}" aria-label="Eliminar movimiento">✕</button></div>`).join(''):'<div class="empty">No hay movimientos este mes. Registra el primero arriba.</div>';
+}
+function formSync(){
+const t=$('#ft').value;
+$('#cl').innerHTML=CATS[t].map(c=>`<option value="${c}">`).join('');
+$('#lk').style.display=t==='g'?'flex':'none';
+$('#lg').style.display=t==='s'&&S.goals.length?'grid':'none';
+salSync();
+$('#fg').innerHTML='<option value="">Sin meta</option>'+S.goals.map(g=>`<option value="${g.id}">${esc(g.n)}</option>`).join('');
+}
+function salSync(){const on=$('#ft').value==='i'&&$('#fc').value.trim().toLowerCase()==='salario';$('#lb').style.display=$('#lr').style.display=on?'grid':'none'}
+const saved=id=>S.tx.filter(x=>x.t==='s'&&x.g===id).reduce((s,x)=>s+x.a,0);
+function ahorro(){
+const all=tot(S.tx,'s');
+$('#sk').innerHTML=kpi('Ahorrado en total',fmt(all),2)+kpi('Metas activas',S.goals.length,0);
+$('#gl').innerHTML=S.goals.length?S.goals.map(g=>{const v=saved(g.id),p=Math.min(100,v/g.a*100);return`<div style="margin:14px 0"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>${esc(g.n)}</b><button class="btn d sm" data-dg="${g.id}">Eliminar</button></div><div class="bar" style="grid-template-columns:1fr auto"><div><i style="width:${p}%;background:var(--c2)"></i></div><span>${p.toFixed(0)} %</span></div><small class="mut">${fmt(v)} de ${fmt(g.a)}</small></div>`}).join(''):'<div class="empty">Crea una meta y asígnala al registrar un ahorro.</div>';
+}
+
+/* ---------- Impuestos ---------- */
+const I=Infinity;
+const TB={2025:{s:[[11925,10],[48475,12],[103350,22],[197300,24],[250525,32],[626350,35],[I,37]],mj:[[23850,10],[96950,12],[206700,22],[394600,24],[501050,32],[751600,35],[I,37]],ms:[[11925,10],[48475,12],[103350,22],[197300,24],[250525,32],[375800,35],[I,37]],h:[[17000,10],[64850,12],[103350,22],[197300,24],[250500,32],[626350,35],[I,37]]},
+2026:{s:[[12400,10],[50400,12],[105700,22],[201775,24],[256225,32],[640600,35],[I,37]],mj:[[24800,10],[100800,12],[211400,22],[403550,24],[512450,32],[768700,35],[I,37]],ms:[[12400,10],[50400,12],[105700,22],[201775,24],[256225,32],[384350,35],[I,37]],h:[[17700,10],[67450,12],[105700,22],[201750,24],[256200,32],[640600,35],[I,37]]}};
+const STD={2025:{s:15750,mj:31500,ms:15750,h:23625},2026:{s:16100,mj:32200,ms:16100,h:24150}};
+const SSW={2025:176100,2026:184500},SRA={2025:[2000,1600],2026:[2050,1650]};
+const CTC={2025:2200,2026:2200};
+const FL=['s','mj','ms','h'];
+const okR=a=>Array.isArray(a)&&a.length>=5&&a[a.length-1][0]===null&&a.every(p=>Array.isArray(p)&&(p[0]===null||(typeof p[0]==='number'&&isFinite(p[0])))&&typeof p[1]==='number'&&isFinite(p[1]));
+const fin=v=>Array.isArray(v)?v.length>0&&v.every(fin):typeof v==='number'&&isFinite(v)&&v>=0;
+function applyP(j){
+if(!j||typeof j!=='object'||!j.TB||typeof j.TB!=='object')return;
+for(const y in j.TB){
+const t=j.TB[y];
+if(!/^\d{4}$/.test(y)||!t||!FL.every(f=>okR(t[f])))continue;
+const std=(j.STD&&j.STD[y])||STD[y],ssw=(j.SSW&&j.SSW[y])||SSW[y],sra=(j.SRA&&j.SRA[y])||SRA[y],ctc=(j.CTC&&j.CTC[y]!=null)?j.CTC[y]:CTC[y];
+if(!std||!FL.every(f=>fin(std[f]))||!fin(ssw)||!(Array.isArray(sra)&&sra.length===2&&fin(sra))||(ctc!=null&&!fin(ctc)))continue;
+TB[y]={};for(const f of FL)TB[y][f]=t[f].map(q=>[q[0]===null?Infinity:q[0],q[1]]);
+STD[y]=std;SSW[y]=ssw;SRA[y]=sra;if(ctc!=null)CTC[y]=ctc;
+}}
+async function updP(manual){
+const say=t=>{const s=$('#ps');if(s)s.textContent=t};
+const u=taxSrc();
+if(!/^https:\/\//i.test(u)){if(manual)say('La dirección debe empezar con https://');return}
+try{
+const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw 0;
+const j=await r.json();applyP(j);
+S.cfg.pchk=today;S.cfg.pupd=(j&&j.updated!=null)?String(j.updated).slice(0,20):'';save();
+try{localStorage.setItem(PK,JSON.stringify(j))}catch(e){}
+if(manual)say('Tasas actualizadas'+(S.cfg.pupd?' ('+esc(String(S.cfg.pupd))+')':'')+'.');
+if(V==='imp')imp();
+}catch(e){if(manual)say('No pude descargar el archivo. Revisa la dirección y tu conexión.')}
+}
+const D=n=>(n<-.5?'−':'')+'$'+new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.abs(Math.round(n)));
+const years=()=>{const s=new Set(Object.keys(TB).filter(y=>STD[y]&&SSW[y]&&SRA[y]&&FL.every(f=>TB[y][f])).map(Number));s.add(+today.slice(0,4));return[...s].sort((a,b)=>a-b)};
+/* Año de tablas a usar para los cálculos: el más cercano sin pasar el año pedido */
+const tby=y=>{const ys=Object.keys(TB).filter(k=>STD[k]&&SSW[k]&&SRA[k]&&FL.every(f=>TB[k][f])).map(Number).sort((a,b)=>a-b);y=+y;if(ys.includes(y))return y;return ys.filter(v=>v<=y).pop()||ys[ys.length-1]};
+function ty(){const ys=years(),y=+S.tax.year;if(ys.includes(y))return y;const cy=+today.slice(0,4);return ys.filter(v=>v<=cy).pop()||ys[ys.length-1]}
+function det(y){
+const a=S.tx.filter(x=>x.d.startsWith(y)),inc=a.filter(x=>x.t==='i'),f=fn=>inc.filter(fn).reduce((s,x)=>s+x.a,0),biz=['Negocio o servicios','Ventas'];
+const sal=inc.filter(x=>x.c==='Salario');
+return{w2:sal.reduce((s,x)=>s+(x.gb||x.a),0),wh:sal.reduce((s,x)=>s+(x.wh||0),0),ng:sal.filter(x=>x.gb).length,ns:sal.filter(x=>!x.gb).length,se:f(x=>biz.includes(x.c)),oth:f(x=>x.c!=='Salario'&&!biz.includes(x.c)),exp:a.filter(x=>x.t==='g'&&x.k).reduce((s,x)=>s+x.a,0)};
+}
+function calc(){
+const T=S.tax,y=ty(),by=tby(y),fs=T.fs,d=det(String(y)),g=k=>(T[k]===''||T[k]==null)?d[k]:num(T[k]);
+const mar=fs==='mj'||fs==='ms',n65=Math.min(num(T.n65),fs==='mj'?2:1);
+const w2=g('w2'),se=g('se'),exp=g('exp'),oth=g('oth'),wh=g('wh'),adj=num(T.adj);
+const net=se-exp,seb=Math.max(0,net)*.9235;
+const seTax=seb<400?0:.124*Math.min(seb,Math.max(0,SSW[by]-w2))+.029*seb,half=seTax/2;
+const agi=w2+oth+net-half-adj;
+const std=STD[by][fs]+n65*SRA[by][mar?1:0],itm=num(T.item)>std,ded=Math.max(std,num(T.item));
+const sd=fs==='ms'?0:Math.max(0,6000*n65-.06*Math.max(0,agi-(fs==='mj'?150000:75000)));
+const tib=Math.max(0,agi-ded-sd),qbi=.2*Math.min(Math.max(0,net-half),tib),ti=Math.max(0,tib-qbi);
+let p=0,tax=0,mr=10;
+for(const[u,r]of TB[by][fs]){tax+=Math.max(0,Math.min(ti,u)-p)*r/100;p=u;mr=r;if(ti<=u)break}
+const cr0=num(T.kids)*(CTC[by]||2200)+num(T.od)*500,cr=Math.max(0,cr0-Math.ceil(Math.max(0,agi-(fs==='mj'?400000:200000))/1000)*50),credit=Math.min(tax,cr);
+const total=tax-credit+seTax,pay=wh+num(T.est),income=w2+oth+net;
+return{y,by,w2,net,oth,half,agi,ded,itm,sd,qbi,ti,tax,credit,seTax,total,pay,bal:total-pay,mr,eff:income>0?total/income*100:0,state:ti*num(T.st)/100,wh,adj,se};
+}
+const fi=(k,l,ph,step)=>`<label>${l}<input type="number" min="0" step="${step||1}" inputmode="decimal" data-t="${k}" value="${esc(S.tax[k])}"${ph!==undefined?` placeholder="${ph}"`:''}></label>`;
+function imp(){
+const T=S.tax,y=ty(),d=det(String(y)),pn=t=>`<p class="mut" style="margin:0 0 12px">${t}</p>`;
+const so=(k,l,o,cur)=>`<label>${l}<select data-t="${k}">${o.map(([v,t])=>`<option value="${v}"${String(cur!==undefined?cur:T[k])===String(v)?' selected':''}>${t}</option>`).join('')}</select></label>`;
+const sn=d.ng+d.ns===0?'':(d.ng===0?'<div class="note" style="margin:0 0 12px">Tus depósitos de salario son lo que llegó al banco, ya sin retenciones. Para el 1040 hace falta el bruto: complétalo en cada depósito (toca el movimiento en Movimientos) o escribe aquí la casilla 1 de tu W-2.</div>':(d.ns>0?`<div class="note" style="margin:0 0 12px">${d.ns===1?'Hay 1 depósito de salario sin bruto':'Hay '+d.ns+' depósitos de salario sin bruto'}: se suma${d.ns===1?'':'n'} tal como llegó${d.ns===1?'':'ron'} al banco (neto).</div>`:''));
+const n65o=T.fs==='mj'?[[0,'Ninguna'],[1,'Una'],[2,'Dos']]:[[0,'No'],[1,'Sí']];
+$('#tf').innerHTML=`<div class="card sec"><h2>1. Tu situación</h2><div class="grid form">${so('year','Año fiscal',years().map(v=>[v,String(v)]),y)}${so('fs','Estado civil para declarar',Object.entries(FS))}${fi('kids','Hijos menores de 17 años')}${fi('od','Otros dependientes')}${so('n65',T.fs==='mj'?'Personas de 65 años o más':'¿Tienes 65 años o más?',n65o,Math.min(num(T.n65),T.fs==='mj'?2:1))}</div></div>
+<div class="card sec"><h2>2. Ingresos del año</h2>${pn('Si dejas un campo vacío uso lo registrado en Movimientos (se ve en gris). Escribe un monto para reemplazarlo.')+sn}<div class="grid form">${fi('w2','Salario (W-2)',Math.round(d.w2))}${fi('se','Ingresos por cuenta propia (1099 o negocio)',Math.round(d.se))}${fi('exp','Gastos deducibles del negocio',Math.round(d.exp))}${fi('oth','Otros ingresos (intereses, etc.)',Math.round(d.oth))}</div></div>
+<div class="card sec"><h2>3. Ajustes y deducciones</h2>${pn('Uso la mayor entre la deducción estándar y tus deducciones detalladas. Los ajustes restan de tu ingreso antes de eso: escribe el monto que realmente puedes deducir, porque la app no calcula límites ni reducciones por ingreso. No incluyas aportes descontados de tu nómina (401(k), HSA por nómina): ya no están en la casilla 1 del W-2.')}<div class="grid form">${fi('adj','Ajustes: IRA deducible, HSA por tu cuenta, intereses de préstamo estudiantil')}${fi('item','Deducciones detalladas (opcional)')}</div></div>
+<div class="card sec"><h2>4. Lo que ya pagaste</h2><div class="grid form">${fi('wh','Impuesto federal retenido (casilla 2 del W-2)',Math.round(d.wh))}${fi('est','Pagos estimados ya hechos')}${fi('st','Tasa estatal efectiva estimada (%)',undefined,'any')}</div></div>`;
+taxRes();
+}
+function taxRes(){
+const r=calc(),y=r.y,by=r.by,L=(l,v,b)=>`<tr${b?' class="tot"':''}><td>${l}</td><td>${D(v)}</td></tr>`,res=r.bal>=0;
+const estB=by!==y?`<div class="note" style="margin:0 0 12px">Las cifras oficiales de ${y} aún no están publicadas. Esto es una <b>estimación</b> con las tablas de ${by}; la app descargará las definitivas sola cuando estén listas.</div>`:'';
+const pd=Date.parse(today),dl=[['15 de abril de '+y,y+'-04-15'],['15 de junio de '+y,y+'-06-15'],['15 de septiembre de '+y,y+'-09-15'],['15 de enero de '+(y+1),(y+1)+'-01-15']];
+const left=dl.filter(([a,b])=>Date.parse(b)>=pd).length;
+const k=[kpi(res?'Pagarías':'Reembolso estimado',D(Math.abs(r.bal)),res?1:0),kpi('Impuesto federal total',D(r.total),2),kpi('Tasa efectiva',r.eff.toFixed(1)+' %',2),kpi('Tasa marginal',r.mr+' %',1)];
+if(num(S.tax.st)>0)k.push(kpi('Estatal estimado',D(r.state),1));
+if(left>0&&r.total-r.pay>500)k.push(kpi('Pago trimestral sugerido',D((r.total-r.pay)/left),0));
+let t=L('Salarios (W-2)',r.w2)+L('Ingreso neto por cuenta propia',r.net)+L('Otros ingresos',r.oth)+L('Mitad del impuesto de autoempleo',-r.half)+(r.adj>0?L('Ajustes al ingreso (IRA, HSA, préstamo estudiantil)',-r.adj):'')+L('Ingreso bruto ajustado (AGI)',r.agi,1)+L(r.itm?'Deducciones detalladas':'Deducción estándar',-r.ded);
+if(r.sd>0)t+=L('Deducción adicional para mayores',-r.sd);
+if(r.qbi>0)t+=L('Deducción por ingreso de negocio (QBI, 20 %)',-r.qbi);
+t+=L('Ingreso gravable',r.ti,1)+L('Impuesto sobre la renta (tramos)',r.tax)+L('Créditos por hijos y dependientes',-r.credit)+L('Impuesto de autoempleo (15.3 %)',r.seTax)+L('Impuesto federal total',r.total,1)+L('Pagos y retenciones',-r.pay)+L(res?'Saldo a pagar':'Reembolso',Math.abs(r.bal),1);
+let f;
+const filed=y+1+'-04-15',extd=y+1+'-10-15',en=Math.ceil((Date.parse(extd)-pd)/864e5);
+f=`<p>Pagos estimados de ${y} para quienes tienen ingresos sin retención:</p><ul>${dl.map(([a,b])=>`<li>${a}: ${Date.parse(b)<pd?'ya pasó':'próximo'}</li>`).join('')}</ul><p>Declaración de ${y}: <b>15 de abril de ${y+1}</b>. Para evitar multa suele bastar con pagar el 90 % del impuesto del año, o el 100 % del impuesto del año anterior (110 % si tu AGI superó $150,000).</p>`;
+if(pd>Date.parse(filed)&&en>=0)f+=`<p>Si pediste prórroga (Formulario 4868), la declaración de ${y} vence el <b>15 de octubre de ${y+1}</b>: ${en===0?'es <b>hoy</b>':`faltan <b>${en} ${en===1?'día':'días'}</b>`}. La prórroga es para presentar, no para pagar: si debes, los intereses corren desde el 15 de abril de ${y+1}.</p>`;
+$('#tr').innerHTML=`${estB}<div class="grid kpis">${k.join('')}</div>
+<div class="grid two"><div class="card"><h2>Tu Formulario 1040, paso a paso</h2><div class="sc"><table class="tbl">${t}</table></div></div>
+<div class="card"><h2>Fechas importantes</h2>${f}<h2 style="margin-top:16px">Documentos que necesitas</h2><ul class="mut" style="margin:0;padding-left:20px"><li>W-2 de cada empleador</li><li>1099-NEC, 1099-K o 1099-INT recibidos</li><li>Recibos de los gastos del negocio</li><li>Números de Seguro Social de tu familia</li><li>Tu declaración del año anterior</li></ul></div></div>
+<div class="card sec" style="margin-top:14px"><h2>Sitios oficiales del IRS</h2><ul class="lk"><li><a href="https://www.irs.gov/refunds" target="_blank" rel="noopener">Dónde está mi reembolso</a></li><li><a href="https://www.irs.gov/payments/direct-pay" target="_blank" rel="noopener">Pagar con Direct Pay</a></li><li><a href="https://www.irs.gov/individuals/tax-withholding-estimator" target="_blank" rel="noopener">Estimador de retenciones</a></li><li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes" target="_blank" rel="noopener">Pagos de impuesto estimado</a></li><li><a href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free" target="_blank" rel="noopener">IRS Free File</a></li></ul></div>
+<div class="card sec"><h2>Para tu preparador</h2><p class="mut" style="margin:0 0 12px">Descarga todos tus movimientos de ${y} en un archivo para llevarlo a tu preparador de impuestos o abrirlo en Excel. Incluye el bruto y la retención de cada salario. Guárdalo con cuidado: contiene tus datos.</p><p class="acts noprint" style="margin:0"><button class="btn" data-a="exc">Descargar movimientos de ${y}</button></p></div>
+<div class="card sec"><h2>Qué cubre y qué no</h2><p class="mut" style="margin:0">Cubre salarios, trabajo por cuenta propia, otros ingresos, deducción estándar o detallada, crédito por hijos (solo la parte que reduce tu impuesto), deducción para mayores, deducción QBI simple y un monto de ajustes al ingreso que tú escribes (IRA, HSA, intereses de préstamo estudiantil). <b>No incluye</b> ganancias de capital, alquileres, impuesto adicional de Medicare, AMT, la parte reembolsable del crédito por hijos, créditos de educación o por ingreso del trabajo (EITC), las deducciones nuevas por propinas, horas extra o intereses de préstamo de auto, límites de QBI para ingresos altos ni impuestos estatales detallados.</p><div class="note">Es una estimación orientativa, no asesoría fiscal. Para presentar usa un preparador autorizado o el software certificado por el IRS, y confirma las cifras en irs.gov.</div><p class="noprint"><button class="btn" data-a="pr">Imprimir resumen</button></p></div>`;
+}
+
+function aju(){
+syUI();
+$('#cur').value=S.cfg.cur;$('#pu').value=S.cfg.purl||'';$('#thm').value=S.cfg.theme;
+const ys=years();$('#pt').textContent='Tablas disponibles: '+ys.join(', ')+(S.cfg.pchk?'. Última revisión: '+S.cfg.pchk:'')+'.';
+$('#pst').textContent=PC?'El PIN está activado.':'El PIN está desactivado: cualquiera que abra la app verá tus datos.';
+$('#b-set').style.display=PC?'none':'';$('#b-chg').style.display=$('#b-off').style.display=PC?'':'none';
+$('#alw').style.display=PC?'':'none';if(PC)$('#alk').value=String(PC.auto);
+}
+/* ---------- PIN, bloqueo y copia cifrada ---------- */
+const PN='cuentas-pin',AAD='cuentas-copia-v1';
+const te=new TextEncoder();
+const b64=u=>{let r='';for(const x of u)r+=String.fromCharCode(x);return btoa(r)};
+const unb64=t=>Uint8Array.from(atob(t),c=>c.charCodeAt(0));
+const okPin=p=>/^\d{4,12}$/.test(p);
+let PC=null;try{PC=JSON.parse(localStorage.getItem(PN))}catch(e){}
+if(!(PC&&typeof PC.salt==='string'&&typeof PC.hash==='string'&&PC.it>=1e5&&PC.it<=5e6))PC=null;
+else{PC.auto=[0,60,300,900].includes(PC.auto)?PC.auto:60;PC.f=+PC.f||0;PC.until=+PC.until||0}
+const savePC=()=>{try{PC?localStorage.setItem(PN,JSON.stringify(PC)):localStorage.removeItem(PN)}catch(e){warn()}};
+const baseKey=pin=>crypto.subtle.importKey('raw',te.encode(pin),'PBKDF2',false,['deriveBits','deriveKey']);
+async function hashPin(pin,salt,it){return b64(new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',salt,iterations:it,hash:'SHA-256'},await baseKey(pin),256)))}
+async function mkPC(pin,auto){const salt=crypto.getRandomValues(new Uint8Array(16)),it=200000;return{salt:b64(salt),it,hash:await hashPin(pin,salt,it),auto,f:0,until:0}}
+async function checkPin(pin){return !!PC&&okPin(pin)&&await hashPin(pin,unb64(PC.salt),PC.it)===PC.hash}
+const aesKey=async(pin,salt,it)=>crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:it,hash:'SHA-256'},await baseKey(pin),{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+async function seal(obj,pin){
+const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),it=600000;
+const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:te.encode(AAD)},await aesKey(pin,salt,it),te.encode(JSON.stringify(obj)));
+return{app:'cuentas',v:1,kdf:'PBKDF2-SHA256',it,salt:b64(salt),iv:b64(iv),ct:b64(new Uint8Array(ct))}}
+async function unseal(o,pin){
+if(!o||o.app!=='cuentas'||o.v!==1||!(o.it>=1e5&&o.it<=3e6)||typeof o.salt!=='string'||typeof o.iv!=='string'||typeof o.ct!=='string')throw 0;
+const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(o.iv),additionalData:te.encode(AAD)},await aesKey(pin,unb64(o.salt),o.it),unb64(o.ct));
+return JSON.parse(new TextDecoder().decode(pt))}
+
+/* Cuadro de diálogo con campos de PIN */
+function ask({title,text,fields=[],ok='Aceptar',danger=false,check}){
+return new Promise(res=>{
+const d=$('#dlg'),f=$('#dlgf'),okb=$('#dok');let done=false;
+$('#dt').textContent=title;$('#dtx').textContent=text||'';$('#derr').textContent='';
+const fld=x=>x.type==='pw'?`<label>${esc(x.label)}<input type="password" autocomplete="off" maxlength="64" data-k="${x.k}"></label>`:x.type==='select'?`<label>${esc(x.label)}<select data-k="${x.k}">${x.opts.map(([o,t])=>`<option value="${esc(o)}"${String(o)===String(x.value)?' selected':''}>${esc(t)}</option>`).join('')}</select></label>`
+:x.type==='number'?`<label>${esc(x.label)}<input type="number" step="0.01" min="0" inputmode="decimal" autocomplete="off" data-k="${x.k}" value="${esc(x.value==null?'':x.value)}"></label>`
+:x.type==='text'?`<label>${esc(x.label)}<input type="text" maxlength="${x.max||80}" autocomplete="off" data-k="${x.k}" value="${esc(x.value||'')}"></label>`
+:`<label>${esc(x.label)}<input type="password" inputmode="numeric" autocomplete="off" maxlength="12" data-k="${x.k}"></label>`;
+f.querySelector('.flds').innerHTML=fields.map(fld).join('');
+okb.textContent=ok;okb.className='btn '+(danger?'d':'p');okb.disabled=false;
+const fin=v=>{if(done)return;done=true;if(d.open)d.close();res(v)};
+f.onsubmit=async e=>{e.preventDefault();const v={};f.querySelectorAll('input,select').forEach(i=>v[i.dataset.k]=i.value);okb.disabled=true;let err='';
+try{err=check?await check(v):''}catch(x){err='No se pudo completar. Intenta de nuevo.'}
+okb.disabled=false;if(err){$('#derr').textContent=err;return}fin(v)};
+$('#dcancel').onclick=()=>fin(null);d.oncancel=e=>{e.preventDefault();fin(null)};d.onclose=()=>fin(null);
+d.showModal();const fi0=f.querySelector('input,select');fi0?fi0.focus():okb.focus()})}
+const needCrypto=()=>{if(window.crypto&&crypto.subtle)return true;msg('Esta función no está disponible en este dispositivo.');return false};
+
+/* Bloqueo */
+let locked=false,hiddenAt=0,holdUntil=0,entry='',started=false,wt=0;
+const dots=()=>{$('#dots').innerHTML='<i></i>'.repeat(entry.length)};
+function waitMsg(){clearTimeout(wt);const s=Math.ceil((PC.until-Date.now())/1000),e=$('#lerr');
+if(s>0){e.textContent='Demasiados intentos. Espera '+s+' s.';wt=setTimeout(waitMsg,1000)}else if(e.textContent.startsWith('Demasiados'))e.textContent=''}
+function lock(){if(!PC||locked)return;locked=true;entry='';dots();$('#lerr').textContent='';
+const d=$('#dlg');if(d.open)d.close();$('#lock').classList.add('on');$('.app').inert=true;waitMsg()}
+function unlock(){locked=false;entry='';dots();$('#lock').classList.remove('on');$('.app').inert=false;render();if(needAuth())showAuth();if(!started){started=true;updP();syPull()}}
+async function tryPin(){
+if(!locked||!entry)return;
+if(PC.until>Date.now()){waitMsg();return}
+const p=entry;entry='';dots();let ok=false;
+try{ok=await checkPin(p)}catch(e){$('#lerr').textContent='No se puede verificar el PIN en este dispositivo.';return}
+if(ok){PC.f=0;PC.until=0;savePC();unlock();return}
+PC.f++;PC.until=PC.f>=5?Date.now()+Math.min(3600,30*2**(PC.f-5))*1000:0;savePC();
+if(PC.until)waitMsg();else $('#lerr').textContent='PIN incorrecto.'}
+function key(k){
+if(!locked)return;$('#lerr').textContent='';
+if(k==='del')entry=entry.slice(0,-1);else if(k==='ok')return tryPin();else if(entry.length<12)entry+=k;
+dots()}
+$('#pad').addEventListener('click',e=>{const b=e.target.closest('button');if(b)key(b.dataset.k)});
+document.addEventListener('keydown',e=>{if(!locked||$('#dlg').open)return;
+if(/^\d$/.test(e.key)){key(e.key);e.preventDefault()}else if(e.key==='Backspace'){key('del');e.preventDefault()}else if(e.key==='Enter'){key('ok');e.preventDefault()}});
+document.addEventListener('visibilitychange',()=>{
+if(!PC)return;
+if(document.hidden){if(Date.now()<holdUntil)return;hiddenAt=Date.now();if(PC.auto===0)lock()}
+else{const h=hiddenAt;hiddenAt=0;if(h&&!locked&&(Date.now()-h)/1000>=PC.auto)lock()}});
+$('#forgot').addEventListener('click',async()=>{
+const v=await ask({title:'¿Olvidaste el PIN?',text:syCfg?'No hay forma de recuperarlo. Puedes borrar los datos de este teléfono y entrar de nuevo con tu cuenta: tus datos siguen guardados en ella.':'No hay forma de recuperarlo. Puedes borrar todos los datos de este teléfono y empezar de cero. Si tienes una copia de seguridad, podrás restaurarla después con el PIN con el que la creaste.',ok:'Borrar todo',danger:true});
+if(v){try{[K,PN,PK,SK].forEach(k=>localStorage.removeItem(k))}catch(e){}location.reload()}});
+
+/* Activar, cambiar y quitar el PIN */
+async function pinFlow(change){
+if(!needCrypto())return;
+const v=await ask({title:change?'Cambiar PIN':'Activar PIN',text:'Usa de 4 a 12 números. Si lo olvidas no hay forma de recuperarlo.',
+fields:[...(change?[{k:'o',label:'PIN actual'}]:[]),{k:'n',label:'PIN nuevo'},{k:'c',label:'Repite el PIN nuevo'}],ok:'Guardar',
+check:async v=>{if(change&&!await checkPin(v.o))return 'El PIN actual no es correcto.';if(!okPin(v.n))return 'El PIN debe tener de 4 a 12 números.';if(v.n!==v.c)return 'Los dos PIN no coinciden.';return ''}});
+if(!v)return;
+PC=await mkPC(v.n,PC?PC.auto:60);savePC();aju();msg(change?'PIN cambiado.':'PIN activado. La app se bloqueará según lo que elegiste arriba.')}
+async function pinOff(){
+const v=await ask({title:'Quitar PIN',text:'Cualquiera que abra la app podrá ver tus datos.',fields:[{k:'o',label:'PIN actual'}],ok:'Quitar PIN',danger:true,check:async v=>await checkPin(v.o)?'':'El PIN no es correcto.'});
+if(!v)return;PC=null;savePC();aju();msg('PIN quitado.')}
+
+/* Exportar y restaurar */
+const plug=n=>{const C=window.Capacitor;return C&&((C.Plugins&&C.Plugins[n])||(C.registerPlugin&&C.registerPlugin(n)))};
+async function deliver(name,text,t1,t2,t3){
+const C=window.Capacitor,Fs=plug('Filesystem'),Sh=plug('Share');
+if(C&&C.isNativePlatform&&C.isNativePlatform()&&Fs&&Sh){
+holdUntil=Date.now()+60000;
+const r=await Fs.writeFile({path:name,data:text,directory:'CACHE',encoding:'utf8'});
+await Sh.share({title:t1||'Copia de Cuentas',text:t2||'Copia de seguridad de Cuentas',url:r.uri,dialogTitle:t3||'Guardar la copia'});
+}else{
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/octet-stream'}));a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}}
+async function doExport(){
+if(!PC){msg('Primero activa un PIN: la copia se protege con él.');return}
+if(!needCrypto())return;
+const v=await ask({title:'Guardar copia',text:'Escribe tu PIN. La copia solo se podrá abrir con este mismo PIN.',fields:[{k:'p',label:'PIN'}],ok:'Exportar',check:async v=>await checkPin(v.p)?'':'El PIN no es correcto.'});
+if(!v)return;
+msg('Preparando la copia…');
+try{
+const box=await seal({t:'cuentas-copia',created:new Date().toISOString(),data:S},v.p);
+await deliver('cuentas-'+today+'.cuentas',JSON.stringify(box));
+msg('Copia lista. Guárdala en un lugar seguro: sin el PIN no se puede abrir.')
+}catch(e){msg('No pude crear la copia. Si cancelaste el envío, vuelve a intentarlo.')}}
+async function restoreText(text){
+if(locked)return;
+let o;try{o=JSON.parse(text)}catch(e){msg('Eso no es una copia válida. Usa el archivo de la copia o pega su contenido completo.');return}
+let data=null,pin=null;
+if(o&&o.ct&&o.salt){
+if(!needCrypto())return;
+const v=await ask({title:'Restaurar copia',text:'Escribe el PIN con el que se creó la copia.',fields:[{k:'p',label:'PIN de la copia'}],ok:'Abrir copia',
+check:async v=>{try{const r=await unseal(o,v.p);if(!r||!r.data||!Array.isArray(r.data.tx))throw 0;data=r.data;pin=v.p;return ''}catch(e){return 'PIN incorrecto o archivo dañado.'}}});
+if(!v)return;
+}else if(o&&Array.isArray(o.tx)&&o.cfg){data=o}
+else{msg('Eso no es una copia válida. Usa el archivo de la copia o pega su contenido completo.');return}
+const n=S.tx.length+S.goals.length;
+if(n){const c=await ask({title:'Reemplazar los datos',text:'Este teléfono ya tiene datos ('+S.tx.length+' movimientos). Al restaurar se reemplazan por los de la copia.',ok:'Reemplazar',danger:true});if(!c)return}
+S=norm(data);save();
+if(pin){PC=await mkPC(pin,PC?PC.auto:60);savePC()}
+render();msg(pin?'Datos restaurados. El PIN de esta app ahora es el de la copia.':'Datos restaurados.')}
+$('#fil').addEventListener('change',async e=>{
+const f=e.target.files[0];e.target.value='';if(!f)return;
+if(f.size>5e6){msg('El archivo es demasiado grande para ser una copia de Cuentas.');return}
+try{await restoreText(await f.text())}catch(x){msg('No pude leer el archivo.')}});
+
+/* ---------- Importar del banco ---------- */
+const BGD=[
+["Chase","CSV (también QFX/QBO)","En chase.com abre la cuenta, toca el ícono de descarga sobre la lista de movimientos (o «Más» → «Descargar actividad de la cuenta»), elige las fechas y el tipo CSV.","Solo está disponible la actividad reciente; lo antiguo viene únicamente en PDF, que esta app no lee."],
+["Bank of America","CSV (llamado «Microsoft Excel»)","Entra a la cuenta, abre la pestaña Activity y toca Download sobre la lista. Elige el rango y el formato Excel (es un CSV).","Si faltan días, descarga por tramos."],
+["Wells Fargo","CSV","Abre la cuenta, entra a «Download Account Activity», elige las fechas y «Comma Delimited» (CSV).","Las tarjetas de crédito dan poco historial (unos 90 días o 300 movimientos)."],
+["Capital One","CSV (también QFX/OFX)","Hazlo en la web de escritorio, no en la app: abre la cuenta o tarjeta, busca «Download Transactions» (a veces dentro de «Statements & documents»), elige fechas y CSV.","Es una descarga por cada tarjeta o cuenta, y el historial disponible es corto (alrededor de 90 días)."],
+["Citi","CSV","En Citi Online abre la cuenta o tarjeta, ve a Transactions, toca «Export» (junto a Print) y elige CSV con el período que quieras.","El tope ronda los 1,000 movimientos por descarga."],
+["U.S. Bank","CSV, QFX o QBO","En usbank.com abre Accounts → tu cuenta → pestaña Activity → Download. Elige fechas y formato.","Solo funciona en la web, no en la app móvil."],
+["Discover","CSV","En discover.com abre Recent Activity (tarjeta) o el historial de la cuenta bancaria, usa Download y guarda el CSV.","Tarjeta y banco tienen portales separados. Las compras vienen en positivo: marca la casilla de tarjeta."],
+["Otros (Navy Federal, USAA, PNC, Truist, TD, Ally, Chime, SoFi, Amex…)","OFX/QFX o CSV","Casi todos tienen «Download» o «Export» cerca de la lista de movimientos en su sitio web. Si ofrece OFX o QFX elígelo; si no, CSV.","Si solo da PDF, esta app no puede importarlo. Si la app del banco no muestra la opción, abre su sitio en el navegador con la versión de escritorio. En Amex y otras tarjetas las compras suelen venir en positivo."]];
+const DN=['transaction date','trans date','date','posting date','post date','posted date','date posted','posted'],AN=['amount','transaction amount','amt'],DBN=['debit','debits','withdrawal','withdrawals','money out','amount debit'],CRN=['credit','credits','deposit','deposits','money in','amount credit'],XN=['description','payee','name','transaction description','original description','memo','details'];
+const RP=/payroll|direct dep|dir dep|dirdep|salary|paycheck|\badp\b|gusto|paychex|paylocity|workday|trinet|justworks|ceridian|dayforce|\bukg\b|isolved/i;
+const RX=/transfer|xfer|autopay|auto pay|payment.*thank|thank.*payment|online payment|credit card pay|crcardpmt|e-?payment|irs treas.*(tax ref|refund)|tax refund/i;
+const RI=[[/stripe|square inc|shopify|upwork|fiverr|1099/i,'Negocio o servicios'],[/interest|dividend/i,'Otros ingresos']];
+const RE=[[/\brent\b|mortgage|\bhoa\b|apartment|landlord|property tax|zillow/i,'Vivienda'],[/verizon|at&t|\batt\b|t-mobile|comcast|xfinity|spectrum|internet|electric|energy|\bwater\b|utilit|pg&e|sewer|waste|wireless|geico|state farm|progressive|allstate|insurance/i,'Servicios'],[/cvs|walgreens|pharmac|rite aid|clinic|medical|dental|hospital|doctor|kaiser|labcorp|quest diag|optical/i,'Salud'],[/tuition|university|college|school|coursera|udemy|student loan|navient|nelnet/i,'Educación'],[/walmart|kroger|safeway|publix|aldi|trader joe|whole foods|costco|h-?e-?b\b|grocer|market|restaurant|cafe|coffee|starbucks|mcdonald|chipotle|taco|pizza|burger|doordash|uber ?eats|grubhub|subway|wendy|dunkin|bakery|diner|food/i,'Alimentación'],[/shell|chevron|exxon|mobil|\bbp\b|speedway|fuel|uber|lyft|parking|toll|transit|\bmta\b|bart|amtrak|airlines|delta air|united air|southwest|autozone|car wash|\bdmv\b/i,'Transporte'],[/netflix|spotify|hulu|disney|hbo|youtube|prime video|\bamc\b|cinema|theater|steam|playstation|xbox|nintendo|gym|fitness|casino|ticketmaster/i,'Ocio']];
+function guess(x,s){x=x||'';
+if(s>0&&RP.test(x))return 'i|Salario';
+if(RX.test(x))return 'x';
+for(const[re,c]of(s>0?RI:RE))if(re.test(x))return(s>0?'i|':'g|')+c;
+return s>0?'i|Otros ingresos':'g|Otros gastos'}
+const iso=(y,m,d)=>{y=+y;m=+m;d=+d;return(y<1990||y>2100||m<1||m>12||d<1||d>31)?'':y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0')};
+function pDate(s){s=String(s||'').trim();let m;
+if(m=s.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/))return iso(m[1],m[2],m[3]);
+if(m=s.match(/^(\d{4})(\d{2})(\d{2})(?!\d)/)||s.match(/^(\d{4})(\d{2})(\d{2})\d{4,}/))return iso(m[1],m[2],m[3]);
+if(m=s.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2,4})/)){let a=+m[1],b=+m[2],y=+m[3];if(y<100)y+=2000;return a>12?iso(y,b,a):iso(y,a,b)}
+if(m=s.match(/^([A-Za-z]{3})[a-z]*\.? (\d{1,2}),? (\d{4})/)){const i='janfebmaraprmayjunjulaugsepoctnovdec'.indexOf(m[1].toLowerCase());return i>=0&&i%3===0?iso(m[3],i/3+1,m[2]):''}
+return ''}
+function pAmt(s){s=String(s==null?'':s).trim();if(!/\d/.test(s))return null;const v=parseFloat(s.replace(/[^0-9.]/g,''));return isFinite(v)?(/^\(|-/.test(s)?-v:v):null}
+function csvRows(t,dl){const R=[];let r=[],c='',q=false;
+for(let i=0;i<t.length;i++){const ch=t[i];
+if(q){if(ch==='"'){if(t[i+1]==='"'){c+='"';i++}else q=false}else c+=ch}
+else if(ch==='"')q=true;
+else if(ch===dl){r.push(c);c=''}
+else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&t[i+1]==='\n')i++;r.push(c);c='';if(r.some(x=>x.trim()))R.push(r);r=[]}
+else c+=ch}
+r.push(c);if(r.some(x=>x.trim()))R.push(r);return R}
+function csvParse(t){
+t=t.replace(/^\uFEFF/,'');
+const ls=t.split(/\r?\n/).filter(l=>l.trim()).slice(0,8),sc=c=>ls.reduce((s,l)=>s+l.split(c).length-1,0);
+const dl=[',',';','\t'].sort((a,b)=>sc(b)-sc(a))[0];
+const R=csvRows(t,dl),nm=h=>String(h||'').toLowerCase().replace(/[^a-z ]/g,' ').replace(/\s+/g,' ').trim();
+const find=(H,ns)=>{for(const n of ns){const i=H.indexOf(n);if(i>=0)return i}return -1};
+let hi=-1,c=null;
+for(let i=0;i<Math.min(R.length,20)&&!c;i++){const H=R[i].map(nm),d=find(H,DN),a=find(H,AN),db=find(H,DBN),cr=find(H,CRN);
+if(d>=0&&(a>=0||(db>=0&&cr>=0))){hi=i;c={d,a,db,cr,x:find(H,XN)}}}
+if(!c){if(!R.find(r=>pDate(r[0])&&pAmt(r[1])!=null))return{rows:[],split:false};c={d:0,a:1,db:-1,cr:-1,x:-1}}
+const out=[];
+for(const r of R.slice(hi+1)){const d=pDate(r[c.d]);if(!d)continue;let s;
+if(c.a>=0)s=pAmt(r[c.a]);else{const o=pAmt(r[c.db]),n=pAmt(r[c.cr]);s=(o==null&&n==null)?null:Math.abs(n||0)-Math.abs(o||0)}
+if(s==null||Math.abs(s)<.005)continue;
+const x=c.x>=0?r[c.x]:r.reduce((p,q,j)=>j!==c.d&&j!==c.a&&q.trim().length>p.length?q.trim():p,'');
+out.push({d,s,x:(x||'').replace(/\s+/g,' ').trim()})}
+return{rows:out,split:c.a<0}}
+function ofxRows(t){const out=[],re=/<STMTTRN>([\s\S]*?)(?=<\/STMTTRN>|<STMTTRN>|<\/BANKTRANLIST>|$)/gi;let m;
+while(m=re.exec(t)){const b=m[1],g=k=>{const z=b.match(new RegExp('<'+k+'>([^<\\r\\n]*)','i'));return z?z[1].trim().replace(/&amp;/g,'&'):''};
+const d=pDate(g('DTPOSTED')),s=pAmt(g('TRNAMT'));if(!d||s==null||Math.abs(s)<.005)continue;
+const n=g('NAME'),mm=g('MEMO');out.push({d,s,x:n&&mm&&mm!==n?n+' '+mm:n||mm,f:g('FITID')})}
+return out}
+let BR=null;
+function bParse(t,name,auto){
+let rows,split=false,note='';const ff=/<OFX>|OFXHEADER|<STMTTRN>/i.test(t)?'OFX':'CSV',cb=$('#bcc');
+if(ff==='OFX')rows=ofxRows(t);else{const r=csvParse(t);rows=r.rows;split=r.split}
+if(!rows.length){BR={err:'No encontré movimientos en ese archivo. Revisa que sea el archivo de movimientos que descargaste del banco (no el PDF).'};bRender();return}
+let cc=cb.checked;
+if(ff==='OFX'||split){cc=false;cb.checked=false;cb.disabled=true}
+else{cb.disabled=false;if(auto){const p=rows.filter(r=>r.s>0).length;if(rows.length>=8&&p/rows.length>=.75){cc=true;cb.checked=true;note='Parece una tarjeta de crédito, así que ajusté los signos. Si no lo es, desmarca la casilla.'}}}
+const have=new Set(S.tx.map(x=>x.b).filter(Boolean)),seen={};
+BR={name,fmt:ff,txt:t,note,rows:rows.map(r=>{
+let base=((r.f?'o:'+r.f+'|':'c:')+r.d+'|'+r.s.toFixed(2)+(r.f?'':'|'+r.x.toLowerCase().slice(0,30))).slice(0,70);
+seen[base]=(seen[base]||0)+1;const k=base+'#'+seen[base],s=cc?-r.s:r.s,dup=have.has(k);
+return{k,d:r.d,s,x:r.x||'Sin descripción',dup,v:dup?'x':guess(r.x,s)}})};
+BR.rows.sort((a,b)=>b.d.localeCompare(a.d));bRender()}
+function bSum(){const a=BR.rows.filter(r=>r.v!=='x'),sm=t=>a.filter(r=>r.v[0]===t).reduce((s,r)=>s+Math.abs(r.s),0);
+$('#bsum').innerHTML=`<span>Ingresos <b>${fmt(sm('i'))}</b></span><span>Gastos <b>${fmt(sm('g'))}</b></span>`;
+const b=$('#bgo');b.textContent=a.length?`Importar ${a.length} movimientos`:'Nada que importar';b.disabled=!a.length}
+function bRender(){const el=$('#bres');
+if(!BR){el.innerHTML='';return}
+if(BR.err){el.innerHTML=`<div class="note">${esc(BR.err)}</div>`;return}
+const op=v=>`<optgroup label="Ingreso">${CATS.i.map(c=>`<option value="i|${c}"${v==='i|'+c?' selected':''}>${c}</option>`).join('')}</optgroup><optgroup label="Gasto">${CATS.g.map(c=>`<option value="g|${c}"${v==='g|'+c?' selected':''}>${c}</option>`).join('')}</optgroup><option value="x"${v==='x'?' selected':''}>No importar</option>`;
+const n=BR.rows.length,dn=BR.rows.filter(r=>r.dup).length,ds=BR.rows.map(r=>r.d).sort();
+el.innerHTML=`<div class="note" style="margin-top:12px"><b>${esc(BR.name)}</b> · ${n} movimientos del ${ds[0]} al ${ds[n-1]}.${dn?` ${dn} ya estaban importados y quedan sin marcar.`:''}${BR.note?'<br>'+esc(BR.note):''}</div>
+<p class="mut" style="margin:12px 0 8px">Revisa la categoría de cada uno. Las transferencias entre tus cuentas y los pagos de tarjeta quedan en «No importar» para no contarlos dos veces.</p>
+<div id="bsum" class="trio l" style="margin-bottom:8px"></div>
+<div>${BR.rows.slice(0,2000).map((r,i)=>`<div class="bk${r.v==='x'?' off':''}" id="br${i}"><div>${esc(r.x)}<small>${r.d.slice(8)}/${r.d.slice(5,7)}/${r.d.slice(0,4)} · <span class="t${r.s>0?0:1}">${r.s>0?'+':'−'}${fmt(Math.abs(r.s))}</span>${r.dup?' · ya importado':''}</small></div><select data-b="${i}" aria-label="Categoría">${op(r.v)}</select></div>`).join('')}</div>
+<p class="acts" style="margin-top:14px"><button class="btn p" data-a="bgo" id="bgo"></button><button class="btn" data-a="bno">Cancelar</button></p>`;
+bSum()}
+function bGo(){const a=BR.rows.filter(r=>r.v!=='x');if(!a.length)return;const mx=a.map(r=>r.d).sort().pop();
+withUndo(a.length+' movimientos importados',()=>{a.forEach(r=>{const[t,c]=r.v.split('|');S.tx.push({id:nid(),d:r.d,t,c,x:r.x.slice(0,80),a:cents(Math.abs(r.s)),b:r.k})});BR=null;M=mx.slice(0,7);V='mov'})}
+function bankView(){
+$('#bg').innerHTML=BGD.map(([n,f,s,t])=>`<details class="g"><summary>${n}&nbsp;<span class="mut">· ${f}</span></summary><p>${s}</p><p><b>Ojo:</b> ${t}</p></details>`).join('')+`<div class="note"><b>Para tener tu salario real:</b> importa la cuenta donde cae tu depósito. Cada depósito de nómina entra como Salario, pero es lo que llegó al banco (neto). Después toca ese movimiento en Movimientos para anotar el bruto y la retención del talón de pago: son los que cuentan para el 1040.<br><b>Duplicados:</b> puedes importar cada semana o quincena; lo que ya cargaste se reconoce y no se repite.<br><b>Seguridad:</b> esos archivos traen datos sensibles; bórralos de Descargas al terminar.</div>`;
+bRender()}
+$('#bfil').addEventListener('change',async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
+if(f.size>8e6){BR={err:'Ese archivo es demasiado grande.'};bRender();return}
+try{bParse(await f.text(),f.name,true)}catch(x){BR={err:'No pude leer el archivo.'};bRender()}});
+
+/* ---------- Editar un movimiento ---------- */
+async function editTx(id){
+const x=S.tx.find(q=>String(q.id)===String(id));if(!x)return;
+const cs=[...new Set([...CATS[x.t],x.c])];
+const fl=[{k:'c',label:'Categoría',type:'select',opts:cs.map(c=>[c,c]),value:x.c},{k:'x',label:'Descripción',type:'text',max:80,value:x.x},{k:'a',label:x.t==='i'?'Monto (lo que entró)':'Monto',type:'number',value:x.a}];
+if(x.t==='g')fl.push({k:'k',label:'Gasto deducible',type:'select',opts:[['0','No'],['1','Sí']],value:x.k?'1':'0'});
+if(x.t==='i')fl.push({k:'b',label:'Bruto del talón (solo si es Salario)',type:'number',value:x.gb||''},{k:'w',label:'Impuesto federal retenido (solo si es Salario)',type:'number',value:x.wh||''});
+const v=await ask({title:'Editar movimiento',text:TN[x.t]+' del '+x.d.slice(8)+'/'+x.d.slice(5,7)+'/'+x.d.slice(0,4)+(x.b?' · importado del banco':''),fields:fl,ok:'Guardar',
+check:async v=>{const a=cents(v.a);if(a<=0)return 'Escribe un monto mayor que cero.';
+if(x.t==='i'&&v.c==='Salario'){const b=cents(v.b),w=cents(v.w);if(b>0&&b<a)return 'El bruto no puede ser menor que lo depositado.';if(w>0&&w>(b||a))return 'La retención no puede ser mayor que el bruto.'}return ''}});
+if(!v)return;
+withUndo('Movimiento actualizado',()=>{const a=cents(v.a);x.c=v.c;x.x=(v.x||'').trim().slice(0,80);x.a=a;
+if(x.t==='g'){if(v.k==='1')x.k=1;else delete x.k}
+delete x.gb;delete x.wh;
+if(x.t==='i'&&x.c==='Salario'){const b=cents(v.b),w=cents(v.w);if(b>0)x.gb=b;if(w>0)x.wh=w}})}
+async function doCsv(){
+const y=String(ty()),a=S.tx.filter(x=>x.d.startsWith(y)).sort((p,q)=>p.d.localeCompare(q.d)||p.id-q.id);
+if(!a.length){toast('No hay movimientos de '+y+' para exportar.');return}
+const q=v=>{v=String(v==null?'':v);if(/^[=+\-@\t\r]/.test(v))v="'"+v;return /[",\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
+const L=[['Fecha','Tipo','Categoría','Descripción','Monto','Gasto deducible','Bruto del salario','Impuesto federal retenido'].join(',')];
+a.forEach(x=>L.push([x.d,TN[x.t],x.c,x.x,x.a.toFixed(2),x.k?'Sí':'',x.gb?x.gb.toFixed(2):'',x.wh?x.wh.toFixed(2):''].map(q).join(',')));
+try{await deliver('cuentas-movimientos-'+y+'.csv','\uFEFF'+L.join('\r\n'),'Movimientos de '+y,'Movimientos de Cuentas','Guardar los movimientos');toast('Archivo listo.')}catch(e){toast('No pude crear el archivo. Si cancelaste el envío, vuelve a intentarlo.')}}
+
+const R={resumen,bank:bankView,mov:()=>{movs();formSync()},ahorro,imp,aju};
+function render(){
+document.querySelectorAll('#nav button').forEach(b=>{const on=b.dataset.v===(V==='bank'?'mov':V);b.classList.toggle('on',on);on?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
+document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==='v-'+V));
+$('#ttl').textContent=TT[V];$('#mp').style.display=(V==='resumen'||V==='mov')?'flex':'none';
+$('#mon').value=M;theme();R[V]();
+}
+const msg=t=>{const m=$('#msg');m.textContent=t;m.style.display='block'};
+
+document.addEventListener('click',e=>{
+const t=e.target.closest('button');if(!t||t.closest('#toast'))return;
+const d=t.dataset;
+if(d.v){V=d.v;render();window.scrollTo(0,0)}
+else if(d.a==='pm'){M=mAdd(M,-1);render()}
+else if(d.a==='nm'){M=mAdd(M,1);render()}
+else if(d.ed){editTx(d.ed)}
+else if(d.a==='exc'){doCsv()}
+else if(d.del){withUndo('Movimiento eliminado',()=>{S.tx=S.tx.filter(x=>String(x.id)!==d.del)})}
+else if(d.dg){withUndo('Meta eliminada',()=>{S.tx.forEach(x=>{if(String(x.g)===d.dg)delete x.g});S.goals=S.goals.filter(g=>String(g.id)!==d.dg)})}
+else if(d.a==='up'){updP(true)}
+else if(d.a==='sy-now'){syPull(true)}
+else if(d.a==='sy-pw'){syPassword()}
+else if(d.a==='sy-off'){syLogout()}
+else if(d.a==='pin-set'){pinFlow(false)}
+else if(d.a==='pin-chg'){pinFlow(true)}
+else if(d.a==='pin-off'){pinOff()}
+else if(d.a==='exf'){doExport()}
+else if(d.a==='imf'){holdUntil=Date.now()+60000;$('#fil').click()}
+else if(d.a==='im'){restoreText($('#bk').value)}
+else if(d.a==='bpick'){holdUntil=Date.now()+60000;$('#bfil').click()}
+else if(d.a==='bgo'){bGo()}
+else if(d.a==='bno'){BR=null;bRender()}
+else if(d.a==='wp'){if(t.dataset.c){S=def();save();render();msg(syOn()?'Datos borrados.':'Datos borrados.');t.textContent='Borrar todos los datos';delete t.dataset.c}else{t.dataset.c=1;t.textContent=syOn()?'Confirmar: se borra todo':'Confirmar borrado'}}
+else if(d.a==='pr'){try{window.print()}catch(x){}}
+});
+document.addEventListener('change',e=>{
+const t=e.target;
+if(t.id==='mon'&&t.value){M=t.value;render()}
+else if(t.id==='ft'){$('#fc').value='';formSync()}
+else if(t.id==='pu'){S.cfg.purl=t.value.trim();save()}
+else if(t.id==='alk'&&PC){PC.auto=+t.value;savePC()}
+else if(t.id==='thm'){S.cfg.theme=t.value;save();theme()}
+else if(t.id==='bcc'){if(BR&&BR.txt)bParse(BR.txt,BR.name,false)}
+else if(t.dataset&&t.dataset.b!==undefined&&BR&&BR.rows){const r=BR.rows[+t.dataset.b];r.v=t.value;$('#br'+t.dataset.b).classList.toggle('off',r.v==='x');bSum()}
+else if(t.id==='cur'){S.cfg.cur=(t.value||'USD').toUpperCase().replace(/[^A-Z]/g,'').slice(0,5)||'USD';t.value=S.cfg.cur;save();render()}
+});
+document.addEventListener('input',e=>{
+const t=e.target,k=t.dataset&&t.dataset.t;
+if(t.id==='fc')salSync();
+if(!k)return;
+S.tax[k]=t.tagName==='SELECT'?(k==='fs'?t.value:+t.value):(t.value===''?(TXT.includes(k)?'':0):Math.max(0,num(t.value)));
+if(k==='fs'&&S.tax.fs!=='mj'&&S.tax.n65>1)S.tax.n65=1;
+save();
+if(k==='year'||k==='fs')imp();else taxRes();
+});
+$('#f').addEventListener('submit',e=>{
+e.preventDefault();
+const t=$('#ft').value,x={id:nid(),d:$('#fd').value,t,c:$('#fc').value.trim(),x:$('#fx').value.trim(),a:cents($('#fa').value)};
+if(!x.d||!x.c||x.a<=0)return;
+if(t==='g'&&$('#fk').checked)x.k=1;
+if(t==='s'&&$('#fg').value)x.g=+$('#fg').value;
+if(t==='i'&&x.c.toLowerCase()==='salario'){x.c='Salario';const b=cents($('#fb').value),w=cents($('#fr').value);
+if(b>0&&b<x.a){toast('El bruto no puede ser menor que lo depositado.');return}
+if(w>0&&w>(b||x.a)){toast('La retención no puede ser mayor que el bruto.');return}
+if(b>0)x.gb=b;if(w>0)x.wh=w}
+S.tx.push(x);save();M=x.d.slice(0,7);
+$('#fx').value='';$('#fa').value='';$('#fc').value='';$('#fk').checked=false;$('#fb').value='';$('#fr').value='';render();
+toast('Movimiento guardado');
+});
+$('#gf').addEventListener('submit',e=>{
+e.preventDefault();
+const n=$('#gn').value.trim(),a=cents($('#ga').value);if(!n||a<=0)return;
+S.goals.push({id:nid(),n,a});save();
+$('#gn').value='';$('#ga').value='';render();toast('Meta creada');
+});
+try{applyP(JSON.parse(localStorage.getItem(PK)))}catch(e){}
+$('#fd').value=today;
+$('#tu').style.display='none';
+if(PC)lock();else{started=true;render();updP();syPull();if(needAuth())showAuth()}
+</script>
+</body>
+</html>
