@@ -479,10 +479,10 @@ dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;pad
 <div id="bccx" style="display:none">
 <label style="max-width:380px;margin:2px 0 4px">¿Qué tarjeta es?<select id="bcard"></select></label>
 <label class="chk"><input type="checkbox" id="bflip">Los cargos vienen en positivo (Discover, Amex…)</label>
-<p class="mut" style="margin:0 0 6px;font-size:14px">Las compras con la tarjeta no bajan tu dinero ahora: suben lo que debes en Deudas y se cuentan cuando pagues la tarjeta.</p></div>
+<p class="mut" style="margin:0 0 6px;font-size:14px">Las compras con la tarjeta cuentan como gasto y suben lo que debes en Deudas. El pago de la tarjeta (desde tu banco) no mueve tu saldo.</p></div>
 <p class="acts"><button class="btn p" data-a="bpick">Elegir archivo</button></p>
 <div id="bres"></div></div>
-<div class="card sec"><h2>Cómo sacar el archivo de tu banco (EE. UU.)</h2><p class="mut" style="margin-top:0">Hazlo desde la web del banco. Los menús cambian con el tiempo: si no ves el nombre exacto, busca «Download» o «Export» junto a la lista de movimientos.</p><div id="bg"></div></div>
+<div class="card sec" id="bgc"><h2>Cómo sacar el archivo de tu banco (EE. UU.)</h2><p class="mut" style="margin-top:0">Hazlo desde la web del banco. Los menús cambian con el tiempo: si no ves el nombre exacto, busca «Download» o «Export» junto a la lista de movimientos.</p><div id="bg"></div></div>
 </section>
 
 <section id="v-ahorro">
@@ -505,13 +505,15 @@ dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;pad
 <section id="v-aju">
 <div class="card" style="margin-bottom:14px"><h2>General</h2>
 <div class="grid form"><label>Moneda (código)<input id="cur" maxlength="5"></label>
-<label>Tema<select id="thm"><option value="auto">Automático (como el teléfono)</option><option value="light">Claro</option><option value="dark">Oscuro</option></select></label></div></div>
+<label>Tema<select id="thm"><option value="auto">Automático (como tu equipo)</option><option value="light">Claro</option><option value="dark">Oscuro</option></select></label>
+<label>¿Dónde vives?<select id="pais"><option value="1">Estados Unidos (con impuestos del IRS)</option><option value="0">Otro país (sin impuestos de EE. UU.)</option></select></label></div>
+<p class="mut" style="margin:12px 0 0;font-size:14px">Fuera de EE. UU. se quitan los impuestos del IRS, el sueldo bruto, la retención federal, el Seguro Social y Medicare. Todo lo demás (tu dinero, pagos, deudas, avisos, Mi año) funciona igual.</p></div>
 <div class="card" id="avc" style="margin-top:14px"><h2>Avisos de pagos</h2>
 <p class="mut" style="margin-top:0" id="avi"></p>
 <div class="grid form" id="avh"><label>¿A qué hora te aviso?<select id="avhr"></select></label></div>
 <p class="acts" style="margin-bottom:0"><button class="btn p" data-a="avok" id="avon">Activar avisos</button><button class="btn" data-a="avtest" id="avtb">Probar un aviso</button><button class="btn d" data-a="avoff" id="avoffb">Desactivar avisos</button></p>
 <p class="mut" style="margin:10px 0 0;font-size:14px">Cada pago tiene su casilla «Avisarme» en Cuentas fijas, por si no quieres aviso de alguno.</p></div>
-<div class="card" style="margin-top:14px"><h2>Tasas fiscales</h2>
+<div class="card" id="ptc" style="margin-top:14px"><h2>Tasas fiscales</h2>
 <p class="mut" style="margin-top:0" id="pt"></p>
 <p class="acts" style="align-items:center"><button class="btn p" data-a="up">Buscar actualización ahora</button><span id="ps" class="mut"></span></p>
 <details><summary class="mut">Opciones avanzadas</summary>
@@ -531,7 +533,7 @@ dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;pad
 <p class="acts"><button class="btn p" data-a="pin-set" id="b-set">Activar PIN</button><button class="btn" data-a="pin-chg" id="b-chg">Cambiar PIN</button><button class="btn d" data-a="pin-off" id="b-off">Quitar PIN</button></p>
 <div class="note">El PIN impide que otra persona abra la app.</div></div>
 <div class="card" style="margin-top:14px"><h2 id="bkh">Copia de seguridad</h2>
-<p class="mut bko" style="margin-top:0">Guarda un archivo protegido con tu PIN donde quieras (Drive, correo, WhatsApp). Para abrirlo en este u otro teléfono: instala la app, entra en Ajustes, toca «Restaurar desde archivo» y escribe el mismo PIN con el que lo creaste. Sin ese PIN no se puede recuperar.</p>
+<p class="mut bko" style="margin-top:0">Guarda un archivo protegido con tu PIN donde quieras (Drive, correo, WhatsApp). Para abrirlo en este u otro equipo: instala la app, entra en Ajustes, toca «Restaurar desde archivo» y escribe el mismo PIN con el que lo creaste. Sin ese PIN no se puede recuperar.</p>
 <p class="mut syo" style="margin-top:0;display:none">Tus datos se respaldan automáticamente en tu cuenta: los ves igual en cualquier teléfono donde entres.</p>
 <p class="acts"><button class="btn p bko" data-a="exf">Guardar copia</button><button class="btn bko" data-a="imf">Restaurar desde archivo</button><button class="btn d syo" style="display:none" data-a="sydel" id="sydel">Eliminar mi cuenta</button><button class="btn d" data-a="wp" id="wp">Borrar todos los datos</button></p>
 <details class="bko"><summary>Restaurar pegando el texto</summary>
@@ -567,7 +569,7 @@ dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:24px 24px 0 0;pad
 <div id="pad"><button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button data-k="del" aria-label="Borrar un dígito">⌫</button><button data-k="0">0</button><button data-k="ok" class="go">Entrar</button></div>
 <button class="btn" id="forgot" type="button">Olvidé mi PIN</button>
 </div></div>
-<dialog id="dlg"><form id="dlgf" method="dialog" autocomplete="off"><h2 id="dt"></h2><p class="mut" id="dtx" style="margin:0"></p><div class="flds"></div><p id="derr" role="alert"></p>
+<dialog id="dlg" aria-labelledby="dt"><form id="dlgf" method="dialog" autocomplete="off" novalidate><h2 id="dt"></h2><p class="mut" id="dtx" style="margin:0"></p><div class="flds"></div><p id="derr" role="alert"></p>
 <div class="dacts"><button class="btn" type="button" id="dalt" style="display:none"></button><span class="sp"></span><button class="btn" type="button" id="dcancel">Cancelar</button><button class="btn p" type="submit" id="dok">Aceptar</button></div></form></dialog>
 <input type="file" id="fil" hidden>
 <input type="file" id="bfil" accept=".csv,.ofx,.qfx,.qbo,.txt" hidden>
@@ -578,10 +580,12 @@ const K='cuentas-v1',PK='cuentas-params',AVK='cuentas-avisos',GUK='cuentas-guia'
 const APP_VER='3.0';
 /* Dirección de Cuentas en la web (GitHub Pages). Vacía = «Cuentas web: próximamente».
    También puede llegar sola en tax-params.json (campo "web"), si está en el mismo sitio que las tasas. */
-const WEB_URL='';
+const WEB_URL='https://yottomtnz.github.io/Cuentas/';
 let PWEB='';
 function webP(j){try{if(j&&typeof j.web==='string'&&j.web){const u=new URL(j.web);if(u.protocol==='https:'&&u.host===new URL(TAX_URL).host)PWEB=u.href}}catch(e){}}
 const webUrl=()=>WEB_URL||PWEB;
+/* ¿Usa lo de EE. UU.? (impuestos del IRS, sueldo bruto y retenciones) */
+const USA=()=>S.cfg.us!==0;
 /* ¿Corre dentro del APK (Capacitor)? */
 const isNative=()=>{const C=window.Capacitor;return!!(C&&C.isNativePlatform&&C.isNativePlatform())};
 if(isNative())document.documentElement.classList.add('native');
@@ -612,7 +616,7 @@ const NOTAX=new Set(['Me pagaron lo que me debían','Préstamo que recibí','Dev
 /* Cuentas fijas: k = 'g' (algo que pagas) o 'i' (dinero que te entra) */
 const BTP={g:['fijo','susc','deuda','tarjeta','tope'],i:['fija','var']},BF=['m','2m','q','s','a','u'];
 function defCat(k,tp){return k==='i'?(tp==='var'?'Negocio o servicios':'Salario'):({fijo:'Servicios',susc:'Suscripciones',deuda:'Deudas y préstamos',tarjeta:'Tarjetas de crédito',tope:'Alimentación'}[tp]||'Otros gastos')}
-const def=()=>({cfg:{cur:'USD',purl:'',pchk:'',pupd:'',theme:'auto'},tx:[],goals:[],bills:[],debts:[],tax:Object.assign({},TD)});
+const def=()=>({cfg:{cur:'USD',purl:'',pchk:'',pupd:'',theme:'auto',us:1},tx:[],goals:[],bills:[],debts:[],tax:Object.assign({},TD)});
 /* Valida y limpia cualquier dato guardado, restaurado o recibido de la hoja de Google */
 function norm(o){
 o=o&&typeof o==='object'?o:{};
@@ -622,6 +626,8 @@ d.cfg.purl=typeof cfg.purl==='string'?cfg.purl.slice(0,500):'';
 d.cfg.pchk=typeof cfg.pchk==='string'?cfg.pchk.slice(0,10):'';
 d.cfg.pupd=typeof cfg.pupd==='string'?cfg.pupd.slice(0,20):'';
 d.cfg.theme=['auto','light','dark'].includes(cfg.theme)?cfg.theme:'auto';
+/* us = 1: vive en EE. UU. (impuestos del IRS, sueldo bruto, retención federal...). 0: otro país, sin nada de eso */
+d.cfg.us=off(cfg.us)?0:1;
 d.goals=(Array.isArray(o.goals)?o.goals:[]).filter(g=>g&&g.n&&num(g.a)>0).map(g=>({id:+g.id||nid(),n:String(g.n).slice(0,40),a:cents(g.a)}));
 const gid=new Set(d.goals.map(g=>g.id));
 d.tx=(Array.isArray(o.tx)?o.tx:[]).filter(x=>x&&ISO.test(x.d)&&['i','g','s'].includes(x.t)&&x.c&&num(x.a)>0).map(x=>{
@@ -731,8 +737,8 @@ finally{syBusy=false}
 if(push!=null)return syPush(push);
 if(conflict){
 const n=Array.isArray(conflict.data.tx)?conflict.data.tx.length:0;
-const v=await ask({title:'Los datos son distintos',text:'Los datos de este teléfono y los de tu cuenta son distintos. Elige cuáles conservar; los otros se reemplazan.',
-fields:[{k:'w',type:'select',label:'Conservar',value:'sheet',opts:[['sheet','Los de tu cuenta ('+n+' movimientos)'],['local','Los de este teléfono ('+S.tx.length+' movimientos)']]}],ok:'Conservar'});
+const v=await ask({title:'Los datos son distintos',text:'Los datos de este equipo y los de tu cuenta son distintos. Elige cuáles conservar; los otros se reemplazan.',
+fields:[{k:'w',type:'select',label:'Conservar',value:'sheet',opts:[['sheet','Los de tu cuenta ('+n+(n===1?' movimiento)':' movimientos)')],['local','Los de este equipo ('+S.tx.length+(S.tx.length===1?' movimiento)':' movimientos)')]]}],ok:'Conservar'});
 if(!v){syStat('Pendiente: toca «Actualizar ahora» para elegir qué datos conservar.');return}
 if(v.w==='sheet'){syLocal(conflict.data,conflict.rev);syLast=Date.now();syStat('Datos de tu cuenta cargados a las '+syHora()+'.')}
 else{SY.rev=conflict.rev;saveSY();return syPush(conflict.rev)}}}
@@ -949,12 +955,17 @@ const TT={mes:'Mi mes',mov:'Movimientos',fijas:'Mis cuentas fijas',deudas:'Deuda
 const PARENT={bank:'mov',anio:'mas',ahorro:'mas',imp:'mas',aju:'mas',guia:'mas'};
 const TN={i:'Entrada',g:'Gasto',s:'Ahorro'},TC={i:0,g:1,s:2};
 const isAdj=x=>x.c===ADJ;
-/* Totales del mes: sin compras con tarjeta (se cuentan al pagar la tarjeta) ni ajustes de saldo */
-const tot=(a,t)=>a.filter(x=>x.t===t&&!x.cc&&!isAdj(x)).reduce((s,x)=>s+x.a,0);
+/* Tarjeta de crédito: la compra cuenta como gasto el día que compras (y sube lo que debes en la tarjeta).
+   El pago de la tarjeta queda anotado, baja la deuda y cuenta para los avisos, pero NO mueve tu saldo:
+   ese dinero ya se contó cuando compraste. */
+const isPay=x=>x.t==='g'&&!x.cc&&(x.c==='Tarjetas de crédito'||(!!x.db&&!!(debtById(x.db)||{}).tc));
+const cardBill=b=>b.k==='g'&&(b.tp==='tarjeta'||b.c==='Tarjetas de crédito');
+/* Totales del mes: sin pagos de tarjeta ni ajustes de saldo */
+const tot=(a,t)=>a.filter(x=>x.t===t&&!isPay(x)&&!isAdj(x)).reduce((s,x)=>s+x.a,0);
 const inM=m=>S.tx.filter(x=>x.d.startsWith(m));
 /* Saldo acumulado: todo lo que entró menos todo lo que salió (gastos y ahorro) hasta el cierre del mes m.
    Así cada mes empieza con lo que dejó el anterior, sea positivo o negativo. */
-const sgn=x=>x.cc?0:(x.t==='i'?x.a:-x.a);
+const sgn=x=>isPay(x)?0:(x.t==='i'?x.a:-x.a);
 const balTo=m=>(Math.round(S.tx.reduce((t,x)=>x.d.slice(0,7)<=m?t+sgn(x):t,0)*100)/100)||0;
 function mAdd(m,k){const[y,o]=m.split('-').map(Number),d=new Date(y,o-1+k,1);return d.getFullYear()+'-'+pad2(d.getMonth()+1)}
 const mLbl=m=>{const[y,o]=m.split('-').map(Number);return new Date(y,o-1,1).toLocaleDateString('es',{month:'short'})};
@@ -1014,7 +1025,7 @@ return res.sort((p,q)=>((p.mv||p.skip)?1:0)-((q.mv||q.skip)?1:0)||p.k.localeComp
 function topes(m){
 const T=S.bills.filter(b=>b.k==='g'&&b.tp==='tope'&&b.on&&b.st.slice(0,7)<=m),first={};
 T.forEach(b=>{if(!first[b.c])first[b.c]=b.id});
-return T.map(b=>{const used=cents(inM(m).filter(x=>x.t==='g'&&!isAdj(x)&&(x.bl===b.id||(!x.bl&&x.c===b.c&&first[b.c]===b.id))).reduce((s,x)=>s+x.a,0));return{b,used}})}
+return T.map(b=>{const used=cents(inM(m).filter(x=>x.t==='g'&&!isAdj(x)&&!isPay(x)&&(x.bl===b.id||(!x.bl&&x.c===b.c&&first[b.c]===b.id))).reduce((s,x)=>s+x.a,0));return{b,used}})}
 
 /* ---------- Deudas ---------- */
 /* Debo: lo que debías al empezar + compras con la tarjeta − pagos. Me deben: lo prestado − lo que te han pagado. */
@@ -1074,7 +1085,7 @@ function withUndo(txt,fn){const snap=JSON.stringify(S);fn();save();render();toas
 function billRow(o){
 const b=o.b,st=o.mv?'paid':o.skip?'skip':o.late?'late':o.soon?'soon':'ok';
 const txt=o.mv?'Pagado '+(o.mv.d===today?'hoy':'el '+fdate(o.mv.d))+(o.mv.cc?' con tarjeta':''):o.skip?'Este mes no toca':o.late?'Atrasado · vencía '+whenTxt(o.k):'Vence '+whenTxt(o.k);
-const met=!o.mv&&!o.skip&&b.m?' · '+esc(metLabel(b.m)):'';
+const met=(!o.mv&&!o.skip&&b.m?' · '+esc(metLabel(b.m)):'')+(cardBill(b)&&!o.skip?' · no mueve tu saldo':'');
 const act=o.mv?`<button class="ok2" data-ed="${o.mv.id}" aria-label="Ver el pago de ${esc(b.n)}">${IC.check}</button>`:o.skip?`<button class="btn sm" data-unskip="${b.id}|${o.k}">Deshacer</button>`:`<button class="btn sm p" data-pay="${b.id}|${o.k}">Pagar</button>`;
 return`<div class="brow st-${st}"><span class="bi" aria-hidden="true">${IC[st]}</span><div class="bt"><b>${esc(b.n)}</b><small>${txt}${met}</small></div><span class="ba">${o.a?fmt(o.a):'—'}</span>${act}</div>`}
 function incRow(o){
@@ -1087,7 +1098,7 @@ function mes(){
 const cm=today.slice(0,7),isCur=M===cm,a=inM(M);
 const i=tot(a,'i'),g=tot(a,'g'),s=tot(a,'s'),adj=cents(a.filter(isAdj).reduce((t,x)=>t+sgn(x),0));
 const pv=balTo(mAdd(M,-1)),sal=balTo(M);
-const due=dueList(M),open=due.filter(o=>!o.mv&&!o.skip),falta=cents(open.reduce((t,o)=>t+o.a,0));
+const due=dueList(M),open=due.filter(o=>!o.mv&&!o.skip),falta=cents(open.filter(o=>!cardBill(o.b)).reduce((t,o)=>t+o.a,0));
 const inc=incList(M),espera=cents(inc.filter(o=>!o.mv&&!o.skip).reduce((t,o)=>t+o.a,0));
 /* Comparación de gastos con el mes anterior (si es el mes en curso, hasta el mismo día) */
 const pm=mAdd(M,-1),dd=+today.slice(8),pg=tot(inM(pm).filter(x=>!isCur||+x.d.slice(8)<=dd),'g');
@@ -1122,8 +1133,8 @@ mt.innerHTML=tp.length?`<h2>Tus topes de gasto</h2>${tp.map(o=>{const p=o.b.a?Ma
 return`<div class="tope${over?' over':p>=80?' near':''}"><div class="cbh"><span>${esc(o.b.n)}</span><b>${fmt(o.used)} <small>de ${fmt(o.b.a)}</small></b></div><div class="cbt"><i style="width:${p}%"></i></div><div class="tsub"><small class="${over?'t1':'mut'}">${over?'Te pasaste por '+fmt(o.used-o.b.a):'Te quedan '+fmt(o.b.a-o.used)}</small>${M<=cm?`<button class="btn sm" data-addtope="${o.b.id}">Anotar gasto</button>`:''}</div></div>`}).join('')}`:'';
 $('#mside').style.display=ir||tp.length?'':'none';
 /* Sueldo y categorías */
-$('#sueldo').innerHTML=sueldo(M);
-const c={},ga=a.filter(x=>x.t==='g'&&!x.cc&&!isAdj(x));ga.forEach(x=>c[x.c]=(c[x.c]||0)+x.a);
+$('#sueldo').innerHTML=USA()?sueldo(M):'';
+const c={},ga=a.filter(x=>x.t==='g'&&!isPay(x)&&!isAdj(x));ga.forEach(x=>c[x.c]=(c[x.c]||0)+x.a);
 const e=Object.entries(c).sort((p,q)=>q[1]-p[1]);
 $('#cat').innerHTML=e.length?e.map(([k,v])=>{const p=v/g*100;return`<div class="cb"><div class="cbh"><span>${esc(k)}<small>${p<1?'&lt;1':p.toFixed(0)} %</small></span><b>${fmt(v)}</b></div><div class="cbt"><i style="width:${p}%"></i></div></div>`}).join(''):'<div class="empty">Sin gastos este mes.</div>';
 }
@@ -1149,10 +1160,10 @@ let rzT=0;window.addEventListener('resize',()=>{clearTimeout(rzT);rzT=setTimeout
 const ICO={i:'<svg viewBox="0 0 24 24"><path d="M17 7 7 17M7 9v8h8"/></svg>',g:'<svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>',s:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg>'};
 function txRow(x){
 const meta=[x.x?esc(x.c):TN[x.t],x.m?esc(x.m)+(x.cc?' (crédito)':''):'',x.u?'imprevisto':'',x.k?'deducible':'',x.gb?'bruto '+fmt(x.gb):'',x.wh?'retenido '+fmt(x.wh):'',x.b?'del banco':''].filter(Boolean).join(' · ');
-const cc=x.cc?'<small class="cct">Se cuenta al pagar la tarjeta</small>':'';
-return`<div class="row"><span class="ic ${x.t}" aria-hidden="true">${ICO[x.t]}</span><div><button class="ed" data-ed="${x.id}">${esc(x.x||x.c)}</button><small>${meta}</small>${x.n?`<small class="nt">${esc(x.n)}</small>`:''}${cc}</div><b class="t${TC[x.t]}${x.cc?' cc':''}">${x.t==='i'?'+':'−'}${fmt(x.a)}</b><button class="x" data-del="${x.id}" aria-label="Eliminar ${esc(x.x||x.c)}">✕</button></div>`}
+const cc=isPay(x)?'<small class="cct">Pago de tarjeta: queda anotado, no mueve tu saldo</small>':'';
+return`<div class="row"><span class="ic ${x.t}" aria-hidden="true">${ICO[x.t]}</span><div><button class="ed" data-ed="${x.id}">${esc(x.x||x.c)}</button><small>${meta}</small>${x.n?`<small class="nt">${esc(x.n)}</small>`:''}${cc}</div><b class="t${TC[x.t]}${isPay(x)?' cc':''}">${isPay(x)?'':x.t==='i'?'+':'−'}${fmt(x.a)}</b><button class="x" data-del="${x.id}" aria-label="Eliminar ${esc(x.x||x.c)}">✕</button></div>`}
 function dayList(a,withYear){
-const net={},cash={};a.forEach(x=>{net[x.d]=(net[x.d]||0)+sgn(x);if(!x.cc)cash[x.d]=1});
+const net={},cash={};a.forEach(x=>{net[x.d]=(net[x.d]||0)+sgn(x);if(!isPay(x))cash[x.d]=1});
 const yd=new Date();yd.setDate(yd.getDate()-1);const ayer=lday(yd);
 let h='',cur='';
 for(const x of a){
@@ -1185,7 +1196,7 @@ const TPN={fijo:'Pago fijo',susc:'Suscripción',deuda:'Deuda',tarjeta:'Tarjeta',
 function fRow(b){return`<div class="brow${b.on?'':' off'}" data-eb="${b.id}" role="button" tabindex="0"><span class="bi" aria-hidden="true">${b.k==='i'?IC.cash:b.tp==='tope'?IC.scale:IC.ok}</span><div class="bt"><b>${esc(b.n)}${b.on?'':' <span class="tag">pausada</span>'}</b><small>${esc(freqTxt(b))}${b.m?' · '+esc(metLabel(b.m)):''}${b.k==='g'&&b.tp!=='fijo'&&b.tp!=='tope'?' · '+TPN[b.tp]:''}</small></div><span class="ba">${b.a?fmt(b.a):'Variable'}</span><span class="bi" aria-hidden="true">›</span></div>`}
 function fijas(){
 const on=S.bills.filter(b=>b.on),pay=S.bills.filter(b=>b.k==='g'&&b.tp!=='tope'),tps=S.bills.filter(b=>b.tp==='tope'),inn=S.bills.filter(b=>b.k==='i');
-const out=cents(on.filter(b=>b.k==='g').reduce((s,b)=>s+perMonth(b),0)),inc=cents(on.filter(b=>b.k==='i').reduce((s,b)=>s+perMonth(b),0)),left=cents(inc-out);
+const out=cents(on.filter(b=>b.k==='g'&&!cardBill(b)).reduce((s,b)=>s+perMonth(b),0)),inc=cents(on.filter(b=>b.k==='i').reduce((s,b)=>s+perMonth(b),0)),left=cents(inc-out);
 const sec=(t,list,btn,empty)=>`<div class="card sec"><h2>${t}</h2>${list.length?`<div class="bl flist">${list.map(fRow).join('')}</div>`:`<p class="mut" style="margin:0">${empty}</p>`}<p class="acts" style="margin:12px 0 0">${btn}</p></div>`;
 $('#fx').innerHTML=(S.bills.length?`<div class="sumg"><div class="card"><small>Te entra al mes (aprox.)</small><b class="t0">${fmt(inc)}</b></div><div class="card"><small>Pagas al mes (aprox.)</small><b class="t1">${fmt(out)}</b></div><div class="card"><small>${left>=0?'Te sobra al mes':'Te falta al mes'}</small><b class="${left>=0?'t0':'t1'}">${fmt(Math.abs(left))}</b></div></div>`:
 `<div class="card tip"><b>Tu plan de cada mes</b><p>Aquí anotas una sola vez lo que pagas (renta, luz, carro, tarjetas, Netflix…) y lo que te entra (sueldo, negocio). Cada mes aparece solo en «Mi mes» y te aviso antes de que venza.</p><p class="acts"><button class="btn p" data-v="guia">Usar ejemplos para empezar</button></p></div>`)+
@@ -1217,14 +1228,14 @@ $('#dx').innerHTML=`<div class="sumg"><div class="card"><small>Debes en total</s
 /* ---------- Más ---------- */
 function mas(){
 const it=(ic,t,s,attr)=>`<button class="mitem" ${attr}><span class="mi" aria-hidden="true">${IC[ic]}</span><span><b>${t}</b><small>${s}</small></span></button>`;
-$('#mx').innerHTML=`<div class="mgrid">${it('year','Mi año','Resumen de cada mes y descarga en Excel','data-v="anio"')}${it('piggy','Ahorro y metas','Lo que apartas y para qué','data-v="ahorro"')}${it('scale','Ajustar mi saldo','Cuadra la app con lo que tienes de verdad','data-a="adj"')}${it('bell','Avisos de pagos',avHost()?(AV.on?'Activados':'Desactivados'):'En el teléfono y en Windows','data-a="goav"')}${it('bank','Importar del banco','Archivos CSV, OFX o QFX','data-v="bank"')}${it('tax','Impuestos de EE. UU.','Estimación del Formulario 1040','data-v="imp"')}${it('star','Primeros pasos','Arma tu plan con ejemplos','data-v="guia"')}${it('gear','Ajustes','Cuenta, PIN, copia, tema','data-v="aju"')}</div><p class="ver mut">Cuentas ${APP_VER}</p>`}
+$('#mx').innerHTML=`<div class="mgrid">${it('year','Mi año','Resumen de cada mes y descarga en Excel','data-v="anio"')}${it('piggy','Ahorro y metas','Lo que apartas y para qué','data-v="ahorro"')}${it('scale','Ajustar mi saldo','Cuadra la app con lo que tienes de verdad','data-a="adj"')}${it('bell','Avisos de pagos',avHost()?(AV.on?'Activados':'Desactivados'):'En el teléfono y en Windows','data-a="goav"')}${it('bank','Importar del banco','Archivos CSV, OFX o QFX','data-v="bank"')}${USA()?it('tax','Impuestos de EE. UU.','Estimación del Formulario 1040','data-v="imp"'):''}${it('star','Primeros pasos','Arma tu plan con ejemplos','data-v="guia"')}${it('gear','Ajustes','Cuenta, PIN, copia, tema','data-v="aju"')}</div><p class="ver mut">Cuentas ${APP_VER}</p>`}
 
 /* ---------- Mi año ---------- */
 function anio(){
 const y=String(YR),cm=today.slice(0,7),ms=[...Array(12)].map((_,k)=>y+'-'+pad2(k+1));
 const rows=ms.map(m=>{const a=inM(m);return{m,fut:m>cm,ini:balTo(mAdd(m,-1)),i:tot(a,'i'),g:tot(a,'g'),s:tot(a,'s'),fin:balTo(m)}});
 const T={i:0,g:0,s:0};rows.forEach(r=>{T.i+=r.i;T.g+=r.g;T.s+=r.s});
-const G={};S.tx.filter(x=>x.d.startsWith(y)&&x.t==='g'&&!x.cc&&!isAdj(x)).forEach(x=>{const k=grp(x);G[k]=(G[k]||0)+x.a});
+const G={};S.tx.filter(x=>x.d.startsWith(y)&&x.t==='g'&&!isPay(x)&&!isAdj(x)).forEach(x=>{const k=grp(x);G[k]=(G[k]||0)+x.a});
 const gt=GRPS.reduce((s,k)=>s+(G[k]||0),0),n0=v=>(v<0?'−':'')+nf0.format(Math.abs(Math.round(v)));
 const endY=y<cm.slice(0,4)?balTo(y+'-12'):balTo(cm);
 $('#yx').innerHTML=`<div class="ynav"><button class="btn sm" data-a="ypm" aria-label="Año anterior">‹</button><b style="font-size:20px;padding:0 6px">${y}</b><button class="btn sm" data-a="ynm" aria-label="Año siguiente">›</button></div>
@@ -1238,7 +1249,7 @@ drawChart($('#ych'),idx,idx.map(m=>{const r=rows.find(q=>q.m===m);return[r.i,r.g
 
 /* ---------- Primeros pasos ---------- */
 /* Ejemplos para empezar: [lo que dice el botón, datos que se proponen]. n:'' = el nombre lo escribe la persona */
-const GCH={i:[['Mi sueldo',{n:'Sueldo',f:'q',c:'Salario'}],['Mi negocio o trabajo propio',{n:'Mi negocio',tp:'var',f:'s',c:'Negocio o servicios'}],['Pensión o Seguro Social',{n:'Pensión',f:'m',c:'Otros ingresos'}],['Otro ingreso fijo',{n:'',c:'Otros ingresos'}]],
+const GCH={i:[['Mi sueldo',{n:'Sueldo',f:'q',c:'Salario'}],['Mi negocio o trabajo propio',{n:'Mi negocio',tp:'var',f:'s',c:'Negocio o servicios'}],['Pensión o jubilación',{n:'Pensión',f:'m',c:'Otros ingresos'}],['Otro ingreso fijo',{n:'',c:'Otros ingresos'}]],
 g:[['Renta o hipoteca',{n:'Renta',tp:'fijo',c:'Vivienda',d:1}],['Luz',{tp:'fijo',c:'Servicios'}],['Agua',{tp:'fijo',c:'Servicios'}],['Gas',{tp:'fijo',c:'Servicios'}],['Teléfono',{tp:'fijo',c:'Teléfono e internet'}],['Internet',{tp:'fijo',c:'Teléfono e internet'}],['Seguro del carro',{tp:'fijo',c:'Seguros'}],['Pago del carro',{tp:'deuda',c:'Deudas y préstamos'}],['Tarjeta de crédito',{n:'',tp:'tarjeta',c:'Tarjetas de crédito'}],['Netflix u otra suscripción',{n:'',tp:'susc',c:'Suscripciones'}],['Gimnasio',{tp:'susc',c:'Suscripciones'}],['Escuela o guardería',{n:'',tp:'fijo',c:'Educación'}],['Otro pago',{n:'',tp:'fijo',c:'Otros gastos'}]],
 t:[['Gasolina',{tp:'tope',c:'Transporte'}],['Comida y supermercado',{n:'Comida',tp:'tope',c:'Alimentación'}],['Salidas y diversión',{n:'Salidas',tp:'tope',c:'Ocio'}]]};
 const gName=(l,p)=>p.n!=null?p.n:l;
@@ -1355,7 +1366,7 @@ function ty(){const ys=years(),y=+S.tax.year;if(ys.includes(y))return y;const cy
 function det(y){
 const a=S.tx.filter(x=>x.d.startsWith(y)),inc=a.filter(x=>x.t==='i'&&!NOTAX.has(x.c)&&!x.db),f=fn=>inc.filter(fn).reduce((s,x)=>s+x.a,0),biz=['Negocio o servicios','Ventas'];
 const sal=inc.filter(x=>x.c==='Salario');
-return{w2:sal.reduce((s,x)=>s+(x.gb||x.a),0),wh:sal.reduce((s,x)=>s+(x.wh||0),0),ng:sal.filter(x=>x.gb).length,ns:sal.filter(x=>!x.gb).length,se:f(x=>biz.includes(x.c)),oth:f(x=>x.c!=='Salario'&&!biz.includes(x.c)),exp:a.filter(x=>x.t==='g'&&x.k).reduce((s,x)=>s+x.a,0)};
+return{w2:sal.reduce((s,x)=>s+(x.gb||x.a),0),wh:sal.reduce((s,x)=>s+(x.wh||0),0),ng:sal.filter(x=>x.gb).length,ns:sal.filter(x=>!x.gb).length,se:f(x=>biz.includes(x.c)),oth:f(x=>x.c!=='Salario'&&!biz.includes(x.c)),exp:a.filter(x=>x.t==='g'&&x.k&&!isPay(x)).reduce((s,x)=>s+x.a,0)};
 }
 function calc(){
 const T=S.tax,y=ty(),by=tby(y),fs=T.fs,d=det(String(y)),g=k=>(T[k]===''||T[k]==null)?d[k]:num(T[k]);
@@ -1440,6 +1451,14 @@ if(!o||o.app!=='cuentas'||o.v!==1||!(o.it>=1e5&&o.it<=3e6)||typeof o.salt!=='str
 const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(o.iv),additionalData:te.encode(AAD)},await aesKey(pin,unb64(o.salt),o.it),unb64(o.ct));
 return JSON.parse(new TextDecoder().decode(pt))}
 
+/* Montos: acepta 1530, 1530.50, 1530,50, 1,530.50 o 1.530,50 y devuelve siempre con punto decimal */
+function numNorm(s){
+s=String(s==null?'':s).trim().replace(/[\s$]/g,'');if(!s)return'';
+const c=s.lastIndexOf(','),d=s.lastIndexOf('.');
+if(c>=0&&d>=0)return c>d?s.replace(/\./g,'').replace(',','.'):s.replace(/,/g,'');
+if(c>=0)return USA()&&/^-?\d{1,3}(,\d{3})+$/.test(s)?s.replace(/,/g,''):(s.split(',').length===2?s.replace(',','.'):s.replace(/,/g,''));
+if(d>=0&&!USA()&&/^-?\d{1,3}(\.\d{3})+$/.test(s))return s.replace(/\./g,'');
+return s}
 /* Cuadro de diálogo. Campos: money, number, text, textarea, date, select (opts o groups), check, note, pw, pin.
    when(v) muestra u oculta un campo según lo elegido; alt = botón extra (p. ej. Eliminar). */
 function ask({title,text,fields=[],ok='Aceptar',danger=false,check,alt,onchange,nocancel}){
@@ -1452,7 +1471,7 @@ if(x.type==='note')return`<p class="fnote" ${w}>${esc(x.label)}</p>`;
 if(x.type==='html')return`<div ${w}>${x.html}</div>`;
 if(x.type==='check')return`<label class="chk" ${w}><input type="checkbox" data-k="${x.k}"${x.value==='1'?' checked':''}>${esc(x.label)}</label>`;
 if(x.type==='select')h=`<select data-k="${x.k}">${(x.groups||[['',x.opts]]).map(([g,os])=>g?`<optgroup label="${esc(g)}">${os.map(([o,t])=>op(o,t,x.value)).join('')}</optgroup>`:os.map(([o,t])=>op(o,t,x.value)).join('')).join('')}</select>`;
-else if(x.type==='number'||x.type==='money')h=`<input type="number" step="0.01"${x.neg?'':' min="0"'} inputmode="decimal" autocomplete="off" data-k="${x.k}" value="${esc(x.value==null?'':x.value)}"${x.type==='money'?' class="big"':''} placeholder="${esc(x.ph||'0.00')}">`;
+else if(x.type==='number'||x.type==='money')h=`<input type="text" inputmode="${x.neg?'text':'decimal'}" data-num="1" autocomplete="off" spellcheck="false" data-k="${x.k}" value="${esc(x.value==null?'':x.value)}"${x.type==='money'?' class="big"':''} placeholder="${esc(x.ph||'0.00')}">`;
 else if(x.type==='text')h=`<input type="text" maxlength="${x.max||80}" autocomplete="off" data-k="${x.k}" value="${esc(x.value||'')}"${x.ph?` placeholder="${esc(x.ph)}"`:''}>`;
 else if(x.type==='date')h=`<input type="date" data-k="${x.k}" value="${esc(x.value||'')}">`;
 else if(x.type==='textarea')h=`<textarea data-k="${x.k}" maxlength="${x.max||300}" rows="2"${x.ph?` placeholder="${esc(x.ph)}"`:''}>${esc(x.value||'')}</textarea>`;
@@ -1461,7 +1480,7 @@ else h=`<input type="password" inputmode="numeric" autocomplete="off" maxlength=
 return`<label ${w}>${esc(x.label)}${h}</label>`};
 f.querySelector('.flds').innerHTML=fields.map(fld).join('');
 const el=k=>f.querySelector(`[data-k="${k}"]`);
-const vals=()=>{const v={};f.querySelectorAll('[data-k]').forEach(i=>v[i.dataset.k]=i.type==='checkbox'?(i.checked?'1':'0'):i.value);return v};
+const vals=()=>{const v={};f.querySelectorAll('[data-k]').forEach(i=>v[i.dataset.k]=i.type==='checkbox'?(i.checked?'1':'0'):i.dataset.num?numNorm(i.value):i.value);return v};
 const vis=()=>{const v=vals();fields.forEach((x,i)=>{if(x.when){const e=f.querySelector(`[data-i="${i}"]`);if(e)e.style.display=x.when(v)?'':'none'}})};
 f.oninput=vis;f.onchange=e=>{if(onchange&&e.target.dataset)onchange(e.target.dataset.k,vals(),el);vis()};vis();
 f.onclick=e=>{const b=e.target.closest('[data-copy]');if(!b)return;e.preventDefault();const t=b.dataset.copy,ok=()=>{b.textContent='Copiado ✓'},no=()=>{b.textContent='Cópialo a mano'};
@@ -1507,13 +1526,14 @@ const fl=[
 {k:'d',label:'Fecha',type:'date',value:ed?cur.d:(p.d||today)},
 {k:'m',label:t0==='i'?'¿Cómo te llegó? (opcional)':'¿Con qué pagaste?',type:'select',opts:metOpts(t0!=='i',mv0),value:mv0,when:v=>!v.c.startsWith('s:')},
 {k:'mo',label:'¿Con qué?',type:'text',max:40,value:'',when:v=>v.m==='__otro'},
-{k:'_cc',type:'note',label:'Con tarjeta de crédito no baja tu dinero ahora: se cuenta cuando pagues la tarjeta.',when:v=>v.m.startsWith('tc:')&&v.c.startsWith('g:')},
+{k:'_cc',type:'note',label:'Con tarjeta de crédito: cuenta como gasto hoy y sube lo que debes en la tarjeta. Cuando pagues la tarjeta, ese pago no se vuelve a contar.',when:v=>v.m.startsWith('tc:')&&v.c.startsWith('g:')},
+{k:'_pt',type:'note',label:'Pago de tarjeta: queda anotado y baja lo que debes en la tarjeta, pero no mueve tu saldo (lo que compraste ya se contó).',when:v=>v.c==='g:Tarjetas de crédito'&&!v.m.startsWith('tc:')},
 {k:'dbd',label:'¿Qué deuda pagaste?',type:'select',opts:[['','Ninguna en especial'],...dD.map(q=>[String(q.id),q.n])],value:db0,when:v=>dD.length>0&&DSEL[v.c.slice(2)]==='dbd'&&v.c.startsWith('g:')},
 {k:'dbm',label:'¿Quién te pagó?',type:'select',opts:[['','No está en mis deudas'],...dM.map(q=>[String(q.id),q.n])],value:db0,when:v=>dM.length>0&&v.c==='i:Me pagaron lo que me debían'},
-{k:'gb',label:'Bruto del talón (opcional)',type:'number',value:cur.gb||'',when:v=>v.c==='i:Salario'},
-{k:'wh',label:'Retención federal FWT (opcional, sin Seguro Social ni Medicare)',type:'number',value:cur.wh||'',when:v=>v.c==='i:Salario'},
+{k:'gb',label:'Bruto del talón (opcional)',type:'number',value:cur.gb||'',when:v=>v.c==='i:Salario'&&USA()},
+{k:'wh',label:'Retención federal FWT (opcional, sin Seguro Social ni Medicare)',type:'number',value:cur.wh||'',when:v=>v.c==='i:Salario'&&USA()},
 {k:'u',label:'Fue un imprevisto',type:'check',value:(ed?cur.u:p.u)?'1':'0',when:v=>v.c.startsWith('g:')},
-{k:'k',label:'Gasto deducible del negocio',type:'check',value:cur.k?'1':'0',when:v=>v.c.startsWith('g:')&&(biz||v.c==='g:Negocio')},
+{k:'k',label:'Gasto deducible del negocio',type:'check',value:cur.k?'1':'0',when:v=>USA()&&v.c.startsWith('g:')&&v.c!=='g:Tarjetas de crédito'&&(biz||v.c==='g:Negocio')},
 {k:'n',label:'Nota (opcional)',type:'textarea',max:300,value:ed?(cur.n||''):(p.n||''),ph:'Lo que quieras recordar de esto'}];
 const v=await ask({title:p.title||(ed?'Movimiento':t0==='i'?'Entró dinero':t0==='s'?'Anotar ahorro':'Salió dinero'),text:p.text||(ed&&cur.b?'Importado del banco.':''),fields:fl,ok:p.ok||(ed?'Guardar':'Anotar'),alt:ed?{label:'Eliminar',danger:true}:p.alt,
 check:v=>{const a=cents(v.a);if(a<=0)return'Escribe cuánto.';if(!ISO.test(v.d||'')||!iso(...v.d.split('-')))return'Escribe una fecha válida.';
@@ -1521,9 +1541,10 @@ if(v.c.endsWith(':__otra')&&!v.co.trim())return'Escribe el nombre de la categor�
 if(v.c==='i:Salario'){const b=cents(v.gb),w=cents(v.wh);if(b>0&&b<a)return'El bruto no puede ser menor que lo que entró.';if(w>0&&w>(b||a))return'La retención no puede ser mayor que el bruto.'}
 if(v.m==='__otro'&&!v.c.startsWith('s:')&&!v.mo.trim())return'Escribe con qué pagaste.';return''}});
 if(!v)return null;
-if(v.__alt){if(ed)withUndo('Movimiento eliminado',()=>{S.tx=S.tx.filter(q=>q!==cur)});return v}
+if(ed&&!S.tx.some(q=>q.id===cur.id)){toast('Ese movimiento cambió en otro equipo. Ábrelo de nuevo.');return null}
+if(v.__alt){if(ed)withUndo('Movimiento eliminado',()=>{S.tx=S.tx.filter(q=>q.id!==cur.id)});return v}
 withUndo(ed?'Guardado':'Anotado',()=>{
-const r=ed?cur:{id:nid()},nt=v.c.slice(0,1),nc=catVal(v),prevDb=ed?cur.db:p.db;
+const r=ed?S.tx.find(q=>q.id===cur.id):{id:nid()},nt=v.c.slice(0,1),nc=catVal(v),prevDb=ed?cur.db:p.db;
 r.t=nt;r.c=nc;r.a=cents(v.a);r.d=v.d;r.x=v.x.trim().slice(0,80);
 ['m','cc','db','u','k','g','gb','wh','n'].forEach(q=>delete r[q]);
 if(!ed){if(p.bl)r.bl=p.bl;if(p.pd)r.pd=p.pd}
@@ -1543,10 +1564,10 @@ return v}
 const editTx=id=>{const x=S.tx.find(q=>String(q.id)===String(id));if(x)movDialog(x.t,x)};
 async function payBill(id,k){const b=billById(id);if(!b)return;
 const v=await movDialog('g',null,{title:b.n,ok:'Anotar pago',text:(k<today?'Vencía ':'Vence ')+whenTxt(k)+'.'+(b.nt?' '+b.nt:''),a:estA(b)||'',c:b.c,x:b.n,m:b.m,bl:b.id,pd:k,db:b.db,alt:{label:'Este mes no toca'}});
-if(v&&v.__alt)withUndo('Listo: '+b.n+' no toca esta vez',()=>{if(!b.sk.includes(k))b.sk.push(k)})}
+if(v&&v.__alt)withUndo('Listo: '+b.n+' no toca esta vez',()=>{const b2=billById(b.id);if(b2&&!b2.sk.includes(k))b2.sk.push(k)})}
 async function rcvInc(id,k){const b=billById(id);if(!b)return;
 const v=await movDialog('i',null,{title:b.n,ok:'Ya llegó',text:(k<today?'Debía llegar ':'Llega ')+whenTxt(k)+'.',a:estA(b)||'',c:b.c,x:b.n,m:b.m,bl:b.id,pd:k,alt:{label:'No llegó'}});
-if(v&&v.__alt)withUndo('Anotado: no llegó',()=>{if(!b.sk.includes(k))b.sk.push(k)})}
+if(v&&v.__alt)withUndo('Anotado: no llegó',()=>{const b2=billById(b.id);if(b2&&!b2.sk.includes(k))b2.sk.push(k)})}
 function unskip(id,k){const b=billById(id);if(b)withUndo('Listo',()=>{b.sk=b.sk.filter(q=>q!==k)})}
 function addTope(id){const b=billById(id);if(b)movDialog('g',null,{c:b.c,x:b.n,bl:b.id})}
 async function debtPay(id){const dd=debtById(id);if(!dd)return;
@@ -1577,6 +1598,7 @@ const fl=[
 {k:'m',label:k==='i'?'¿Cómo te llega?':'¿Con qué lo pagas?',type:'select',opts:metOpts(k==='g',cur.m),value:cur.m,when:v=>v.tp!=='tope'},
 {k:'mo',label:'¿Con qué?',type:'text',max:40,value:'',when:v=>v.m==='__otro'&&v.tp!=='tope'},
 {k:'dt',label:dd?'¿Cuánto debes hoy?':'¿Cuánto debes en total hoy? (opcional)',type:'number',value:dd?rem:'',when:v=>v.tp==='deuda'||v.tp==='tarjeta'},
+{k:'_tn',type:'note',label:'El pago de la tarjeta te lo recuerdo y queda anotado, pero no mueve tu saldo: lo que compras con ella se cuenta el día de la compra.',when:v=>v.tp==='tarjeta'},
 {k:'c',label:'Categoría',type:'select',groups:catGroups(k,k+':'+(cur.c||defCat(k,cur.tp))),value:k+':'+(cur.c||defCat(k,cur.tp))},
 {k:'co',label:'Nombre de la categoría',type:'text',max:40,value:'',ph:'Ej.: Mascotas',when:v=>v.c.endsWith(':__otra')},
 {k:'av',label:'Avisarme antes de que venza',type:'check',value:cur.av?'1':'0',when:v=>k==='g'&&v.tp!=='tope'},
@@ -1589,9 +1611,10 @@ if(v.c.endsWith(':__otra')&&!v.co.trim())return'Escribe el nombre de la categor�
 if(v.tp!=='tope'&&!isM(v.f)&&!ISO.test(v.st||''))return'Elige la fecha.';if(v.m==='__otro'&&v.tp!=='tope'&&!v.mo.trim())return'Escribe con qué lo pagas.';
 if(v.tp!=='tope'&&num(v.a)<0)return'El monto no puede ser negativo.';return''}});
 if(!v)return;
-if(v.__alt){withUndo(b0.n+' eliminada de tus cuentas fijas',()=>{S.bills=S.bills.filter(q=>q!==b0)});return}
+if(b0&&!billById(b0.id)){toast('Esa cuenta fija cambió en otro equipo. Ábrela de nuevo.');return}
+if(v.__alt){withUndo(b0.n+' eliminada de tus cuentas fijas',()=>{S.bills=S.bills.filter(q=>q.id!==b0.id)});return}
 withUndo(b0?'Guardado':'Agregado a tus cuentas fijas',()=>{
-const b=b0||{id:nid(),k,sk:[],db:0,st:today,on:1};
+const b=b0?billById(b0.id):{id:nid(),k,sk:[],db:0,st:today,on:1};
 b.n=v.n.trim().slice(0,40);b.tp=v.tp;b.a=cents(v.tp==='tope'?v.at:v.a);b.f=v.tp==='tope'?'m':v.f;b.d=+v.d||1;b.d2=+v.d2||15;
 if(!b0&&v.ya==='0'&&isM(b.f))b.st=today.slice(0,8)+'01';
 if(b.tp!=='tope'&&!isM(b.f)){const step={q:14,s:7}[b.f];if(!(b0&&step&&b0.f===b.f&&v.st>=b0.st&&dDiff(v.st,b0.st)%step===0))b.st=v.st}
@@ -1616,9 +1639,10 @@ const fl=[
 const v=await ask({title:d0?d0.n:dir==='me'?'Alguien me debe':p.tc?'Tarjeta de crédito':'Algo que debo',text:d0?'':dir==='me'?'Cada vez que te pague, toca «Me pagó».':'Cada pago que anotes baja lo que debes.',fields:fl,ok:'Guardar',alt:d0?{label:'Eliminar',danger:true}:null,
 check:v=>{if(!v.n.trim())return'Escribe un nombre.';if(!d0&&cents(v.a)<=0)return'Escribe cuánto.';if(v.pm==='1'&&cents(v.pa)<=0)return'Escribe cuánto pagas cada mes.';return''}});
 if(!v)return;
-if(v.__alt){withUndo(d0.n+' eliminada',()=>{S.debts=S.debts.filter(q=>q!==d0);S.bills.forEach(b=>{if(b.db===d0.id)b.db=0})});return}
+if(d0&&!debtById(d0.id)){toast('Esa deuda cambió en otro equipo. Ábrela de nuevo.');return}
+if(v.__alt){withUndo(d0.n+' eliminada',()=>{S.debts=S.debts.filter(q=>q.id!==d0.id);S.bills.forEach(b=>{if(b.db===d0.id)b.db=0})});return}
 withUndo(d0?'Guardado':'Agregado a tus deudas',()=>{
-const tc=dir==='debo'&&v.tc==='1'?1:0,n=v.n.trim().slice(0,40),a=cents(v.a);let x=d0;
+const tc=dir==='debo'&&v.tc==='1'?1:0,n=v.n.trim().slice(0,40),a=cents(v.a);let x=d0?debtById(d0.id):null;
 if(x){x.n=n;x.tc=tc;x.nt=v.nt.trim().slice(0,300);if(v.a!==''){const r0=debtInfo(x).rem;x.a=Math.max(0,cents(x.a+(a-r0)))}}
 else{x={id:nid(),n,dir,a,st:today,nt:v.nt.trim().slice(0,300),tc,on:1};S.debts.push(x);
 if(v.mv==='1'&&!tc)S.tx.push({id:nid(),d:today,t:dir==='me'?'g':'i',c:dir==='me'?'Préstamo que di':'Préstamo que recibí',x:(dir==='me'?'Préstamo a ':'Préstamo de ')+n,a,db:x.id,pd:'inicio'})}
@@ -1643,12 +1667,13 @@ try{await deliver(name,'﻿'+rows.map(r=>r.map(csvQ).join(',')).join('\r\n'),t1,
 function txCsv(y){
 y=String(y);const a=S.tx.filter(x=>x.d.startsWith(y)).sort((p,q)=>p.d.localeCompare(q.d)||p.id-q.id);
 if(!a.length){toast('No hay movimientos de '+y+'.');return}
-const R=[['Fecha','Tipo','Categoría','Grupo','Descripción','Monto','Con qué','Con tarjeta de crédito','Imprevisto','Nota','Gasto deducible','Bruto del salario','Impuesto federal retenido']];
-a.forEach(x=>R.push([x.d,TN[x.t],x.c,x.t==='g'?grp(x):x.t==='s'?'Ahorro':'Entradas',x.x,n2(x.a),x.m||'',x.cc?'Sí':'',x.u?'Sí':'',x.n||'',x.k?'Sí':'',x.gb?n2(x.gb):'',x.wh?n2(x.wh):'']));
+const us=USA(),R=[['Fecha','Tipo','Categoría','Grupo','Descripción','Monto','Con qué','Con tarjeta de crédito','Pago de tarjeta (no mueve el saldo)','Imprevisto','Nota','Gasto deducible','Bruto del salario','Impuesto federal retenido']];
+a.forEach(x=>R.push([x.d,TN[x.t],x.c,x.t==='g'?grp(x):x.t==='s'?'Ahorro':'Entradas',x.x,n2(x.a),x.m||'',x.cc?'Sí':'',isPay(x)?'Sí':'',x.u?'Sí':'',x.n||'',x.k?'Sí':'',x.gb?n2(x.gb):'',x.wh?n2(x.wh):'']));
+if(!us)R.forEach(r=>r.splice(-3,3));
 sendCsv('cuentas-movimientos-'+y+'.csv',R,'Movimientos de '+y)}
 function yearCsv(){
 const y=String(YR),cm=today.slice(0,7),R=[['Mes','Empezó con','Entró',...GRPS,'Ahorro','Terminó con']],T=Array(GRPS.length+2).fill(0);
-for(let k=1;k<=12;k++){const m=y+'-'+pad2(k);if(m>cm)break;const a=inM(m),G={};a.filter(x=>x.t==='g'&&!x.cc&&!isAdj(x)).forEach(x=>{const g=grp(x);G[g]=(G[g]||0)+x.a});
+for(let k=1;k<=12;k++){const m=y+'-'+pad2(k);if(m>cm)break;const a=inM(m),G={};a.filter(x=>x.t==='g'&&!isPay(x)&&!isAdj(x)).forEach(x=>{const g=grp(x);G[g]=(G[g]||0)+x.a});
 const vals=[tot(a,'i'),...GRPS.map(g=>G[g]||0),tot(a,'s')];vals.forEach((v,i)=>T[i]+=v);
 R.push([cap(mName(m)),n2(balTo(mAdd(m,-1))),...vals.map(n2),n2(balTo(m))])}
 if(R.length===1){toast('No hay datos de '+y+'.');return}
@@ -1736,7 +1761,7 @@ if(!PC)return;
 if(document.hidden){if(Date.now()<holdUntil)return;hiddenAt=Date.now();if(PC.auto===0)lock()}
 else{const h=hiddenAt;hiddenAt=0;if(h&&!locked&&(Date.now()-h)/1000>=PC.auto)lock()}});
 $('#forgot').addEventListener('click',async()=>{
-const v=await ask({title:'¿Olvidaste el PIN?',text:syCfg?'No hay forma de recuperarlo. Puedes borrar los datos de este teléfono y entrar de nuevo con tu cuenta: tus datos siguen guardados en ella.':'No hay forma de recuperarlo. Puedes borrar todos los datos de este teléfono y empezar de cero. Si tienes una copia de seguridad, podrás restaurarla después con el PIN con el que la creaste.',ok:'Borrar todo',danger:true});
+const v=await ask({title:'¿Olvidaste el PIN?',text:syCfg?'No hay forma de recuperarlo. Puedes borrar los datos de este equipo y entrar de nuevo con tu cuenta: tus datos siguen guardados en ella.':'No hay forma de recuperarlo. Puedes borrar todos los datos de este equipo y empezar de cero. Si tienes una copia de seguridad, podrás restaurarla después con el PIN con el que la creaste.',ok:'Borrar todo',danger:true});
 if(v){try{[K,PN,PK,SK,AVK,GUK].forEach(k=>localStorage.removeItem(k))}catch(e){}location.reload()}});
 
 /* Activar, cambiar y quitar el PIN */
@@ -1784,7 +1809,7 @@ if(!v)return;
 }else if(o&&Array.isArray(o.tx)&&o.cfg){data=o}
 else{msg('Eso no es una copia válida. Usa el archivo de la copia o pega su contenido completo.');return}
 const n=S.tx.length+S.goals.length+S.bills.length+S.debts.length;
-if(n){const c=await ask({title:'Reemplazar los datos',text:'Este teléfono ya tiene datos ('+S.tx.length+' movimientos). Al restaurar se reemplazan por los de la copia.',ok:'Reemplazar',danger:true});if(!c)return}
+if(n){const c=await ask({title:'Reemplazar los datos',text:'Este equipo ya tiene datos ('+S.tx.length+' movimientos). Al restaurar se reemplazan por los de la copia.',ok:'Reemplazar',danger:true});if(!c)return}
 S=norm(data);save();
 if(pin){PC=await mkPC(pin,PC?PC.auto:60);savePC()}
 render();msg(pin?'Datos restaurados. El PIN de esta app ahora es el de la copia.':'Datos restaurados.')}
@@ -1886,7 +1911,7 @@ if(!rows.length){BR={err:'No encontré movimientos en ese archivo. Revisa que se
 const fixed=ff==='OFX'||split;
 fb.disabled=fixed;if(fixed)fb.checked=false;
 if(auto){
-if(ff==='OFX'&&/<CCSTMTRS>|<CREDITCARDMSGSRSV1>/i.test(t)){cb.checked=true;note='Es el archivo de una tarjeta de crédito: las compras se cuentan en tu dinero cuando pagues la tarjeta.'}
+if(ff==='OFX'&&/<CCSTMTRS>|<CREDITCARDMSGSRSV1>/i.test(t)){cb.checked=true;note='Es el archivo de una tarjeta de crédito: las compras cuentan como gasto y suben lo que debes en la tarjeta.'}
 else if(!fixed){const p=rows.filter(r=>r.s>0).length;if(rows.length>=8&&p/rows.length>=.75){cb.checked=true;fb.checked=true;note='Parece una tarjeta de crédito con los cargos en positivo, así que marqué las casillas. Si no lo es, desmárcalas.'}}}
 const cc=cb.checked,flip=cc&&fb.checked&&!fixed;
 bCards();
@@ -1906,7 +1931,7 @@ const og=(l,t,cs,v)=>`<optgroup label="${esc(l)}">${cs.map(c=>`<option value="${
 const op=v=>og('Entró dinero','i',CATS.i,v)+Object.entries(GCAT).map(([g,cs])=>og('Salió · '+g,'g',cs,v)).join('')+`<option value="x"${v==='x'?' selected':''}>No importar</option>`;
 const n=BR.rows.length,dn=BR.rows.filter(r=>r.dup).length,ds=BR.rows.map(r=>r.d).sort();
 el.innerHTML=`<div class="note" style="margin-top:12px"><b>${esc(BR.name)}</b> · ${n} movimientos del ${ds[0]} al ${ds[n-1]}.${dn?` ${dn} ya estaban importados y quedan sin marcar.`:''}${BR.note?'<br>'+esc(BR.note):''}</div>
-<p class="mut" style="margin:12px 0 8px">${BR.cc?'Son compras con la tarjeta: no bajan tu dinero ahora, suben lo que debes en la tarjeta. Los pagos a la tarjeta quedan en «No importar» porque se anotan desde el archivo de tu banco.':'Revisa la categoría de cada uno. Las transferencias entre tus cuentas quedan en «No importar» para no contarlas dos veces. Los pagos de tu tarjeta de crédito entran como «Tarjetas de crédito».'}</p>
+<p class="mut" style="margin:12px 0 8px">${BR.cc?'Son compras con la tarjeta: cuentan como gasto y suben lo que debes en la tarjeta. Los pagos a la tarjeta quedan en «No importar» porque se anotan desde el archivo de tu banco.':'Revisa la categoría de cada uno. Las transferencias entre tus cuentas quedan en «No importar» para no contarlas dos veces. Los pagos de tu tarjeta de crédito entran como «Tarjetas de crédito»: quedan anotados y bajan la deuda, pero no mueven tu saldo.'}</p>
 <div id="bsum" class="trio l" style="margin-bottom:8px"></div>
 <div>${BR.rows.slice(0,2000).map((r,i)=>`<div class="bk${r.v==='x'?' off':''}" id="br${i}"><div>${esc(r.x)}<small>${r.d.slice(8)}/${r.d.slice(5,7)}/${r.d.slice(0,4)} · <span class="t${r.s>0?0:1}">${r.s>0?'+':'−'}${fmt(Math.abs(r.s))}</span>${r.dup?' · ya importado':''}</small></div><select data-b="${i}" aria-label="Categoría">${op(r.v)}</select></div>`).join('')}</div>
 <p class="acts" style="margin-top:14px"><button class="btn p" data-a="bgo" id="bgo"></button><button class="btn" data-a="bno">Cancelar</button></p>`;
@@ -1916,7 +1941,7 @@ const a=BR.rows.filter(r=>r.v!=='x');if(!a.length)return;
 const cc=BR.cc;let card=null,fresh=false;
 if(cc&&a.some(r=>r.v[0]==='g')){const sv=$('#bcard').value;
 if(sv&&sv!=='__new')card=debtById(sv)||null;
-if(!card){const v=await ask({title:'¿De qué tarjeta es?',text:'La anoto en Deudas: las compras suben lo que debes y se cuentan en tu dinero cuando pagues la tarjeta.',fields:[{k:'n',label:'Nombre de la tarjeta',type:'text',max:40,ph:'Ej.: Discover'},{k:'a',label:'¿Cuánto debías en la tarjeta antes de estas compras? (opcional)',type:'number'}],ok:'Seguir',check:v=>v.n.trim()?'':'Escribe el nombre de la tarjeta.'});
+if(!card){const v=await ask({title:'¿De qué tarjeta es?',text:'La anoto en Deudas: las compras cuentan como gasto y suben lo que debes en la tarjeta.',fields:[{k:'n',label:'Nombre de la tarjeta',type:'text',max:40,ph:'Ej.: Discover'},{k:'a',label:'¿Cuánto debías en la tarjeta antes de estas compras? (opcional)',type:'number'}],ok:'Seguir',check:v=>v.n.trim()?'':'Escribe el nombre de la tarjeta.'});
 if(!v||!BR)return;card={id:nid(),n:v.n.trim().slice(0,40),dir:'debo',a:cents(v.a),st:today,nt:'',tc:1,on:1};fresh=true}}
 const cs=cards(),one=cs.length===1?cs[0]:null,mx=a.map(r=>r.d).sort().pop();
 withUndo(a.length+' movimientos importados',()=>{
@@ -1927,7 +1952,8 @@ else if(!cc&&t==='g'&&c==='Tarjetas de crédito'&&one)x.db=one.id;
 S.tx.push(x)});
 BR=null;M=mx.slice(0,7);V='mov'})}
 function bankView(){
-$('#bg').innerHTML=BGD.map(([n,f,s,t])=>`<details class="g"><summary>${n}&nbsp;<span class="mut">· ${f}</span></summary><p>${s}</p><p><b>Ojo:</b> ${t}</p></details>`).join('')+`<div class="note"><b>Para tener tu salario real:</b> importa la cuenta donde cae tu depósito. Cada depósito de nómina entra como Salario, pero es lo que llegó al banco (neto). Después toca ese movimiento en Movimientos para anotar el bruto y la retención del talón de pago: son los que cuentan para el 1040.<br><b>Tarjetas de crédito:</b> importa el archivo de la tarjeta marcando «Es de una tarjeta de crédito». Sus compras suben lo que debes; el pago de la tarjeta, que viene en el archivo de tu banco, es el que baja tu dinero. Así nada se cuenta dos veces.<br><b>Duplicados:</b> puedes importar cada semana o quincena; lo que ya cargaste se reconoce y no se repite.<br><b>Seguridad:</b> esos archivos traen datos sensibles; bórralos de Descargas al terminar.</div>`;
+$('#bg').innerHTML=BGD.map(([n,f,s,t])=>`<details class="g"><summary>${n}&nbsp;<span class="mut">· ${f}</span></summary><p>${s}</p><p><b>Ojo:</b> ${t}</p></details>`).join('')+`<div class="note"><b>Para tener tu salario real:</b> importa la cuenta donde cae tu depósito. Cada depósito de nómina entra como Salario, pero es lo que llegó al banco (neto). Después toca ese movimiento en Movimientos para anotar el bruto y la retención del talón de pago: son los que cuentan para el 1040.<br><b>Tarjetas de crédito:</b> importa el archivo de la tarjeta marcando «Es de una tarjeta de crédito». Sus compras cuentan como gasto y suben lo que debes; el pago de la tarjeta, que viene en el archivo de tu banco, baja la deuda sin mover tu saldo. Así nada se cuenta dos veces.<br><b>Duplicados:</b> puedes importar cada semana o quincena; lo que ya cargaste se reconoce y no se repite.<br><b>Seguridad:</b> esos archivos traen datos sensibles; bórralos de Descargas al terminar.</div>`;
+$('#bgc').style.display=USA()?'':'none';
 bCards();bRender()}
 $('#bfil').addEventListener('change',async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
 if(f.size>8e6){BR={err:'Ese archivo es demasiado grande.'};bRender();return}
@@ -1936,7 +1962,7 @@ try{bParse(await f.text(),f.name,true)}catch(x){BR={err:'No pude leer el archivo
 /* ---------- Ajustes ---------- */
 function aju(){
 syUI();
-$('#cur').value=S.cfg.cur;$('#pu').value=S.cfg.purl||'';$('#thm').value=S.cfg.theme;
+$('#cur').value=S.cfg.cur;$('#pu').value=S.cfg.purl||'';$('#thm').value=S.cfg.theme;$('#pais').value=USA()?'1':'0';$('#ptc').style.display=USA()?'':'none';
 const ys=years();$('#pt').textContent='Tablas disponibles: '+ys.map(v=>v+(v===ESTY?' (estimación automática)':'')).join(', ')+(S.cfg.pchk?'. Última revisión: '+S.cfg.pchk:'')+'.';
 $('#pst').textContent=PC?'El PIN está activado.':'El PIN está desactivado: cualquiera que abra la app verá tus datos.';
 $('#b-set').style.display=PC?'none':'';$('#b-chg').style.display=$('#b-off').style.display=PC?'':'none';
@@ -1956,6 +1982,7 @@ $('#syv').style.display=syOn()&&SY.sv===1?'':'none';
 /* ---------- Pantallas ---------- */
 const RV={mes,mov:movs,fijas,deudas,mas,anio,guia,bank:bankView,ahorro,imp,aju};
 function render(){
+if(V==='imp'&&!USA())V='mas';
 const top=PARENT[V]||V;
 document.querySelectorAll('#nav button').forEach(b=>{const on=b.dataset.v===top;b.classList.toggle('on',on);on?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
 document.querySelectorAll('main>section').forEach(s=>s.classList.toggle('on',s.id==='v-'+V));
@@ -2049,10 +2076,11 @@ else if(d.a==='pr'){try{window.print()}catch(x){}}
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-eb]')){e.preventDefault();e.target.click()}});
 document.addEventListener('change',e=>{
 const t=e.target;if(t.closest&&t.closest('dialog'))return;
-if(t.id==='mon'&&t.value){M=t.value;render()}
+if(t.id==='mon'&&/^\d{4}-(0[1-9]|1[0-2])$/.test(t.value)){M=t.value;render()}
 else if(t.id==='pu'){S.cfg.purl=t.value.trim();save()}
 else if(t.id==='alk'&&PC){PC.auto=+t.value;savePC()}
 else if(t.id==='thm'){S.cfg.theme=t.value;save();theme()}
+else if(t.id==='pais'){S.cfg.us=t.value==='0'?0:1;save();render();toast(S.cfg.us?'Listo: con impuestos de EE. UU.':'Listo: sin impuestos de EE. UU.'+(S.cfg.cur==='USD'?' Si usas otra moneda, cámbiala en «Moneda» (por ejemplo CUP).':''))}
 else if(t.id==='avhr'){AV.h=+t.value;saveAV();avLast='';avSync(true)}
 else if(t.id==='bcc'){$('#bccx').style.display=t.checked?'':'none';if(BR&&BR.txt)bParse(BR.txt,BR.name,false)}
 else if(t.id==='bflip'){if(BR&&BR.txt)bParse(BR.txt,BR.name,false)}
