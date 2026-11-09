@@ -1,9 +1,9 @@
 {
  "name": "Cuentas",
  "short_name": "Cuentas",
- "description": "Tu dinero en un solo lugar: gastos, entradas, cuentas fijas, deudas e impuestos.",
+ "description": "Ingresos, gastos y deudas en un solo lugar: plan de cuentas, balance, cuentas fijas e impuestos de EE. UU.",
  "lang": "es",
- "start_url": "./",
+ "start_url": "./app/",
  "scope": "./",
  "display": "standalone",
  "background_color": "#070914",

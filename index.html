@@ -2,126 +2,348 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cuentas · Tu dinero en un solo lugar — web, Android y Windows</title>
-<meta name="description" content="Cuentas: gastos, entradas, cuentas fijas, deudas, metas e impuestos de EE. UU. en la nube. Web, Android y Windows.">
-<link rel="icon" type="image/png" href="icon-512.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cuentas · Tu dinero en un solo lugar</title>
+<meta name="description" content="Cuentas: lo que entra, lo que sale y lo que debes, en un solo lugar. Plan de cuentas, deudas, cuentas fijas con avisos e impuestos de EE. UU. En el teléfono, la computadora o el navegador.">
+<meta name="theme-color" content="#060a14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cuentas claras">
+<meta property="og:description" content="Lo que entra, lo que sale y lo que debes, en un solo lugar. Web, Android y Windows.">
+<meta property="og:url" content="https://yottomtnz.github.io/Cuentas/">
+<meta property="og:image" content="https://yottomtnz.github.io/Cuentas/capturas/portada.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#070914; --panel:#0d1226; --panel2:#111834;
-    --teal:#2dd4bf; --teal2:#5eead4; --amber:#f5b73e;
-    --txt:#eef2f7; --dim:#9fb0c3; --line:#1e2a4a;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);color:var(--txt);font-family:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55}
-  body::before{content:'';position:fixed;inset:0;background:radial-gradient(700px 420px at 50% -80px,rgba(45,212,191,.22),transparent 65%);pointer-events:none}
-  .wrap{max-width:1020px;margin:0 auto;padding:0 20px;position:relative}
-  header{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
-  .brand img{width:34px;height:34px;border-radius:9px}
-  .lang button{background:var(--panel2);color:var(--dim);border:1px solid var(--line);padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
-  .lang button:first-child{border-radius:999px 0 0 999px}
-  .lang button:last-child{border-radius:0 999px 999px 0}
-  .lang button.on{background:var(--teal);color:#04241f;border-color:var(--teal);font-weight:700}
-  .hero{text-align:center;padding:44px 0 30px}
-  .hero img.logo{width:104px;height:104px;border-radius:24px;box-shadow:0 14px 44px rgba(45,212,191,.35)}
-  h1{font-size:clamp(42px,7vw,68px);font-weight:800;letter-spacing:-.5px;margin-top:18px}
-  h1 .dot{color:var(--amber)}
-  .tag{font-size:clamp(19px,3vw,25px);color:var(--teal2);font-weight:600;margin-top:2px}
-  .sub{max-width:640px;margin:16px auto 0;color:var(--dim);font-size:17px}
-  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-  .btn{display:inline-flex;flex-direction:column;align-items:center;text-decoration:none;border-radius:14px;padding:13px 26px;border:1px solid var(--line);background:var(--panel2);color:var(--txt);transition:transform .12s,box-shadow .12s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn b{font-size:17px}
-  .btn small{color:var(--dim);font-size:12.5px}
-  .btn.main{background:var(--amber);border-color:var(--amber);color:#221703;box-shadow:0 10px 30px rgba(245,183,62,.28)}
-  .btn.main small{color:#6b5518}
-  h2{font-size:clamp(26px,4vw,34px);font-weight:800;text-align:center;margin:56px 0 6px}
-  .h2sub{text-align:center;color:var(--dim);margin-bottom:26px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
-  .card .ic{font-size:26px}
-  .card h3{font-size:18px;margin:8px 0 4px}
-  .card p{color:var(--dim);font-size:15px}
-  .shots{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
-  .shots figure{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:10px}
-  .shots img{width:100%;border-radius:10px;display:block}
-  .shots figcaption{text-align:center;color:var(--dim);font-size:14px;padding:9px 0 3px}
-  .shots .movil{max-width:250px;margin:0 auto}
-  .shots .ancha{grid-column:1 / -1}
-  @media (max-width:700px){.shots{grid-template-columns:1fr}}
-  footer{text-align:center;color:var(--dim);font-size:14px;padding:46px 0 36px;border-top:1px solid var(--line);margin-top:60px}
-  footer b{color:var(--txt)}
+:root{
+  --noche:#060a14;--tormenta:#0c3f52;--turquesa:#2dd4bf;--sol:#f5b83d;--niebla:#eaf1f7;--bruma:#a9b8c8;
+  --vidrio:rgba(9,15,28,.52);--borde:rgba(255,255,255,.14);
+  --ancho:1180px;--lado:max(20px,env(safe-area-inset-left));
+  color-scheme:dark
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--noche);color:var(--niebla);font:400 17px/1.6 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-optical-sizing:auto;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sol);outline-offset:3px;border-radius:12px}
+
+/* El cielo: foto horizontal o vertical según la pantalla; se oscurece al bajar */
+.cielo{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#0b2430}
+.cielo>div{position:absolute;inset:0}
+.cielo .foto{inset:-7%;background:#0b2430 url(fondos/nubes-horizontal.jpg) center/cover no-repeat;
+  background-image:image-set(url(fondos/nubes-horizontal.webp) type("image/webp"),url(fondos/nubes-horizontal.jpg) type("image/jpeg"));
+  translate:0 calc(var(--y,0) * -0.07px);animation:deriva 46s ease-in-out infinite alternate;will-change:transform}
+.cielo .sol{inset:auto;left:66%;top:37%;width:70vmax;height:70vmax;margin:-35vmax 0 0 -35vmax;
+  background:radial-gradient(circle,rgba(255,222,150,.42) 0,rgba(255,196,96,.14) 30%,transparent 62%);mix-blend-mode:screen;animation:latido 9s ease-in-out infinite}
+.cielo .rayo{inset:auto;left:24%;top:46%;width:56vmax;height:56vmax;margin:-28vmax 0 0 -28vmax;
+  background:radial-gradient(circle,rgba(200,255,250,.7) 0,rgba(110,236,224,.22) 26%,transparent 60%);mix-blend-mode:screen;opacity:0;animation:rayo 13s linear 3s infinite}
+.cielo .velo{background:
+  linear-gradient(90deg,rgba(6,10,20,.72) 0,rgba(6,10,20,.38) 42%,rgba(6,10,20,.08) 72%,rgba(6,10,20,.12) 100%),
+  linear-gradient(180deg,rgba(6,10,20,.32) 0,rgba(6,10,20,0) 22%,rgba(6,10,20,0) 62%,rgba(6,10,20,.6) 100%)}
+.cielo .noche{background:var(--noche);opacity:calc(var(--n,0) * .8)}
+@media (orientation:portrait){
+  .cielo .foto{background-image:url(fondos/nubes-vertical.jpg);
+    background-image:image-set(url(fondos/nubes-vertical.webp) type("image/webp"),url(fondos/nubes-vertical.jpg) type("image/jpeg"))}
+  .cielo .sol{left:88%;top:38%}
+  .cielo .rayo{left:16%;top:50%}
+  .cielo .velo{background:linear-gradient(180deg,rgba(6,10,20,.4) 0,rgba(6,10,20,0) 18%,rgba(6,10,20,0) 40%,rgba(6,10,20,.55) 66%,rgba(6,10,20,.9) 100%)}
+}
+@keyframes deriva{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.07) translate3d(-1.6%,1.1%,0)}}
+@keyframes latido{0%,100%{opacity:.75}50%{opacity:1}}
+@keyframes rayo{0%,58%{opacity:0}58.6%{opacity:.85}59.4%{opacity:.08}60.4%{opacity:.6}62%{opacity:0}100%{opacity:0}}
+
+/* Barra de arriba */
+.barra{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:calc(12px + env(safe-area-inset-top)) var(--lado) 12px;transition:background .3s,box-shadow .3s}
+.barra.llena{background:rgba(6,10,20,.62);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);box-shadow:0 1px 0 var(--borde)}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:22px;letter-spacing:-.02em}
+.marca img{width:34px;height:34px;border-radius:9px}
+.marca b,.punto{color:var(--sol)}
+.idioma{display:flex;gap:2px;padding:3px;border-radius:999px;background:var(--vidrio);border:1px solid var(--borde);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.idioma button{all:unset;cursor:pointer;font-size:14px;font-weight:700;padding:6px 12px;border-radius:999px;color:var(--bruma)}
+.idioma button[aria-pressed="true"]{background:var(--niebla);color:var(--noche)}
+.idioma button:focus-visible{outline:3px solid var(--sol);outline-offset:2px}
+
+/* Portada */
+.portada{min-height:100vh;min-height:100svh;display:grid;align-items:center;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,5vw,80px);
+  max-width:var(--ancho);margin:0 auto;padding:calc(96px + env(safe-area-inset-top)) var(--lado) clamp(40px,8vh,88px)}
+h1{margin:0;font-weight:800;font-size:clamp(54px,min(10.5vw,17vh),148px);line-height:.9;letter-spacing:-.045em;font-variation-settings:"opsz" 96}
+h1>span{display:block}
+.sub{margin:22px 0 0;max-width:34ch;font-size:clamp(18px,2vw,22px);line-height:1.45;color:#d9e5ef}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:16px;
+  font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;border:1px solid var(--borde);color:var(--niebla);
+  background:var(--vidrio);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);transition:transform .15s,background .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.btn:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+.btn:active{transform:scale(.98)}
+.btn.sol{background:var(--sol);border-color:var(--sol);color:#1a1405;box-shadow:0 14px 34px -14px rgba(245,184,61,.75)}
+.btn.sol:hover{background:#ffc95a}
+.nota{margin:18px 0 0;font-size:15px;color:var(--bruma)}
+
+/* Teléfonos */
+.telefono{position:relative;border-radius:46px;padding:9px;background:linear-gradient(150deg,#2a3a4f,#0b111d 45%,#16202f);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 0 0 1px rgba(0,0,0,.55),0 50px 90px -40px rgba(0,0,0,.9)}
+.telefono img{width:100%;height:auto;border-radius:38px;background:#0b1220}
+.t-portada{width:clamp(250px,25vw,330px);transform:perspective(1300px) rotateY(calc(var(--ry,0) * 1deg)) rotateX(calc(var(--rx,0) * 1deg));transition:transform .4s ease-out}
+.t-portada::before{content:"";position:absolute;inset:-12% -22%;z-index:-1;background:radial-gradient(closest-side,rgba(255,214,140,.35),transparent);filter:blur(10px)}
+
+/* Entrada (una sola vez, al abrir) */
+.entra{animation:entra 1s cubic-bezier(.2,.75,.2,1) both}
+.l2.entra{animation-delay:.08s}.sub.entra{animation-delay:.2s}.acciones.entra{animation-delay:.3s}.nota.entra{animation-delay:.38s}
+.t-portada.entra{animation:sube 1.2s cubic-bezier(.2,.75,.2,1) .25s both}
+@keyframes entra{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes sube{from{opacity:0;translate:0 60px}to{opacity:1;translate:0 0}}
+
+/* Secciones */
+section.bloque{max-width:var(--ancho);margin:0 auto;padding:clamp(56px,9vw,110px) var(--lado) 0}
+h2{margin:0;font-weight:800;font-size:clamp(34px,5vw,60px);line-height:1;letter-spacing:-.035em;font-variation-settings:"opsz" 72;max-width:18ch}
+.intro{margin:16px 0 0;max-width:52ch;color:#cfdbe6;font-size:18px}
+h3{margin:0;font-size:21px;font-weight:750;letter-spacing:-.015em}
+
+/* Tira de pantallas */
+.tira-wrap{position:relative;margin-top:36px}
+.tira{display:grid;grid-auto-flow:column;grid-auto-columns:min(74vw,276px);gap:clamp(20px,3vw,40px);overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;--borde-tira:max(var(--lado),calc((100vw - var(--ancho)) / 2 + 20px));scroll-padding:0 var(--borde-tira);padding:10px var(--borde-tira) 26px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent}
+.tira:focus-visible{outline-offset:-3px}
+.tira figure{margin:0;scroll-snap-align:start}
+.tira figcaption{margin-top:20px}
+.tira figcaption b{display:block;font-size:19px;font-weight:750;letter-spacing:-.01em;color:#fff}
+.tira figcaption span{display:block;margin-top:4px;font-size:15.5px;line-height:1.5;color:var(--bruma)}
+.flechas{display:flex;gap:10px;justify-content:flex-end;max-width:var(--ancho);margin:0 auto;padding:0 var(--lado)}
+.flechas button{all:unset;cursor:pointer;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--vidrio);border:1px solid var(--borde);color:var(--niebla)}
+.flechas button:hover{background:rgba(255,255,255,.14)}
+.flechas button:focus-visible{outline:3px solid var(--sol);outline-offset:2px}
+.flechas button[disabled]{opacity:.35;cursor:default}
+.flechas svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* En todos tus aparatos */
+.equipos{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start;margin-top:40px}
+.ventana{border-radius:16px;overflow:hidden;background:#0b1220;box-shadow:0 0 0 1px var(--borde),0 50px 100px -50px rgba(0,0,0,.95)}
+.ventana .marco{display:flex;align-items:center;justify-content:space-between;height:34px;padding:0 14px;background:rgba(255,255,255,.07);font-size:13px;font-weight:700;color:var(--bruma)}
+.ventana .marco i{display:flex;gap:6px}
+.ventana .marco i::before,.ventana .marco i::after{content:"";width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.tema{display:flex;gap:2px;padding:3px;border-radius:999px;background:var(--vidrio);border:1px solid var(--borde);width:max-content;margin-top:14px}
+.tema button{all:unset;cursor:pointer;font-size:14px;font-weight:700;padding:6px 14px;border-radius:999px;color:var(--bruma)}
+.tema button[aria-pressed="true"]{background:var(--niebla);color:var(--noche)}
+.tema button:focus-visible{outline:3px solid var(--sol);outline-offset:2px}
+.opciones{display:grid;gap:14px}
+.op{padding:22px;border-radius:22px;background:var(--vidrio);border:1px solid var(--borde);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3)}
+.op p{margin:8px 0 16px;font-size:15.5px;line-height:1.55;color:#c9d6e2}
+.op .btn{width:100%}
+
+/* Tus datos */
+.datos{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px clamp(24px,4vw,64px);max-width:980px}
+.datos li{padding-left:22px;border-left:3px solid var(--turquesa)}
+.datos li:nth-child(2n){border-left-color:var(--sol)}
+.datos b{display:block;font-size:19px;color:#fff;letter-spacing:-.01em}
+.datos span{display:block;margin-top:4px;color:#c9d6e2;font-size:16px}
+
+footer{max-width:var(--ancho);margin:0 auto;padding:clamp(64px,10vw,120px) var(--lado) calc(36px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;color:var(--bruma);font-size:15px}
+footer p{margin:0}
+footer a{color:var(--niebla)}
+
+/* Teléfono vertical y pantallas estrechas */
+@media (max-width:860px),(orientation:portrait){
+  .portada{grid-template-columns:1fr;align-items:end;padding-bottom:max(30px,calc(18px + env(safe-area-inset-bottom)))}
+  .t-portada{display:none}
+  .sub{max-width:30ch}
+}
+@media (max-width:560px){
+  .acciones .btn{flex:1 1 100%}
+  .equipos{grid-template-columns:1fr}
+  .datos{grid-template-columns:1fr}
+  .flechas{display:none}
+}
+@media (max-width:860px){.equipos{grid-template-columns:1fr}}
+@media (max-height:560px) and (orientation:landscape){
+  .t-portada{display:none}
+  .portada{grid-template-columns:1fr;padding-top:76px}
+  .sub{margin-top:14px}.acciones{margin-top:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .cielo .foto,.cielo .sol,.cielo .rayo,.entra,.t-portada.entra{animation:none}
+  .cielo .foto{translate:none}
+  .cielo .rayo{display:none}
+  .t-portada{transition:none}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="cielo" aria-hidden="true"><div class="foto"></div><div class="sol"></div><div class="rayo"></div><div class="velo"></div><div class="noche"></div></div>
 
-  <header>
-    <div class="brand"><img src="icon-512.png" alt="Cuentas"> <span>Cuentas<span style="color:var(--amber)">.</span></span></div>
-    <div class="lang">
-      <button id="bES" class="on" onclick="setLang('es')">ES</button><button id="bEN" onclick="setLang('en')">EN</button>
-    </div>
-  </header>
-
-  <section class="hero">
-    <img class="logo" src="icon-512.png" alt="Cuentas">
-    <h1>Cuentas<span class="dot">.</span></h1>
-    <p class="tag" data-es="Tu dinero en un solo lugar." data-en="Your money in one place.">Tu dinero en un solo lugar.</p>
-    <p class="sub" data-es="La app para llevar tus gastos, entradas, cuentas fijas, deudas y metas — y estimar tus impuestos de EE. UU. Todo en la nube: entras con tu usuario desde el teléfono, la computadora o el navegador." data-en="The app to track your expenses, income, fixed bills, debts and goals — and estimate your US taxes. All in the cloud: sign in with your user from your phone, computer or browser.">La app para llevar tus gastos, entradas, cuentas fijas, deudas y metas — y estimar tus impuestos de EE. UU. Todo en la nube: entras con tu usuario desde el teléfono, la computadora o el navegador.</p>
-    <div class="cta">
-      <a class="btn main" href="app/"><b data-es="▶ Acceder" data-en="▶ Open the app">▶ Acceder</b><small data-es="Abrir la app web" data-en="Open the web app">Abrir la app web</small></a>
-      <a class="btn" href="https://github.com/YottoMtnz/Cuentas/releases/download/v3.0-android/Cuentas.apk"><b data-es="⬇ Android" data-en="⬇ Android">⬇ Android</b><small data-es="Descargar el APK" data-en="Download the APK">Descargar el APK</small></a>
-      <a class="btn" href="https://github.com/YottoMtnz/Cuentas/releases/download/v3.0-windows/Cuentas.exe"><b data-es="⬇ Windows" data-en="⬇ Windows">⬇ Windows</b><small data-es="Un solo .exe · no instala nada" data-en="A single .exe · no install">Un solo .exe · no instala nada</small></a>
-    </div>
-  </section>
-
-  <h2 data-es="Qué hace" data-en="What it does">Qué hace</h2>
-  <p class="h2sub" data-es="Todo lo de tu economía personal, sin libretas ni hojas sueltas." data-en="Your whole personal economy, no notebooks or loose sheets.">Todo lo de tu economía personal, sin libretas ni hojas sueltas.</p>
-  <div class="grid">
-    <div class="card"><div class="ic">💸</div><h3 data-es="Movimientos" data-en="Transactions">Movimientos</h3><p data-es="Registra gastos y entradas: con qué pagaste, si fue con tarjeta, notas e imprevistos." data-en="Log expenses and income: how you paid, card purchases, notes and surprises.">Registra gastos y entradas: con qué pagaste, si fue con tarjeta, notas e imprevistos.</p></div>
-    <div class="card"><div class="ic">📌</div><h3 data-es="Cuentas fijas" data-en="Fixed bills">Cuentas fijas</h3><p data-es="Renta, luz, teléfono, internet… con avisos antes de que venzan en Android y Windows." data-en="Rent, power, phone, internet… with reminders before they are due on Android and Windows.">Renta, luz, teléfono, internet… con avisos antes de que venzan en Android y Windows.</p></div>
-    <div class="card"><div class="ic">💳</div><h3 data-es="Deudas" data-en="Debts">Deudas</h3><p data-es="Quién te debe y a quién le debes, con su fecha — sin perder el hilo." data-en="Who owes you and who you owe, with dates — nothing gets lost.">Quién te debe y a quién le debes, con su fecha — sin perder el hilo.</p></div>
-    <div class="card"><div class="ic">🎯</div><h3 data-es="Metas" data-en="Goals">Metas</h3><p data-es="Aparta para lo que quieres y mira cómo crece tu ahorro." data-en="Save up for what you want and watch it grow.">Aparta para lo que quieres y mira cómo crece tu ahorro.</p></div>
-    <div class="card"><div class="ic">🧾</div><h3 data-es="Impuestos de EE. UU." data-en="US taxes">Impuestos de EE. UU.</h3><p data-es="Estimación con las tablas del IRS, que se actualizan solas cada año." data-en="Estimates with IRS tables that update themselves every year.">Estimación con las tablas del IRS, que se actualizan solas cada año.</p></div>
-    <div class="card"><div class="ic">☁️</div><h3 data-es="En la nube" data-en="In the cloud">En la nube</h3><p data-es="Tus datos no viven en el aparato: entras con tu usuario y todo te sigue a donde vayas." data-en="Your data does not live on the device: sign in and everything follows you.">Tus datos no viven en el aparato: entras con tu usuario y todo te sigue a donde vayas.</p></div>
+<header class="barra" id="barra">
+  <a class="marca" href="./"><img src="icon-192.png" alt="" width="34" height="34"><span>Cuentas<b>.</b></span></a>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" id="bES" aria-pressed="true" lang="es">ES</button>
+    <button type="button" id="bEN" aria-pressed="false" lang="en">EN</button>
   </div>
+</header>
 
-  <h2 data-es="Así se ve" data-en="A look inside">Así se ve</h2>
-  <p class="h2sub" data-es="Capturas reales de la app, con datos de ejemplo." data-en="Real screenshots of the app, with sample data.">Capturas reales de la app, con datos de ejemplo.</p>
-  <div class="shots">
-    <figure class="ancha"><img src="capturas/panel.png" alt="Panel de Cuentas: tu mes de un vistazo"><figcaption data-es="Tu mes de un vistazo" data-en="Your month at a glance">Tu mes de un vistazo</figcaption></figure>
-    <figure><img src="capturas/deudas.png" alt="Deudas en Cuentas"><figcaption data-es="Deudas: quién te debe y a quién le debes" data-en="Debts: who owes you and who you owe">Deudas: quién te debe y a quién le debes</figcaption></figure>
-    <figure><img src="capturas/fijas.png" alt="Cuentas fijas en Cuentas"><figcaption data-es="Tus cuentas fijas del mes" data-en="Your fixed bills">Tus cuentas fijas del mes</figcaption></figure>
-    <figure class="movil"><img src="capturas/panel-movil.png" alt="Cuentas en el teléfono"><figcaption data-es="En el teléfono" data-en="On your phone">En el teléfono</figcaption></figure>
-  </div>
-
-  <section class="hero" style="padding-top:16px">
-    <p class="tag" data-es="Empieza ahora" data-en="Start now">Empieza ahora</p>
-    <div class="cta">
-      <a class="btn main" href="app/"><b data-es="▶ Acceder" data-en="▶ Open the app">▶ Acceder</b><small data-es="Abrir la app web" data-en="Open the web app">Abrir la app web</small></a>
-      <a class="btn" href="https://github.com/YottoMtnz/Cuentas/releases/download/v3.0-android/Cuentas.apk"><b>⬇ Android</b><small data-es="Descargar el APK" data-en="Download the APK">Descargar el APK</small></a>
-      <a class="btn" href="https://github.com/YottoMtnz/Cuentas/releases/download/v3.0-windows/Cuentas.exe"><b>⬇ Windows</b><small data-es="Un solo .exe · no instala nada" data-en="A single .exe · no install">Un solo .exe · no instala nada</small></a>
+<main>
+<section class="portada">
+  <div>
+    <h1><span class="l1 entra" data-es="Cuentas" data-en="Money,">Cuentas</span><span class="l2 entra"><span class="h1b" data-es="claras" data-en="made clear">claras</span><span class="punto">.</span></span></h1>
+    <p class="sub entra" data-es="Ingresos, gastos y deudas en un solo lugar, con tu plan de cuentas, tu balance y tu estado de resultados. Desde el teléfono, la computadora o el navegador." data-en="Income, expenses and debts in one place, with your own chart of accounts, balance sheet and income statement. On your phone, your computer or the browser.">Ingresos, gastos y deudas en un solo lugar, con tu plan de cuentas, tu balance y tu estado de resultados. Desde el teléfono, la computadora o el navegador.</p>
+    <div class="acciones entra">
+      <a class="btn sol" href="app/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg><span data-es="Abrir Cuentas web" data-en="Open Cuentas web">Abrir Cuentas web</span></a>
+      <a class="btn" data-dl="android" href="https://github.com/YottoMtnz/Cuentas/releases/download/v3.0-android/Cuentas.apk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg><span data-es="Descargar para Android" data-en="Download for Android">Descargar para Android</span></a>
+      <a class="btn" data-dl="windows" href="https://github.com/YottoMtnz/Cuentas/releases/download/v3.0-windows/Cuentas.exe"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-es="Descargar para Windows" data-en="Download for Windows">Descargar para Windows</span></a>
     </div>
-  </section>
+    <p class="nota entra ver">Gratis. Versión 4.0.</p>
+  </div>
+  <figure class="telefono t-portada entra" id="tel" style="margin:0"><img src="capturas/mi-mes.webp" width="780" height="1688" alt="Cuentas en el teléfono: lo que te queda libre y el resultado del mes" data-es-alt="Cuentas en el teléfono: lo que te queda libre y el resultado del mes" data-en-alt="Cuentas on a phone: what you have free and the month's result" fetchpriority="high"></figure>
+</section>
 
-  <footer>
-    <span data-es="Hecho por" data-en="Made by">Hecho por</span> <b>Fraudy Martinez Madruga</b> · Cuentas 3.0
-  </footer>
+<section class="bloque" id="asi" aria-labelledby="h-asi">
+  <h2 id="h-asi" data-es="Así se ve" data-en="Take a look">Así se ve</h2>
+  <p class="intro" data-es="Pantallas de la app con datos de ejemplo." data-en="Screens from the app, with sample data.">Pantallas de la app con datos de ejemplo.</p>
+</section>
+<div class="tira-wrap">
+  <div class="tira" id="tira" tabindex="0" role="region" aria-label="Pantallas de la app" data-es-label="Pantallas de la app" data-en-label="App screens">
+    <figure><div class="telefono"><img loading="lazy" src="capturas/mi-mes-nov.webp" width="780" height="1688" alt="Mi mes: libre ahora y pagos pendientes" data-es-alt="Mi mes: libre ahora y pagos pendientes" data-en-alt="My month: free now and what is left to pay"></div>
+      <figcaption><b data-es="Libre ahora" data-en="Free now">Libre ahora</b><span data-es="El dinero en banco y efectivo menos la deuda de tarjetas, con el resultado del mes: superávit o déficit." data-en="Cash and bank minus credit card debt, with the month's result: surplus or deficit.">El dinero en banco y efectivo menos la deuda de tarjetas, con el resultado del mes: superávit o déficit.</span></figcaption></figure>
+    <figure><div class="telefono"><img loading="lazy" src="capturas/dividir-ticket.webp" width="780" height="1688" alt="Nuevo gasto: un ticket de Walmart dividido en dos cuentas" data-es-alt="Nuevo gasto: un ticket de Walmart dividido en dos cuentas" data-en-alt="New expense: a Walmart receipt split into two accounts"></div>
+      <figcaption><b data-es="Un ticket, varias cuentas" data-en="One receipt, several accounts">Un ticket, varias cuentas</b><span data-es="Una compra del supermercado repartida: alimentación en una cuenta y artículos del hogar en otra." data-en="A grocery receipt split: food to one account, household items to another.">Una compra del supermercado repartida: alimentación en una cuenta y artículos del hogar en otra.</span></figcaption></figure>
+    <figure><div class="telefono"><img loading="lazy" src="capturas/plan-de-cuentas.webp" width="780" height="1688" alt="Mi plan de cuentas" data-es-alt="Mi plan de cuentas" data-en-alt="My chart of accounts"></div>
+      <figcaption><b data-es="Tu plan de cuentas" data-en="Your chart of accounts">Tu plan de cuentas</b><span data-es="Ingresos, costos y gastos fijos o variables, con tus propios códigos. Se puede importar desde Excel." data-en="Income, costs and fixed or variable expenses, with your own codes. Import it from Excel.">Ingresos, costos y gastos fijos o variables, con tus propios códigos. Se puede importar desde Excel.</span></figcaption></figure>
+    <figure><div class="telefono"><img loading="lazy" src="capturas/balance.webp" width="780" height="1688" alt="Mi balance: activos, pasivos y patrimonio" data-es-alt="Mi balance: activos, pasivos y patrimonio" data-en-alt="My balance sheet: assets, liabilities and net worth"></div>
+      <figcaption><b data-es="Tu balance" data-en="Your balance sheet">Tu balance</b><span data-es="Activos, pasivos y patrimonio: tu dinero, tu ahorro, lo que te deben, las tarjetas y los préstamos." data-en="Assets, liabilities and net worth: cash, savings, receivables, cards and loans.">Activos, pasivos y patrimonio: tu dinero, tu ahorro, lo que te deben, las tarjetas y los préstamos.</span></figcaption></figure>
+    <figure><div class="telefono"><img loading="lazy" src="capturas/deudas.webp" width="780" height="1688" alt="Deudas: el carro y la tarjeta" data-es-alt="Deudas: el carro y la tarjeta" data-en-alt="Debts: the car loan and a credit card"></div>
+      <figcaption><b data-es="Deudas bajo control" data-en="Debts under control">Deudas bajo control</b><span data-es="Saldo pendiente, cuota mensual y fecha estimada del último pago." data-en="Outstanding balance, monthly payment and estimated payoff date.">Saldo pendiente, cuota mensual y fecha estimada del último pago.</span></figcaption></figure>
+    <figure><div class="telefono"><img loading="lazy" src="capturas/fijas.webp" width="780" height="1688" alt="Mis cuentas fijas" data-es-alt="Mis cuentas fijas" data-en-alt="My regular bills"></div>
+      <figcaption><b data-es="Avisos antes de pagar" data-en="Reminders before you pay">Avisos antes de pagar</b><span data-es="Renta, luz, teléfono… En Android y Windows recibes un aviso antes del vencimiento." data-en="Rent, utilities, phone… Android and Windows remind you before the due date.">Renta, luz, teléfono… En Android y Windows recibes un aviso antes del vencimiento.</span></figcaption></figure>
+  </div>
+  <div class="flechas">
+    <button type="button" id="ant" aria-label="Anterior" data-es-label="Anterior" data-en-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" id="sig" aria-label="Siguiente" data-es-label="Siguiente" data-en-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
 </div>
 
+<section class="bloque" id="descargas" aria-labelledby="h-eq">
+  <h2 id="h-eq" data-es="En el teléfono, en la computadora o en el navegador" data-en="On your phone, your computer or the browser">En el teléfono, en la computadora o en el navegador</h2>
+  <p class="intro" data-es="Una sola cuenta en todos tus equipos: lo que registras en uno aparece en los demás. Sin conexión sigue funcionando y se sincroniza al volver." data-en="One account across all your devices: what you record on one appears on the others. It works offline and syncs when you reconnect.">Una sola cuenta en todos tus equipos: lo que registras en uno aparece en los demás. Sin conexión sigue funcionando y se sincroniza al volver.</p>
+  <div class="equipos">
+    <div>
+      <div class="ventana"><div class="marco"><i></i><span>Cuentas</span><span></span></div><img id="pc" loading="lazy" src="capturas/pc-claro.webp" width="1440" height="900" alt="Cuentas en la computadora, tema claro" data-es-alt="Cuentas en la computadora" data-en-alt="Cuentas on a computer"></div>
+      <div class="tema" role="group" aria-label="Tema" data-es-label="Tema" data-en-label="Theme">
+        <button type="button" data-tema="claro" aria-pressed="true" data-es="Claro" data-en="Light">Claro</button>
+        <button type="button" data-tema="oscuro" aria-pressed="false" data-es="Oscuro" data-en="Dark">Oscuro</button>
+      </div>
+    </div>
+    <div class="opciones">
+      <div class="op"><h3 data-es="Web" data-en="Web">Web</h3><p data-es="Funciona en cualquier navegador, también en iPhone: en Safari toca Compartir › Agregar a inicio y queda como una app." data-en="Works in any browser, iPhone included: in Safari tap Share › Add to Home Screen and it behaves like an app.">Funciona en cualquier navegador, también en iPhone: en Safari toca Compartir › Agregar a inicio y queda como una app.</p><a class="btn sol" href="app/"><span data-es="Abrir Cuentas web" data-en="Open Cuentas web">Abrir Cuentas web</span></a></div>
+      <div class="op"><h3>Android</h3><p data-es="Descarga el APK e instálalo. La primera vez, Android pide permiso para instalar desde el navegador." data-en="Download the APK and install it. The first time, Android asks you to allow installs from your browser.">Descarga el APK e instálalo. La primera vez, Android pide permiso para instalar desde el navegador.</p><a class="btn" data-dl="android" href="https://github.com/YottoMtnz/Cuentas/releases/download/v3.0-android/Cuentas.apk"><span data-es="Descargar para Android" data-en="Download for Android">Descargar para Android</span></a></div>
+      <div class="op"><h3>Windows</h3><p data-es="Un solo archivo, Cuentas.exe: crea su acceso directo, avisa de los pagos junto al reloj y se actualiza al abrir una versión más nueva. Si aparece «Windows protegió tu PC», toca Más información › Ejecutar de todas formas." data-en="One file, Cuentas.exe: it adds a shortcut, reminds you of payments next to the clock and updates itself when you open a newer version. If you see “Windows protected your PC”, choose More info › Run anyway.">Un solo archivo, Cuentas.exe: crea su acceso directo, avisa de los pagos junto al reloj y se actualiza al abrir una versión más nueva. Si aparece «Windows protegió tu PC», toca Más información › Ejecutar de todas formas.</p><a class="btn" data-dl="windows" href="https://github.com/YottoMtnz/Cuentas/releases/download/v3.0-windows/Cuentas.exe"><span data-es="Descargar para Windows" data-en="Download for Windows">Descargar para Windows</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" aria-labelledby="h-datos">
+  <h2 id="h-datos" data-es="Tus datos y tu país" data-en="Your data, your country">Tus datos y tu país</h2>
+  <ul class="datos">
+    <li><b data-es="Acceso con usuario y contraseña" data-en="Your own user and password">Acceso con usuario y contraseña</b><span data-es="Cada persona ve solo su información, y la contraseña nunca se guarda en texto legible." data-en="Each person only sees their own information, and passwords are never stored in readable form.">Cada persona ve solo su información, y la contraseña nunca se guarda en texto legible.</span></li>
+    <li><b data-es="Funciona sin conexión" data-en="Works offline">Funciona sin conexión</b><span data-es="Registras igual y se sincroniza cuando vuelve internet." data-en="Keep recording; it syncs when you're back online.">Registras igual y se sincroniza cuando vuelve internet.</span></li>
+    <li><b data-es="Impuestos de EE. UU." data-en="US taxes">Impuestos de EE. UU.</b><span data-es="Estimación del formulario 1040 con las tablas del IRS, actualizadas cada año. Es orientativa, no asesoría fiscal." data-en="A Form 1040 estimate using IRS tables updated every year. For guidance only, not tax advice.">Estimación del formulario 1040 con las tablas del IRS, actualizadas cada año. Es orientativa, no asesoría fiscal.</span></li>
+    <li><b data-es="Fuera de EE. UU." data-en="Outside the US">Fuera de EE. UU.</b><span data-es="En Ajustes eliges «Otro país» y tu moneda; se ocultan los impuestos del IRS." data-en="In Settings choose “Other country” and your currency; the IRS sections are hidden.">En Ajustes eliges «Otro país» y tu moneda; se ocultan los impuestos del IRS.</span></li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <p><span data-es="Hecho por" data-en="Made by">Hecho por</span> <a href="https://github.com/YottoMtnz">Fraudy Martinez Madruga</a>.</p>
+  <p class="ver">Gratis. Versión 4.0.</p>
+</footer>
+
 <script>
-function setLang(l){
-  document.querySelectorAll('[data-es]').forEach(function(el){
-    el.textContent = el.getAttribute('data-' + l);
+(function () {
+  var root = document.documentElement, $ = function (s) { return document.querySelector(s) }, $$ = function (s) { return document.querySelectorAll(s) };
+  var REL = 'https://github.com/YottoMtnz/Cuentas/releases', V = '4.0', L = 'es';
+  try { L = localStorage.getItem('cuentas-idioma') || (/^en/i.test(navigator.language || '') ? 'en' : 'es') } catch (e) { L = /^en/i.test(navigator.language || '') ? 'en' : 'es' }
+  function ver() { $$('.ver').forEach(function (e) { e.textContent = (L === 'en' ? 'Free. Version ' : 'Gratis. Versión ') + V + '.' }) }
+  function setLang(l) {
+    L = l === 'en' ? 'en' : 'es';
+    $$('[data-es]').forEach(function (el) { var t = el.getAttribute('data-' + L); if (t != null) el.textContent = t });
+    $$('[data-es-alt]').forEach(function (el) { el.alt = el.getAttribute('data-' + L + '-alt') });
+    $$('[data-es-label]').forEach(function (el) { el.setAttribute('aria-label', el.getAttribute('data-' + L + '-label')) });
+    root.lang = L; document.title = L === 'en' ? 'Cuentas · Your money in one place' : 'Cuentas · Tu dinero en un solo lugar';
+    $('#bES').setAttribute('aria-pressed', String(L === 'es')); $('#bEN').setAttribute('aria-pressed', String(L === 'en'));
+    ver(); try { localStorage.setItem('cuentas-idioma', L) } catch (e) {}
+  }
+  $('#bES').addEventListener('click', function () { setLang('es') });
+  $('#bEN').addEventListener('click', function () { setLang('en') });
+  if (L !== 'es') setLang(L);
+
+  // Versión publicada (la misma que leen las apps)
+  fetch('tax-params.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null }).then(function (j) {
+    if (j && /^\d{1,3}\.\d{1,3}(\.\d{1,3})?$/.test(String(j.app || '').trim())) { V = String(j.app).trim(); ver() }
+  }).catch(function () {});
+
+  // Descargas: el Cuentas.apk / Cuentas.exe subido más recientemente a Releases (si GitHub no responde, la ruta fija)
+  var DL = { android: 'cuentas.apk', windows: 'cuentas.exe' }, OK = /^https:\/\/github\.com\/yottomtnz\/cuentas\/releases\/download\/[^?#\s"'<>]+$/i;
+  fetch('https://api.github.com/repos/YottoMtnz/Cuentas/releases?per_page=30', { headers: { Accept: 'application/vnd.github+json' } })
+    .then(function (r) { return r.ok ? r.json() : null }).then(function (a) {
+      if (!Array.isArray(a)) return;
+      Object.keys(DL).forEach(function (p) {
+        var f = DL[p], ext = f.slice(f.lastIndexOf('.')), best = null;
+        a.forEach(function (r) {
+          if (!r || r.draft || r.prerelease || !Array.isArray(r.assets)) return;
+          r.assets.forEach(function (s) {
+            if (!s) return; var n = String(s.name || '').toLowerCase(), u = String(s.browser_download_url || '');
+            if (!OK.test(u) || (s.state && s.state !== 'uploaded')) return;
+            var k = n === f ? 2 : n.slice(-ext.length) === ext ? 1 : 0; if (!k) return;
+            var t = Date.parse(s.updated_at || s.created_at || r.published_at || '') || 0;
+            if (!best || k > best.k || (k === best.k && t > best.t)) best = { k: k, t: t, u: u };
+          });
+        });
+        if (best) $$('a[data-dl="' + p + '"]').forEach(function (e) { e.href = best.u });
+      });
+    }).catch(function () {});
+
+  // Al bajar: el cielo se oscurece, la foto se mueve un poco y la barra toma fondo
+  var cielo = $('.cielo'), barra = $('#barra'), quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches, pend = false;
+  function pinta() {
+    pend = false; var y = window.scrollY || 0, h = window.innerHeight || 800;
+    cielo.style.setProperty('--n', Math.min(1, y / (h * 0.7)).toFixed(3));
+    if (!quieto) cielo.style.setProperty('--y', String(Math.round(y)));
+    barra.classList.toggle('llena', y > 30);
+  }
+  addEventListener('scroll', function () { if (!pend) { pend = true; requestAnimationFrame(pinta) } }, { passive: true });
+  pinta();
+
+  // El teléfono de la portada sigue un poco al puntero (solo con mouse)
+  var tel = $('#tel');
+  if (tel && !quieto && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    $('.portada').addEventListener('pointermove', function (e) {
+      var r = tel.getBoundingClientRect(), x = (e.clientX - (r.left + r.width / 2)) / innerWidth, y = (e.clientY - (r.top + r.height / 2)) / innerHeight;
+      tel.style.setProperty('--ry', (x * 14).toFixed(2)); tel.style.setProperty('--rx', (-y * 10).toFixed(2));
+    });
+    $('.portada').addEventListener('pointerleave', function () { tel.style.setProperty('--ry', '0'); tel.style.setProperty('--rx', '0') });
+  }
+
+  // Flechas de la tira de pantallas
+  var tira = $('#tira'), ant = $('#ant'), sig = $('#sig');
+  function paso() { var f = tira.querySelector('figure'); return f ? f.getBoundingClientRect().width + parseFloat(getComputedStyle(tira).columnGap || 24) : 300 }
+  function flechas() { ant.disabled = tira.scrollLeft < 8; sig.disabled = tira.scrollLeft + tira.clientWidth > tira.scrollWidth - 8 }
+  ant.addEventListener('click', function () { tira.scrollBy({ left: -paso(), behavior: quieto ? 'auto' : 'smooth' }) });
+  sig.addEventListener('click', function () { tira.scrollBy({ left: paso(), behavior: quieto ? 'auto' : 'smooth' }) });
+  tira.addEventListener('scroll', flechas, { passive: true }); addEventListener('resize', flechas); flechas();
+
+  // Tema de la captura de la computadora
+  $$('[data-tema]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.getAttribute('data-tema'); $('#pc').src = 'capturas/pc-' + t + '.webp';
+      $$('[data-tema]').forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)) });
+    });
   });
-  document.getElementById('bES').classList.toggle('on', l === 'es');
-  document.getElementById('bEN').classList.toggle('on', l === 'en');
-  document.documentElement.lang = l;
-}
+})();
 </script>
 </body>
 </html>
